@@ -5,7 +5,7 @@ import connectDB from "./db/connect.js";
 import notFoundMiddleware from "./middleware/not-found";
 import errorHandlerMiddleware from "./middleware/error-handler";
 
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV !== "production") {
     const dotenv = require("dotenv");
     dotenv.config();
 }
