@@ -5,7 +5,7 @@ import connectDB from "./db/connect.js";
 import notFoundMiddleware from "./middleware/not-found";
 import errorHandlerMiddleware from "./middleware/error-handler";
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV === "production") {
     const dotenv = require("dotenv");
     dotenv.config();
 }
@@ -23,14 +23,10 @@ app.get("/api/test", (req: Request<any, any, any, any>, res: Response<any>) => {
     res.json({date: new Date().toString()});
 });
 
-
-// End Middleware
-app.use(notFoundMiddleware)
-app.use(errorHandlerMiddleware)
-
 // Start only if the DB connection is successful
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "..", "client", "build")));
+    console.log(express.static(path.join(__dirname, "..", "client", "build")))
 
     app.get("/*", (req, res) => {
         res.sendFile(
@@ -38,6 +34,10 @@ if (process.env.NODE_ENV === "production") {
         );
     });
 }
+
+// End Middleware
+app.use(notFoundMiddleware)
+app.use(errorHandlerMiddleware)
 
 
 const PORT =
