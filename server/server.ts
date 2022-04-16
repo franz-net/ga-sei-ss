@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import express, {Request, Response} from "express";
 import path from "path";
 import morgan from 'morgan';
@@ -7,6 +6,7 @@ import notFoundMiddleware from "./middleware/not-found";
 import errorHandlerMiddleware from "./middleware/error-handler";
 
 if (process.env.NODE_ENV !== "production") {
+    const dotenv = require("dotenv");
     dotenv.config();
 }
 const app = express();
