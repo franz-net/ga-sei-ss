@@ -2,17 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/context/actions.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/context/appContext.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/context/reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/Error.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/db/connect.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/errors/errors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/middleware/error-handler.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/middleware/not-found.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/setupTests.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Error.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +31,9 @@
     <option name="myRunOnSave" value="true" />
   </component>
   <component name="ProjectId" id="27jfpmlyDbUkQtA1uX0UoCx4wAK" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -41,6 +43,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/jobify-react",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -57,6 +60,11 @@
       </map>
     </option>
   </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/assets/imgs" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -66,7 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1649838603491</updated>
       <workItem from="1649838609339" duration="388000" />
-      <workItem from="1649839998769" duration="4605000" />
+      <workItem from="1649839998769" duration="11001000" />
     </task>
     <servers />
   </component>
