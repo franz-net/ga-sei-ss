@@ -18,6 +18,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 app.use(express.json()); // support json encoded bodies
 
+// Routes
 app.get("/api/test", (req: Request<any, any, any, any>, res: Response<any>) => {
     res.json({date: new Date().toString()});
 });
@@ -27,6 +28,7 @@ app.get("/api/test", (req: Request<any, any, any, any>, res: Response<any>) => {
 app.use(notFoundMiddleware)
 app.use(errorHandlerMiddleware)
 
+// Start only if the DB connection is successful
 if (process.env.NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "..", "client", "build")));
 
