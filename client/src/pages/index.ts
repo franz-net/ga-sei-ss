@@ -1,3 +1,5 @@
 import Error from "./Error";
+import Signup from "./Signup";
+import Landing from "./Landing";
 
-export {Error}
+export {Error, Signup, Landing}

@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/server/controllers/userController.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/routes/userRoute.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/ScreenMessage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/Landing.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/Signup.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/authController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/authController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/authRoute.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/authRoute.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/context/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/appContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/context/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/userController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +76,7 @@
       <option name="presentableId" value="Default" />
       <updated>1649838603491</updated>
       <workItem from="1649838609339" duration="388000" />
-      <workItem from="1649839998769" duration="20990000" />
+      <workItem from="1649839998769" duration="29565000" />
     </task>
     <servers />
   </component>

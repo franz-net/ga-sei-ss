@@ -27,7 +27,6 @@ const register = async (req, res) => {
     })
 }
 
-
 const update = async (req, res) => {
     const {email, name, lastName} = req.body
     if (!email || !name || !lastName) {
