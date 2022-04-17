@@ -6,6 +6,7 @@ import connectDB from "./db/connect.js";
 import notFoundMiddleware from "./middleware/not-found";
 import errorHandlerMiddleware from "./middleware/error-handler";
 import authRouter from "./routes/authRoute";
+import userRouter from "./routes/userRoute";
 
 if (process.env.NODE_ENV !== "production") {
     const dotenv = require("dotenv");
@@ -22,6 +23,7 @@ app.use(express.json()); // support json encoded bodies
 
 // Routes
 app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/user', userRouter)
 
 
 if (process.env.NODE_ENV === "production") {
