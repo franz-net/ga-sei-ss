@@ -55,7 +55,7 @@ export default function Signup() {
                             alignItems: 'center',
                         }}
                     >
-
+                        
                         <Avatar sx={{m: 2, bgcolor: 'secondary.main'}}>
                             <LockOutlinedIcon/>
                         </Avatar>

@@ -1,5 +1,5 @@
 import React, {useContext, useReducer} from 'react'
-import {CLEAR_ALERT, DISPLAY_ALERT, SETUP_USER_BEGIN, SETUP_USER_ERROR, SETUP_USER_SUCCESS} from './actions'
+import {DISPLAY_ALERT, SETUP_USER_BEGIN, SETUP_USER_ERROR, SETUP_USER_SUCCESS} from './actions'
 import reducer from './reducer'
 import axios from 'axios'
 
@@ -28,13 +28,6 @@ export function AppProvider({children}) {
     const displayAlert = () => {
         // @ts-ignore
         dispatch({type: DISPLAY_ALERT})
-        clearAlert()
-    }
-    const clearAlert = () => {
-        setTimeout(() => {
-            // @ts-ignore
-            dispatch({type: CLEAR_ALERT})
-        }, 3000)
     }
 
     // @ts-ignore
@@ -64,7 +57,6 @@ export function AppProvider({children}) {
             // @ts-ignore
             dispatch({type: SETUP_USER_ERROR, payload: {msg: error.response.data.message}})
         }
-        clearAlert()
     }
 
 
