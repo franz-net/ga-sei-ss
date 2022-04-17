@@ -1,9 +1,10 @@
-import {useState} from "react";
-import {Avatar, Box, Button, Container, CssBaseline, Grid, Link, Paper, TextField, Typography} from "@mui/material";
+import {useEffect, useState} from "react";
+import {Avatar, Box, Button, Container, CssBaseline, Grid, Paper, TextField, Typography} from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {useAppContext} from "../context/appContext";
 import {useNavigate} from "react-router-dom";
+import {ScreenMessage} from "../components";
 
 const initialState = {
     name: '',
@@ -16,6 +17,7 @@ const initialState = {
 export default function Signup() {
     // @ts-ignore
     const theme = createTheme();
+
     const [values, setValues] = useState(initialState)
 
     const navigate = useNavigate()
@@ -29,6 +31,7 @@ export default function Signup() {
 
     const onSubmit = (e: any) => {
         e.preventDefault()
+        console.log(values)
         const {name, email, password, isMember} = values
         if (!email || !password || (!isMember && !name)) {
             displayAlert()
@@ -36,10 +39,23 @@ export default function Signup() {
         }
         const currentUser = {name, email, password}
         if (isMember) {
-            setupUser({currentUser, endPoint: 'login', alertText: 'Login Successful! Redirecting...'})
+            setupUser({currentUser, endPoint: 'auth/login', alertText: 'Login Successful! Redirecting...'})
         } else {
-            setupUser({currentUser, endPoint: 'register', alertText: 'User Created! Redirecting...'})
+            setupUser({currentUser, endPoint: 'user', alertText: 'User Created! Redirecting...'})
         }
+    }
+
+    useEffect(() => {
+
+        if (user) {
+            setTimeout(() => {
+                navigate('/')
+            }, 3000)
+        }
+    }, [user, navigate])
+
+    const toggleMember = () => {
+        setValues({...values, isMember: !values.isMember})
     }
 
     return (
@@ -55,34 +71,42 @@ export default function Signup() {
                             alignItems: 'center',
                         }}
                     >
-                        
                         <Avatar sx={{m: 2, bgcolor: 'secondary.main'}}>
                             <LockOutlinedIcon/>
                         </Avatar>
                         <Typography component="h1" variant="h5">
-                            Sign up
+                            {values.isMember ? "Login" : "Sign Up"}
                         </Typography>
+
+                        {showAlert && <ScreenMessage/>}
                         <Box component="form" noValidate onSubmit={onSubmit} sx={{mt: 3}}>
                             <Grid container spacing={2}>
+                                {!values.isMember && (
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            autoComplete="given-name"
+                                            name="name"
+                                            required
+                                            fullWidth
+                                            id="firstName"
+                                            label="First Name"
+                                            autoFocus
+                                            onChange={handleChange}
+                                            value={values.name}
+                                        />
+                                    </Grid>
+                                )}
                                 <Grid item xs={12}>
                                     <TextField
-                                        autoComplete="given-name"
-                                        name="firstName"
                                         required
                                         fullWidth
-                                        id="firstName"
-                                        label="First Name"
-                                        autoFocus
-                                    />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        required
-                                        fullWidth
+                                        type="email"
                                         id="email"
                                         label="Email Address"
                                         name="email"
                                         autoComplete="email"
+                                        onChange={handleChange}
+                                        value={values.email}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -94,6 +118,8 @@ export default function Signup() {
                                         type="password"
                                         id="password"
                                         autoComplete="new-password"
+                                        onChange={handleChange}
+                                        value={values.password}
                                     />
                                 </Grid>
 
@@ -103,14 +129,16 @@ export default function Signup() {
                                 fullWidth
                                 variant="contained"
                                 sx={{mt: 3, mb: 2}}
+                                onSubmit={onSubmit}
                             >
-                                Sign Up
+                                {values.isMember ? 'Login' : 'Create Account'}
                             </Button>
                             <Grid container justifyContent="flex-end" sx={{mb: 3}}>
                                 <Grid item>
-                                    <Link href="#" variant="body2">
-                                        Already have an account? Sign in
-                                    </Link>
+                                    {values.isMember ? 'Not a member yet?' : 'Already a member?'}
+                                    <Button variant="text" onClick={toggleMember}>
+                                        {values.isMember ? 'Register' : 'Login'}
+                                    </Button>
                                 </Grid>
                             </Grid>
                         </Box>

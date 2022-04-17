@@ -1,5 +1,5 @@
 import React, {useContext, useReducer} from 'react'
-import {DISPLAY_ALERT, SETUP_USER_BEGIN, SETUP_USER_ERROR, SETUP_USER_SUCCESS} from './actions'
+import {CLEAR_ALERT, DISPLAY_ALERT, SETUP_USER_BEGIN, SETUP_USER_ERROR, SETUP_USER_SUCCESS} from './actions'
 import reducer from './reducer'
 import axios from 'axios'
 
@@ -13,9 +13,7 @@ export const initialState = {
     alertText: '',
     alertType: '',
     user: user ? JSON.parse(user) : null,
-    token: token,
-    userLocation: userLocation || '',
-    jobLocation: userLocation || '',
+    token: token
 }
 
 // @ts-ignore
@@ -28,19 +26,24 @@ export function AppProvider({children}) {
     const displayAlert = () => {
         // @ts-ignore
         dispatch({type: DISPLAY_ALERT})
+        clearAlert()
+    }
+    const clearAlert = () => {
+        setTimeout(() => {
+            // @ts-ignore
+            dispatch({type: CLEAR_ALERT})
+        }, 3000)
     }
 
     // @ts-ignore
-    const addUserToLocalStorage = ({user, token, location}) => {
+    const addUserToLocalStorage = ({user, token}) => {
         localStorage.setItem('user', JSON.stringify(user))
         localStorage.setItem('token', token)
-        localStorage.setItem('location', location)
     }
 
     const removeUserToLocalStorage = () => {
         localStorage.removeItem('user')
         localStorage.removeItem('token')
-        localStorage.removeItem('location')
     }
 
     // @ts-ignore
@@ -48,17 +51,17 @@ export function AppProvider({children}) {
         // @ts-ignore
         dispatch({type: SETUP_USER_BEGIN})
         try {
-            const {data} = await axios.post(`/api/v1/auth/${endPoint}`, currentUser)
-            const {user, token, location} = data
+            const {data} = await axios.post(`/api/v1/${endPoint}`, currentUser)
+            const {user, token} = data
             // @ts-ignore
-            dispatch({type: SETUP_USER_SUCCESS, payload: {user, token, location, alertText}})
-            addUserToLocalStorage({user, token, location})
+            dispatch({type: SETUP_USER_SUCCESS, payload: {user, token, alertText}})
+            addUserToLocalStorage({user, token})
         } catch (error) {
             // @ts-ignore
             dispatch({type: SETUP_USER_ERROR, payload: {msg: error.response.data.message}})
         }
+        clearAlert()
     }
-
 
     return (
         <AppContext.Provider value={{...state, displayAlert, setupUser}}>

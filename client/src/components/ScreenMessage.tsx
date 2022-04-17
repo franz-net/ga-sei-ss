@@ -1,16 +1,13 @@
 import {useAppContext} from "../context/appContext";
 import {Alert, Snackbar} from "@mui/material";
-import {useState} from "react";
 
+// @ts-ignore
 export default function ScreenMessage() {
     // @ts-ignore
-    const {alertType, alertText} = useAppContext()
-    const [open, setOpen] = useState(false)
+    const {alertType, alertText, showAlert} = useAppContext()
 
-    // @ts-ignore
-    // @ts-ignore
     return (
-        <Snackbar autoHideDuration={6000} anchorOrigin={{vertical: 'top', horizontal: 'center'}}>
+        <Snackbar autoHideDuration={6000} open={showAlert} anchorOrigin={{vertical: 'top', horizontal: 'center'}}>
             <Alert severity={alertType}>{alertText}</Alert>
         </Snackbar>
     )
