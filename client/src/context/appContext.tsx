@@ -5,7 +5,6 @@ import axios from 'axios'
 
 const token = localStorage.getItem('token')
 const user = localStorage.getItem('user')
-const userLocation = localStorage.getItem('location')
 
 export const initialState = {
     isLoading: false,
