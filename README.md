@@ -1,6 +1,6 @@
 # ga-sei-ss
 
-[Live site](http://courtscal.franz-e.net/)
+[Live site](https://smash-studio.herokuapp.com/landing)
 
 Tennis Court Reservation system.
 Allows to manage your courts and give users flexibility to see and manage court reservations as well as provide a
