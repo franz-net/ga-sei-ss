@@ -10,7 +10,7 @@ const initialState = {
     name: '',
     email: '',
     password: '',
-    isMember: false
+    isMember: true
 }
 
 export default function Signup() {

@@ -4,8 +4,20 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Calendar, MasterLayout} from "./pages/authPages";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
+import {green} from "@mui/material/colors";
 
-const theme = createTheme();
+const theme = createTheme({
+    typography: {
+        fontFamily: "Quicksand",
+        fontWeightLight: 400,
+        fontWeightRegular: 500,
+        fontWeightMedium: 600,
+        fontWeightBold: 700
+    },
+    palette: {
+        primary: green
+    }
+});
 
 export default function App() {
     return (
