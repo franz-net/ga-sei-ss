@@ -1,9 +1,25 @@
-import {Box, CssBaseline, Drawer, List, ListItemButton, ListItemIcon, ListItemText, Typography} from "@mui/material";
+import {
+    AppBar,
+    Box,
+    Container,
+    Drawer,
+    IconButton,
+    List,
+    ListItemButton,
+    ListItemIcon,
+    ListItemText,
+    Toolbar,
+    Typography,
+    useTheme
+} from "@mui/material";
 import {Outlet, useNavigate} from "react-router-dom";
 import {useState} from "react";
-import {AddCircleOutlineOutlined, SubjectOutlined} from "@mui/icons-material";
+import {AddCircleOutlineOutlined, HomeOutlined, MenuOutlined} from "@mui/icons-material";
 
 export default function MasterLayout() {
+
+    const theme = useTheme();
+
     const [open, setOpen] = useState<any>(false);
     const [selectedIndex, setSelectedIndex] = useState(1);
     const toggleDrawer = () => {
@@ -23,12 +39,12 @@ export default function MasterLayout() {
 
     const menuItems = [
         {
-            text: 'dashboard',
-            icon: <SubjectOutlined color="secondary"/>,
+            text: 'Home',
+            icon: <HomeOutlined color="secondary"/>,
             path: '/'
         },
         {
-            text: 'Add Reservations',
+            text: 'Add Reservation',
             icon: <AddCircleOutlineOutlined color="secondary"/>,
             path: '/calendar'
         },
@@ -40,15 +56,28 @@ export default function MasterLayout() {
             sx={{
                 display: 'flex',
             }}>
-            <CssBaseline/>
+
+
             {/*@ts-ignore*/}
-            {/*<AppBar position="fixed">
-                <Toolbar variant="dense">
+            <AppBar
+                position="fixed"
+                sx={{
+                    width: 'calc(100% - 240px)'
+                }}
+                elevation={0}
+            >
+                <Toolbar>
                     <IconButton edge="start" color="inherit" aria-label="menu" sx={{mr: 2}}>
-                        <MenuIcon/>
+                        <MenuOutlined/>
                     </IconButton>
+
+                    <Typography>
+                        Welcome
+                    </Typography>
                 </Toolbar>
-            </AppBar>*/}
+            </AppBar>
+
+
             <Drawer
                 variant="permanent"
                 className="drawer"
@@ -60,9 +89,10 @@ export default function MasterLayout() {
                     }
                 }}
             >
+
                 <div>
-                    <Typography variant="h5">
-                        Menu
+                    <Typography variant="h5" sx={{padding: theme.spacing(2)}}>
+                        Smash Studio
                     </Typography>
                 </div>
                 <List>
@@ -80,9 +110,11 @@ export default function MasterLayout() {
                 </List>
 
             </Drawer>
-            <div className="page">
+
+            <Container component="main" className="page">
+                <Toolbar/>
                 <Outlet/>
-            </div>
+            </Container>
         </Box>
     )
 }

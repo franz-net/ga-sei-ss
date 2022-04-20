@@ -1,7 +1,9 @@
+import {Container} from "@mui/material";
+
 export default function Dashboard() {
     return (
-        <div>
+        <Container>
             This is the Dashboard
-        </div>
+        </Container>
     )
 }
