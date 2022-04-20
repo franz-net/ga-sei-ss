@@ -1,8 +1,7 @@
 import React from 'react';
-import {Error, Landing, ProtectedRoute, Signup} from './pages'
-import './App.css';
+import {Error, Landing, ProtectedRoute, Signup} from './pages';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Calendar, MasterLayout} from "./pages/authPages";
+import {Calendar, Dashboard, MasterLayout} from "./pages/authPages";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {green} from "@mui/material/colors";
 
@@ -29,7 +28,8 @@ export default function App() {
                             <MasterLayout/>
                         </ProtectedRoute>
                     }>
-                        <Route index element={<Calendar/>}/>
+                        <Route index element={<Dashboard/>}/>
+                        <Route path='/calendar' element={<Calendar/>}/>
                     </Route>
                     <Route path="/signup" element={<Signup/>}/>
                     <Route path="/landing" element={<Landing/>}/>

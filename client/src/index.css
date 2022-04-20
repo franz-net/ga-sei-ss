@@ -22,7 +22,3 @@ code {
     background: #f9f9f9;
     width: 100%;
 }
-
-.drawer {
-    width: var(--drawer-width);
-}
