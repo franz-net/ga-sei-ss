@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Avatar, Box, Button, Container, CssBaseline, Grid, Paper, TextField, Typography} from "@mui/material";
+import {Avatar, Box, Button, Container, Grid, Paper, TextField, Typography} from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import FingerprintTwoToneIcon from '@mui/icons-material/FingerprintTwoTone';
 import {useAppContext} from "../context/appContext";
@@ -55,7 +55,6 @@ export default function Signup() {
 
     return (
         <Container component="main" maxWidth="xs">
-            <CssBaseline/>
             <Paper sx={{marginTop: 10}} elevation={12}>
                 <Box
                     sx={{
