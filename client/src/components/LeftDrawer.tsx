@@ -80,6 +80,7 @@ export default function LeftDrawer({drawerWidth, handleDrawerToggle, mobileOpen}
                 flexShrink: {sm: 0}
             }}
         >
+            {/* mobile drawer */}
             <Drawer
                 variant="temporary"
                 open={mobileOpen}
@@ -97,6 +98,7 @@ export default function LeftDrawer({drawerWidth, handleDrawerToggle, mobileOpen}
                 {drawer}
             </Drawer>
 
+            {/* full width drawer */}
             <Drawer
                 variant="permanent"
                 sx={{

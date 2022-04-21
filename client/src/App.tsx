@@ -1,9 +1,8 @@
 import React from 'react';
 import {Error, Landing, ProtectedRoute, Signup} from './pages';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Calendar, Dashboard, MasterLayout} from "./pages/authPages";
+import {Calendar, Dashboard, MasterLayout, Profile} from "./pages/authPages";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
-import {green} from "@mui/material/colors";
 import {CssBaseline} from "@mui/material";
 
 const theme = createTheme({
@@ -14,9 +13,7 @@ const theme = createTheme({
         fontWeightMedium: 600,
         fontWeightBold: 700
     },
-    palette: {
-        primary: green
-    }
+    palette: {}
 });
 
 export default function App() {
@@ -32,6 +29,7 @@ export default function App() {
                     }>
                         <Route index element={<Dashboard/>}/>
                         <Route path='/calendar' element={<Calendar/>}/>
+                        <Route path='/profile' element={<Profile/>}/>
                     </Route>
                     <Route path="/signup" element={<Signup/>}/>
                     <Route path="/landing" element={<Landing/>}/>

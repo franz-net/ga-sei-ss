@@ -1,9 +1,10 @@
-import {Avatar, Button, Menu, MenuItem} from "@mui/material";
+import {Avatar, Button, Menu, MenuItem, useTheme} from "@mui/material";
 import {useAppContext} from "../context/appContext";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 export default function UserButton() {
+    const theme = useTheme();
     // @ts-ignore
     const {user} = useAppContext();
     const navigate = useNavigate();
@@ -25,11 +26,17 @@ export default function UserButton() {
                 variant='contained'
                 color='secondary'
                 startIcon={<Avatar
+                    sx={{
+                        width: 25,
+                        height: 25
+                    }}
                     src='https://www.pinclipart.com/picdir/middle/91-910388_mario-transparent-head-mario-head-clipart-3000-3000.png'
                 />}
                 sx={{
-                    borderRadius: '25px'
+                    borderRadius: '25px',
+                    mr: theme.spacing(2),
                 }}
+                size="small"
                 id="basic-button"
                 aria-controls={open ? 'user-menu' : undefined}
                 aria-haspopup="true"

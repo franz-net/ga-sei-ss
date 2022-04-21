@@ -2,10 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/pages/authPages/Profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/LeftDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LeftDrawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TopBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TopBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UserButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/context/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/appContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Signup.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/MasterLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/MasterLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/userController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,20 +39,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/jobify-react&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/ga-sei-ss/client/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/jobify-react",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/ga-sei-ss/server/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -72,7 +79,8 @@
       <workItem from="1650204959754" duration="13156000" />
       <workItem from="1650323921529" duration="10412000" />
       <workItem from="1650420234183" duration="9986000" />
-      <workItem from="1650494207251" duration="3491000" />
+      <workItem from="1650494207251" duration="4096000" />
+      <workItem from="1650502671853" duration="9735000" />
     </task>
     <servers />
   </component>

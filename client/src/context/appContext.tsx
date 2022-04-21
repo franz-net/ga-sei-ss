@@ -62,8 +62,25 @@ export function AppProvider({children}) {
         clearAlert()
     }
 
+    // @ts-ignore
+    const updateUser = async ({currentUser, endPoint, alertText}) => {
+        // @ts-ignore
+        dispatch({type: SETUP_USER_BEGIN})
+        try {
+            const {data} = await axios.patch(`/api/v1/${endPoint}`, currentUser)
+            const {user, token} = data
+            // @ts-ignore
+            dispatch({type: SETUP_USER_SUCCESS, payload: {user, token, alertText}})
+            addUserToLocalStorage({user, token})
+        } catch (error) {
+            // @ts-ignore
+            dispatch({type: SETUP_USER_ERROR, payload: {msg: error.response.data.message}})
+        }
+        clearAlert()
+    }
+
     return (
-        <AppContext.Provider value={{...state, displayAlert, setupUser}}>
+        <AppContext.Provider value={{...state, displayAlert, setupUser, updateUser}}>
             {children}
         </AppContext.Provider>
     )
