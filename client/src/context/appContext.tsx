@@ -6,6 +6,7 @@ import {
     SETUP_USER_BEGIN,
     SETUP_USER_ERROR,
     SETUP_USER_SUCCESS,
+    TOGGLE_SIDEBAR,
     UPDATE_USER_BEGIN,
     UPDATE_USER_ERROR,
     UPDATE_USER_SUCCESS
@@ -22,7 +23,8 @@ export const initialState = {
     alertText: '',
     alertType: '',
     user: user ? JSON.parse(user) : null,
-    token: token
+    token: token,
+    showSidebar: false
 }
 
 // @ts-ignore
@@ -74,6 +76,12 @@ export function AppProvider({children}) {
             // @ts-ignore
             dispatch({type: CLEAR_ALERT})
         }, 5000)
+    }
+
+    const toggleSidebar = () => {
+        console.log('toggle')
+        // @ts-ignore
+        dispatch({type: TOGGLE_SIDEBAR})
     }
 
     // @ts-ignore
@@ -128,7 +136,7 @@ export function AppProvider({children}) {
     }
 
     return (
-        <AppContext.Provider value={{...state, displayAlert, setupUser, updateUser, logoutUser}}>
+        <AppContext.Provider value={{...state, displayAlert, setupUser, updateUser, logoutUser, toggleSidebar}}>
             {children}
         </AppContext.Provider>
     )

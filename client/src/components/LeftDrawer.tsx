@@ -12,18 +12,19 @@ import {
 import {AddCircleOutlineOutlined, HomeOutlined} from "@mui/icons-material";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {useAppContext} from "../context/appContext";
 
 interface LeftDrawerProps {
     drawerWidth: number
-    handleDrawerToggle: () => void
-    mobileOpen: boolean
 
 }
 
-export default function LeftDrawer({drawerWidth, handleDrawerToggle, mobileOpen}: LeftDrawerProps) {
+export default function LeftDrawer({drawerWidth,}: LeftDrawerProps) {
     const theme = useTheme();
     const navigate = useNavigate()
     const [selectedIndex, setSelectedIndex] = useState(0);
+    // @ts-ignore
+    const {showSidebar, toggleSidebar} = useAppContext()
 
     const handleListItemClick = (
         event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -83,8 +84,8 @@ export default function LeftDrawer({drawerWidth, handleDrawerToggle, mobileOpen}
             {/* mobile drawer */}
             <Drawer
                 variant="temporary"
-                open={mobileOpen}
-                onClose={handleDrawerToggle}
+                open={showSidebar}
+                onClose={toggleSidebar}
                 ModalProps={{
                     keepMounted: true,
                 }}

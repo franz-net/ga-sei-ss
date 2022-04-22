@@ -20,15 +20,8 @@ export default function MasterLayout() {
                 display: 'flex',
             }}>
 
-            <TopBar
-                drawerWidth={drawerWidth}
-                handleDrawerToggle={handleDrawerToggle}
-
-            />
-            <LeftDrawer drawerWidth={drawerWidth}
-                        handleDrawerToggle={handleDrawerToggle}
-                        mobileOpen={mobileOpen}
-            />
+            <TopBar drawerWidth={drawerWidth}/>
+            <LeftDrawer drawerWidth={drawerWidth}/>
 
             {/* Main Content will render here... */}
             <Box

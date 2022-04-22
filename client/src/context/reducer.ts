@@ -5,6 +5,7 @@ import {
     SETUP_USER_BEGIN,
     SETUP_USER_ERROR,
     SETUP_USER_SUCCESS,
+    TOGGLE_SIDEBAR,
     UPDATE_USER_BEGIN,
     UPDATE_USER_ERROR,
     UPDATE_USER_SUCCESS
@@ -17,6 +18,12 @@ export default function reducer(state: any, action: { type: string; payload: { u
     }
     if (action.type === CLEAR_ALERT) {
         return {...state, showAlert: false, alertType: '', alertText: ''}
+    }
+    if (action.type === TOGGLE_SIDEBAR) {
+        return {
+            ...state,
+            showSidebar: !state.showSidebar,
+        }
     }
     if (action.type === SETUP_USER_BEGIN) {
         return {...state, isLoading: true}

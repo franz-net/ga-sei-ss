@@ -2,14 +2,18 @@ import {AppBar, IconButton, Toolbar, Typography, useTheme} from "@mui/material";
 import {MenuOutlined} from "@mui/icons-material";
 import {format} from "date-fns";
 import UserButton from "./UserButton";
+import {useAppContext} from "../context/appContext";
 
 interface TopBarProps {
     drawerWidth: number
-    handleDrawerToggle: () => void
+
 }
 
-export default function TopBar({drawerWidth, handleDrawerToggle}: TopBarProps) {
+export default function TopBar({drawerWidth}: TopBarProps) {
     const theme = useTheme();
+
+    // @ts-ignore
+    const {toggleSidebar} = useAppContext()
 
 
     return (
@@ -26,7 +30,7 @@ export default function TopBar({drawerWidth, handleDrawerToggle}: TopBarProps) {
                     edge="start"
                     color="inherit"
                     aria-label="menu"
-                    onClick={handleDrawerToggle}
+                    onClick={toggleSidebar}
                     sx={{mr: 2, display: {sm: 'none'}}}>
                     <MenuOutlined/>
                 </IconButton>

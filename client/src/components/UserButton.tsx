@@ -1,7 +1,8 @@
-import {Avatar, Button, Menu, MenuItem, useTheme} from "@mui/material";
+import {Avatar, IconButton, Menu, MenuItem, Paper, useTheme} from "@mui/material";
 import {useAppContext} from "../context/appContext";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {deepOrange} from "@mui/material/colors";
 
 export default function UserButton() {
     // @ts-ignore
@@ -24,29 +25,32 @@ export default function UserButton() {
     }
     return (
         <>
-            <Button
-                variant='contained'
-                color='secondary'
-                startIcon={<Avatar
-                    sx={{
-                        width: 25,
-                        height: 25
-                    }}
-                    src='https://www.pinclipart.com/picdir/middle/91-910388_mario-transparent-head-mario-head-clipart-3000-3000.png'
-                />}
-                sx={{
-                    borderRadius: '25px',
-                    mr: theme.spacing(2),
-                }}
+            <IconButton
                 size="small"
                 id="basic-button"
                 aria-controls={open ? 'user-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
+                disableRipple
+                sx={{
+                    '& :hover': {
+                        bgcolor: deepOrange[700],
+                    }
+                }}
             >
-                {user.name}
-            </Button>
+                <Avatar
+                    component={Paper}
+                    variant="square"
+                    sx={{
+                        mr: 2,
+                        bgcolor: deepOrange[500]
+                    }}
+                >
+                    {user.name[0]}
+                </Avatar>
+
+            </IconButton>
 
             <Menu
                 id="user-menu"
