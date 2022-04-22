@@ -20,15 +20,12 @@ export default function Profile() {
     const [values, setValues] = useState(initialState)
 
     const handleChange = (e: any) => {
-        console.log(values)
         setValues({...values, [e.target.name]: e.target.value})
     }
 
     const onSubmit = (e: any) => {
-        console.log("HERE!!")
         e.preventDefault()
         const {name, lastName, email, password} = values
-        console.log(values)
         if (!email || !lastName || !name) {
             displayAlert()
             return
@@ -49,7 +46,7 @@ export default function Profile() {
                     flexDirection: 'column',
                     alignItems: 'center'
                 }}>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h5" gutterBottom sx={{mt: 4}}>
                     Edit Profile
                 </Typography>
                 {showAlert && <ScreenMessage/>}
@@ -109,7 +106,7 @@ export default function Profile() {
                                 type="submit"
                                 fullWidth
                                 variant="contained"
-                                sx={{mt: 3, mb: 2}}
+                                sx={{mt: 3, mb: 4}}
                             >
                                 Save
                             </Button>

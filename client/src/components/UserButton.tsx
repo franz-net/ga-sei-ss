@@ -4,6 +4,8 @@ import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 export default function UserButton() {
+    // @ts-ignore
+    const {logoutUser} = useAppContext()
     const theme = useTheme();
     // @ts-ignore
     const {user} = useAppContext();
@@ -55,7 +57,7 @@ export default function UserButton() {
                     'aria-labelledby': 'basic-button'
                 }}>
                 <MenuItem onClick={() => handleClose('/profile')}>Profile</MenuItem>
-                <MenuItem onClick={() => handleClose('/logout')}>Logout</MenuItem>
+                <MenuItem onClick={logoutUser}>Logout</MenuItem>
             </Menu>
         </>
     )

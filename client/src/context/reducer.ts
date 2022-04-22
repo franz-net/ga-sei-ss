@@ -1,4 +1,15 @@
-import {CLEAR_ALERT, DISPLAY_ALERT, SETUP_USER_BEGIN, SETUP_USER_ERROR, SETUP_USER_SUCCESS} from "./actions";
+import {
+    CLEAR_ALERT,
+    DISPLAY_ALERT,
+    LOGOUT_USER,
+    SETUP_USER_BEGIN,
+    SETUP_USER_ERROR,
+    SETUP_USER_SUCCESS,
+    UPDATE_USER_BEGIN,
+    UPDATE_USER_ERROR,
+    UPDATE_USER_SUCCESS
+} from "./actions";
+import {initialState} from "./appContext";
 
 export default function reducer(state: any, action: { type: string; payload: { user: any; token: any; location: any; alertText: any; msg: any; }; }) {
     if (action.type === DISPLAY_ALERT) {
@@ -30,6 +41,40 @@ export default function reducer(state: any, action: { type: string; payload: { u
             showAlert: true,
             alertType: 'error',
             alertText: action.payload.msg
+        }
+    }
+    if (action.type === UPDATE_USER_BEGIN) {
+        return {...state, isLoading: true}
+    }
+    if (action.type === UPDATE_USER_SUCCESS) {
+        return {
+            ...state,
+            isLoading: false,
+            token: action.payload.token,
+            user: action.payload.user,
+            userLocation: action.payload.location,
+            jobLocation: action.payload.location,
+            showAlert: true,
+            alertType: 'success',
+            alertText: 'User Profile Updated!',
+        }
+    }
+    if (action.type === UPDATE_USER_ERROR) {
+        return {
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType: 'danger',
+            alertText: action.payload.msg,
+        }
+    }
+    if (action.type === LOGOUT_USER) {
+        return {
+            ...initialState,
+            user: null,
+            token: null,
+            jobLocation: '',
+            userLocation: '',
         }
     }
     throw new Error(`no such action : ${action.type}`)

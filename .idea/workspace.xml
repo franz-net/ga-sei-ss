@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/pages/authPages/Profile.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/LeftDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LeftDrawer.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/UserButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/context/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/appContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Signup.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/MasterLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/MasterLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/userController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/context/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/Profile.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +44,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/ga-sei-ss/server/node_modules/typescript/lib",
+    "ts.external.directory.path": "/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/ga-sei-ss/client/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -80,7 +75,8 @@
       <workItem from="1650323921529" duration="10412000" />
       <workItem from="1650420234183" duration="9986000" />
       <workItem from="1650494207251" duration="4096000" />
-      <workItem from="1650502671853" duration="9735000" />
+      <workItem from="1650502671853" duration="10734000" />
+      <workItem from="1650586002570" duration="4400000" />
     </task>
     <servers />
   </component>
