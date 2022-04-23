@@ -11,9 +11,9 @@ export default function Profile() {
     const {user, isLoading, showAlert, displayAlert, updateUser} = useAppContext()
 
     const initialState = {
-        name: user.name,
-        email: user.email,
-        lastName: user.lastName,
+        name: user?.name,
+        email: user?.email,
+        lastName: user?.lastName,
         password: ''
     }
 
@@ -36,7 +36,7 @@ export default function Profile() {
 
     return (
         <Paper
-            sx={{mt: 10}}
+            sx={{}}
             elevation={8}
         >
             <Box
@@ -107,6 +107,7 @@ export default function Profile() {
                                 fullWidth
                                 variant="contained"
                                 sx={{mt: 3, mb: 4}}
+                                disabled={isLoading}
                             >
                                 Save
                             </Button>

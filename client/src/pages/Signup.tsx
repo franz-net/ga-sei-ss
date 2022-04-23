@@ -45,7 +45,7 @@ export default function Signup() {
         if (user) {
             setTimeout(() => {
                 navigate('/')
-            }, 3000)
+            }, 1000)
         }
     }, [user, navigate])
 
@@ -125,6 +125,7 @@ export default function Signup() {
                             fullWidth
                             variant="contained"
                             sx={{mt: 3, mb: 2}}
+                            disabled={isLoading}
                         >
                             {values.isMember ? 'Login' : 'Create Account'}
                         </Button>
