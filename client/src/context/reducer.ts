@@ -1,5 +1,9 @@
 import {
     CLEAR_ALERT,
+    CLEAR_VALUES,
+    CREATE_COURT_BEGIN,
+    CREATE_COURT_ERROR,
+    CREATE_COURT_SUCCESS,
     DISPLAY_ALERT,
     LOGOUT_USER,
     SETUP_USER_BEGIN,
@@ -71,7 +75,7 @@ export default function reducer(state: any, action: { type: string; payload: { u
             ...state,
             isLoading: false,
             showAlert: true,
-            alertType: 'danger',
+            alertType: 'error',
             alertText: action.payload.msg,
         }
     }
@@ -82,6 +86,35 @@ export default function reducer(state: any, action: { type: string; payload: { u
             token: null,
             jobLocation: '',
             userLocation: '',
+        }
+    }
+    if (action.type === CREATE_COURT_BEGIN) {
+        return {...state, isLoading: true}
+    }
+    if (action.type === CREATE_COURT_SUCCESS) {
+        return {
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType: 'success',
+            alertText: 'New Court Created!',
+        }
+    }
+    if (action.type === CREATE_COURT_ERROR) {
+        return {
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType: 'error',
+            alertText: action.payload.msg,
+        }
+    }
+    if (action.type === CLEAR_VALUES) {
+        const initialState = {
+            editCourtId: '',
+            courtName: '',
+            courtType: 'tennis',
+            inService: true,
         }
     }
     throw new Error(`no such action : ${action.type}`)

@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {Calendar, Dashboard, MasterLayout, Profile} from "./pages/authPages";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
+import AddCourt from "./pages/authPages/AddCourt";
 
 const theme = createTheme({
     typography: {
@@ -30,6 +31,7 @@ export default function App() {
                         <Route index element={<Dashboard/>}/>
                         <Route path='/calendar' element={<Calendar/>}/>
                         <Route path='/profile' element={<Profile/>}/>
+                        <Route path='/admin/add-court' element={<AddCourt/>}/>
                     </Route>
                     <Route path="/signup" element={<Signup/>}/>
                     <Route path="/landing" element={<Landing/>}/>

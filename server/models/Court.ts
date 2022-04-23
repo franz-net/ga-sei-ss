@@ -1,19 +1,19 @@
 import mongoose from "mongoose";
 
-const CourtsSchema = new mongoose.Schema({
-        name: {
+const CourtSchema = new mongoose.Schema({
+        courtName: {
             type: String,
             required: [true, 'Please provide the court name'],
             minlength: 2,
             maxlength: 20,
-            trim: true
+            trim: true,
+            unique: true
         },
-        type: {
+        courtType: {
             type: String,
+            enum: ['tennis', 'padel'],
             required: [true, 'Please provide the court type'],
-            minlength: 5,
-            maxlength: 6,
-            trim: true
+            default: 'tennis'
         },
         inService: {
             type: Boolean,
@@ -25,7 +25,8 @@ const CourtsSchema = new mongoose.Schema({
             ref: 'User',
             required: [true, 'Please provide user']
         }
-    }, {timestamps: true}
+    },
+    {timestamps: true}
 )
 
-export default mongoose.model('Courts', CourtsSchema)
+export default mongoose.model('Court', CourtSchema)

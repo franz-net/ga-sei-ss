@@ -40,12 +40,20 @@ export default function LeftDrawer({drawerWidth,}: LeftDrawerProps) {
         {
             text: 'Home',
             icon: <HomeOutlined color="secondary"/>,
-            path: '/'
+            path: '/',
+            roles: ['user', 'admin', 'instructor']
         },
         {
             text: 'Add Reservation',
             icon: <AddCircleOutlineOutlined color="secondary"/>,
-            path: '/calendar'
+            path: '/calendar',
+            roles: ['user', 'admin', 'instructor']
+        },
+        {
+            text: 'Add Court',
+            icon: <AddCircleOutlineOutlined color="secondary"/>,
+            path: '/admin/add-court',
+            roles: ['admin']
         },
 
     ]

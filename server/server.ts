@@ -7,6 +7,8 @@ import notFoundMiddleware from "./middleware/not-found";
 import errorHandlerMiddleware from "./middleware/error-handler";
 import authRouter from "./routes/authRoute";
 import userRouter from "./routes/userRoute";
+import courtRouter from "./routes/courtRoutes";
+import authVerification from "./middleware/authVerification";
 
 if (process.env.NODE_ENV !== "production") {
     const dotenv = require("dotenv");
@@ -17,13 +19,15 @@ const app = express();
 // Middleware
 app.set("trust proxy", 1);
 if (process.env.NODE_ENV !== 'production') {
-    app.use(morgan('dev'))
+    //app.use(morgan('dev'))
+    app.use(morgan('combined'));
 }
 app.use(express.json()); // support json encoded bodies
 
 // Routes
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/user', userRouter)
+app.use('/api/v1/court', authVerification, courtRouter)
 
 
 if (process.env.NODE_ENV === "production") {

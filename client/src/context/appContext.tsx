@@ -1,6 +1,10 @@
 import React, {useContext, useReducer} from 'react'
 import {
     CLEAR_ALERT,
+    CLEAR_VALUES,
+    CREATE_COURT_BEGIN,
+    CREATE_COURT_ERROR,
+    CREATE_COURT_SUCCESS,
     DISPLAY_ALERT,
     LOGOUT_USER,
     SETUP_USER_BEGIN,
@@ -18,13 +22,24 @@ const token = localStorage.getItem('token')
 const user = localStorage.getItem('user')
 
 export const initialState = {
+    //General state
     isLoading: false,
     showAlert: false,
     alertText: '',
     alertType: '',
+    showSidebar: false,
+    isEditing: false,
+    //User state
     user: user ? JSON.parse(user) : null,
     token: token,
-    showSidebar: false
+    //Courts state
+    editCourtId: '',
+    courtName: '',
+    courtTypeOptions: ['tennis', 'padel'],
+    courtType: 'tennis',
+    inServiceOptions: ['true', 'false'],
+    inService: true,
+    //Reservations state
 }
 
 // @ts-ignore
@@ -129,14 +144,41 @@ export function AppProvider({children}) {
         clearAlert()
     }
 
+    // @ts-ignore
+    const createCourt = async ({newCourt}) => {
+        // @ts-ignore
+        dispatch({type: CREATE_COURT_BEGIN})
+        try {
+            const {courtName, courtType, inService} = state
+            await authFetch.post('court', newCourt)
+            // @ts-ignore
+            dispatch({type: CREATE_COURT_SUCCESS})
+            // @ts-ignore
+            dispatch({type: CLEAR_VALUES})
+        } catch (error) {
+            // @ts-ignore
+            //if (error.response.status === 401) return
+            console.log(error)
+            dispatch({
+                type: CREATE_COURT_ERROR,
+                // @ts-ignore
+                payload: {msg: error.response.data.msg},
+
+            })
+        }
+        clearAlert()
+    }
+
     const logoutUser = () => {
         // @ts-ignore
         dispatch({type: LOGOUT_USER})
         removeUserFromLocalStorage()
     }
 
+
     return (
-        <AppContext.Provider value={{...state, displayAlert, setupUser, updateUser, logoutUser, toggleSidebar}}>
+        <AppContext.Provider
+            value={{...state, displayAlert, setupUser, updateUser, logoutUser, toggleSidebar, createCourt}}>
             {children}
         </AppContext.Provider>
     )

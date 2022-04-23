@@ -63,6 +63,7 @@ export default function Profile() {
                                 variant='standard'
                                 value={values.name}
                                 onChange={handleChange}
+                                autoComplete='off'
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -71,7 +72,7 @@ export default function Profile() {
                                 name="lastName"
                                 label="Last name"
                                 fullWidth
-                                autoComplete="family-name"
+                                autoComplete="off"
                                 variant="standard"
                                 value={values.lastName}
                                 onChange={handleChange}
@@ -86,6 +87,7 @@ export default function Profile() {
                                 variant="standard"
                                 value={values.email}
                                 onChange={handleChange}
+                                autoComplete='off'
                             />
                         </Grid>
                         <Grid item xs={12}>

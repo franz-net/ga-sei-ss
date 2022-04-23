@@ -28,8 +28,12 @@ const ReservationSchema = new mongoose.Schema({
         },
         status: {
             type: String,
-            required: [true, 'Please provide reservation status']
+            enum: ["pending", "confirmed"],
+            required: [true, 'Please provide reservation status'],
+            default: "pending"
         }
     },
     {timestamps: true}
 )
+
+export default mongoose.model('Reservation', ReservationSchema)
