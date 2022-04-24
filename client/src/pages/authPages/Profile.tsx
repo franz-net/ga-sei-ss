@@ -7,7 +7,7 @@ import {useNavigate} from "react-router-dom";
 
 export default function Profile() {
     const navigate = useNavigate()
-    // @ts-ignore
+
     const {user, isLoading, showAlert, displayAlert, updateUser} = useAppContext()
 
     const initialState = {

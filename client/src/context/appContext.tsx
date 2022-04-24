@@ -6,6 +6,7 @@ import {
     CREATE_COURT_ERROR,
     CREATE_COURT_SUCCESS,
     DISPLAY_ALERT,
+    HANDLE_CHANGE,
     LOGOUT_USER,
     SETUP_USER_BEGIN,
     SETUP_USER_ERROR,
@@ -43,7 +44,7 @@ export const initialState = {
 }
 
 // @ts-ignore
-const AppContext = React.createContext()
+const AppContext = React.createContext<any>()
 
 // @ts-ignore
 export function AppProvider({children}) {
@@ -145,16 +146,27 @@ export function AppProvider({children}) {
     }
 
     // @ts-ignore
-    const createCourt = async ({newCourt}) => {
+    const handleCourtChange = ({name, value}) => {
+        // @ts-ignore
+        dispatch({type: HANDLE_CHANGE, payload: {name, value}})
+    }
+
+    const clearCourtValues = () => {
+        // @ts-ignore
+        dispatch({type: CLEAR_VALUES})
+    }
+
+    // @ts-ignore
+    const createCourt = async () => {
         // @ts-ignore
         dispatch({type: CREATE_COURT_BEGIN})
         try {
             const {courtName, courtType, inService} = state
-            await authFetch.post('court', newCourt)
+            await authFetch.post('court', {courtName, courtType, inService})
             // @ts-ignore
             dispatch({type: CREATE_COURT_SUCCESS})
             // @ts-ignore
-            dispatch({type: CLEAR_VALUES})
+            clearCourtValues()
         } catch (error) {
             // @ts-ignore
             //if (error.response.status === 401) return
@@ -178,7 +190,17 @@ export function AppProvider({children}) {
 
     return (
         <AppContext.Provider
-            value={{...state, displayAlert, setupUser, updateUser, logoutUser, toggleSidebar, createCourt}}>
+            value={{
+                ...state,
+                displayAlert,
+                setupUser,
+                updateUser,
+                logoutUser,
+                toggleSidebar,
+                createCourt,
+                clearCourtValues,
+                handleCourtChange
+            }}>
             {children}
         </AppContext.Provider>
     )

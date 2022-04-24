@@ -12,38 +12,44 @@ import {
     Typography
 } from "@mui/material";
 import {useAppContext} from "../../context/appContext";
-import {useState} from "react";
 import {ScreenMessage} from "../../components";
 
-const initialState = {
-    courtName: '',
-    courtType: 'tennis',
-    inService: 'true',
-}
 
 export default function AddCourt() {
-    // @ts-ignore
-    const {isLoading, courtTypeOptions, inServiceOptions, displayAlert, showAlert, createCourt} = useAppContext()
+    const {
+        isLoading,
+        courtTypeOptions,
+        inServiceOptions,
+        displayAlert,
+        showAlert,
+        createCourt,
+        courtName,
+        courtType,
+        inService,
+        isEditing,
+        handleCourtChange
+    } = useAppContext()
 
-    const [values, setValues] = useState(initialState)
 
-    const handleChange = (e: any) => {
-        setValues({...initialState, [e.target.name]: e.target.value})
+    const handleInput = (e: any) => {
+        const name = e.target.name
+        let value: any
+        if (name === 'inService') {
+            value = e.target.value === 'true'
+        } else {
+            value = e.target.value
+        }
+        handleCourtChange({name, value})
     }
 
 
     const onSubmit = (e: any) => {
         e.preventDefault()
-        const {courtName, courtType} = values
-        const inService = values.inService === 'true'
         if (!courtName || !inService || !courtType) {
             displayAlert()
             return
         }
-        const newCourt = {courtName, courtType, inService}
-
-        createCourt({newCourt})
-
+        createCourt()
     }
 
     return (
@@ -59,7 +65,7 @@ export default function AddCourt() {
                     alignItems: 'center'
                 }}>
                 <Typography variant="h5" gutterBottom sx={{mt: 4}}>
-                    New Court Entry
+                    {isEditing ? 'Edit Court' : 'New Court Entry'}
                 </Typography>
                 {showAlert && <ScreenMessage/>}
                 <Box
@@ -73,9 +79,9 @@ export default function AddCourt() {
                                 label='Court Name | Number'
                                 fullWidth
                                 variant='standard'
-                                onChange={handleChange}
+                                onChange={handleInput}
                                 autoComplete="off"
-                                value={values.courtName}
+                                value={courtName}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -84,8 +90,8 @@ export default function AddCourt() {
                                 <RadioGroup
                                     aria-labelledby="courtType-group"
                                     name="courtType"
-                                    onChange={handleChange}
-                                    value={values.courtType}
+                                    onChange={handleInput}
+                                    value={courtType}
                                 >
                                     {courtTypeOptions.map((opt: string, index: number) => {
                                         return (
@@ -101,8 +107,8 @@ export default function AddCourt() {
                                 <RadioGroup
                                     aria-labelledby="inService-group"
                                     name="inService"
-                                    onChange={handleChange}
-                                    value={values.inService}
+                                    onChange={handleInput}
+                                    value={inService}
                                 >
                                     {inServiceOptions.map((opt: string, index: number) => {
                                         return (

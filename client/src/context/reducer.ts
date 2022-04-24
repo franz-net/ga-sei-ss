@@ -5,6 +5,7 @@ import {
     CREATE_COURT_ERROR,
     CREATE_COURT_SUCCESS,
     DISPLAY_ALERT,
+    HANDLE_CHANGE,
     LOGOUT_USER,
     SETUP_USER_BEGIN,
     SETUP_USER_ERROR,
@@ -88,6 +89,23 @@ export default function reducer(state: any, action: { type: string; payload: { u
             userLocation: '',
         }
     }
+    if (action.type === HANDLE_CHANGE) {
+
+        return {
+            ...state,
+            // @ts-ignore
+            [action.payload.name]: action.payload.value,
+        }
+    }
+    if (action.type === CLEAR_VALUES) {
+        const initialState = {
+            editCourtId: '',
+            courtName: '',
+            courtType: 'tennis',
+            inService: true,
+        }
+        return {...state, ...initialState}
+    }
     if (action.type === CREATE_COURT_BEGIN) {
         return {...state, isLoading: true}
     }
@@ -109,13 +127,6 @@ export default function reducer(state: any, action: { type: string; payload: { u
             alertText: action.payload.msg,
         }
     }
-    if (action.type === CLEAR_VALUES) {
-        const initialState = {
-            editCourtId: '',
-            courtName: '',
-            courtType: 'tennis',
-            inService: true,
-        }
-    }
+
     throw new Error(`no such action : ${action.type}`)
 }
