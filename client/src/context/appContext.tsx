@@ -123,6 +123,8 @@ export function AppProvider({children}) {
             addUserToLocalStorage({user, token})
         } catch (error) {
             // @ts-ignore
+            console.log(error.response.data.message)
+            // @ts-ignore
             dispatch({type: SETUP_USER_ERROR, payload: {msg: error.response.data.message}})
         }
         clearAlert()
@@ -169,14 +171,11 @@ export function AppProvider({children}) {
             clearCourtValues()
         } catch (error) {
             // @ts-ignore
-            //if (error.response.status === 401) return
-            console.log(error)
-            dispatch({
-                type: CREATE_COURT_ERROR,
-                // @ts-ignore
-                payload: {msg: error.response.data.msg},
-
-            })
+            console.log(error.response.data.message)
+            // @ts-ignore
+            if (error.response.status === 401) return
+            // @ts-ignore
+            dispatch({type: CREATE_COURT_ERROR, payload: {msg: error.response.data.message}})
         }
         clearAlert()
     }

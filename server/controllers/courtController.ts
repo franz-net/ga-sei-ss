@@ -3,12 +3,21 @@ import StatusCodes from "http-status-codes";
 import Court from "../models/Court";
 
 const createCourt = async (req, res) => {
+
     const {courtName, courtType, inService} = req.body
 
     if (!courtName || !courtType || !inService) {
-
-        throw new BadRequestError("Please provide all values")
+        throw new BadRequestError("Please provide all court details")
     }
+
+    const courtAlreadyExists = await Court.findOne({courtName})
+    console.log(courtAlreadyExists)
+    if (courtAlreadyExists) {
+        console.log('error here!!!')
+        throw new BadRequestError(`Error, ${courtName} already exists.`)
+    }
+
+
     req.body.createdBy = req.user.userId
     const court = await Court.create(req.body)
     res.status(StatusCodes.CREATED).json({court})

@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/client/src/assets/imgs/not-found.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/pages/authPages/Courts.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/context/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/appContext.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/context/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/AddCourt.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/AddCourt.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/Profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/Profile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/NotFoundError.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Landing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Landing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/courtController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/courtController.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,20 +39,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/jobify-react&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/ga-sei-ss/server/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/jobify-react",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/ga-sei-ss/server/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -78,7 +84,7 @@
       <workItem from="1650502671853" duration="10734000" />
       <workItem from="1650586002570" duration="7275000" />
       <workItem from="1650641773130" duration="25239000" />
-      <workItem from="1650768775910" duration="4072000" />
+      <workItem from="1650768775910" duration="10910000" />
     </task>
     <servers />
   </component>
@@ -95,6 +101,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

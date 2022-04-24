@@ -124,7 +124,7 @@ export default function reducer(state: any, action: { type: string; payload: { u
             isLoading: false,
             showAlert: true,
             alertType: 'error',
-            alertText: action.payload.msg,
+            alertText: action.payload.msg
         }
     }
 

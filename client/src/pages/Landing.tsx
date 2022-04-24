@@ -8,7 +8,7 @@ export default function Landing() {
                 variant="h2"
                 color="textSecondary"
             >
-                Come play in our state of the art Tennis and Padel Courts
+                Come play and learn in our state of the art Tennis and Padel Courts
             </Typography>
             <Button
                 variant="contained"
