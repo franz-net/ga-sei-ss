@@ -1,5 +1,5 @@
 import notFound from "../assets/imgs/not-found.svg"
-import {Box, Button, Grid, Typography, useTheme} from "@mui/material";
+import {Box, Button, Container, Grid, Typography, useTheme} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 
 export default function NotFoundError() {
@@ -17,26 +17,30 @@ export default function NotFoundError() {
                 overflow: 'auto'
             }}
         >
-            <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
-                    <Typography variant="h5"
-                                color="textSecondary"
-                                gutterBottom
-                    >
-                        Hey! There is no one playing here!
-                    </Typography>
-                    <Button
-                        variant="outlined"
-                        onClick={() => navigate(-1)}
-                        size="large"
-                    >
-                        Go Back?
-                    </Button>
+            <Container>
+                <Grid container spacing={3} sx={{height: '100%', mt: 5}}>
+                    <Grid item xs={12} sm={4}>
+                        <Typography variant="h5"
+                                    color="textSecondary"
+                                    gutterBottom
+                        >
+                            Hey! There is no one playing here!
+                        </Typography>
+                        <Button
+                            variant="outlined"
+                            onClick={() => navigate(-1)}
+                            size="large"
+                        >
+                            Go Back?
+                        </Button>
+                    </Grid>
+                    <Grid item xs={12} sm={8}>
+                        <Box>
+                            <img src={notFound} alt="404 not found"/>
+                        </Box>
+                    </Grid>
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <img src={notFound} alt="404 not found"/>
-                </Grid>
-            </Grid>
+            </Container>
         </Box>
     )
 }
