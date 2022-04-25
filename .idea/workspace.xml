@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/context/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/appContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/context/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/courtController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/courtController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/reservationController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/reservationController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/Reservation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Reservation.ts" afterDir="false" />
-    </list>
+    <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,7 +72,7 @@
       <workItem from="1650502671853" duration="10734000" />
       <workItem from="1650586002570" duration="7275000" />
       <workItem from="1650641773130" duration="25239000" />
-      <workItem from="1650768775910" duration="33487000" />
+      <workItem from="1650768775910" duration="33786000" />
     </task>
     <servers />
   </component>

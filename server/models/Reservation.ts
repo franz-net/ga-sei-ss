@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {add} from 'date-fns';
+import dayjs from 'dayjs';
 
 const ReservationSchema = new mongoose.Schema({
         user: {
@@ -19,8 +19,8 @@ const ReservationSchema = new mongoose.Schema({
                 validator: function (v) {
                     return (
                         v &&
-                        v.getTime() > add(new Date(), {hours: 2}) &&
-                        v.getTime() < add(new Date(), {days: 2})
+                        v.getTime() > dayjs().add(2, 'hour') &&
+                        v.getTime() < dayjs().add(2, 'day')
                     )
                 },
                 message: "The reservation must start 2 hours from now and up to 2 days in advance"
