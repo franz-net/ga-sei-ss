@@ -9,7 +9,7 @@ import {
     Typography,
     useTheme
 } from "@mui/material";
-import {AddCircleOutlineOutlined, HomeOutlined} from "@mui/icons-material";
+import {AddCircleOutlineOutlined, FactCheckOutlined, HomeOutlined} from "@mui/icons-material";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../context/appContext";
@@ -50,8 +50,8 @@ export default function LeftDrawer({drawerWidth,}: LeftDrawerProps) {
             roles: ['user', 'admin', 'instructor']
         },
         {
-            text: 'Add Court',
-            icon: <AddCircleOutlineOutlined color="secondary"/>,
+            text: 'Manage Courts',
+            icon: <FactCheckOutlined color="secondary"/>,
             path: '/admin/add-court',
             roles: ['admin']
         },
