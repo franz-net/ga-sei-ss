@@ -23,6 +23,9 @@ const createCourt = async (req, res) => {
     res.status(StatusCodes.CREATED).json({court})
 }
 
+const getAllCourts = async (req, res) => {
+}
+
 const updateCourt = async (req, res) => {
     const {id: courtId} = req.params
     const {courtName, courtType, inService} = req.body
@@ -56,4 +59,4 @@ const deleteCourt = async (req, res) => {
     res.status(StatusCodes.OK).json({msg: 'Success! Court has been removed'})
 }
 
-export {createCourt, updateCourt, deleteCourt}
+export {createCourt, updateCourt, deleteCourt, getAllCourts}

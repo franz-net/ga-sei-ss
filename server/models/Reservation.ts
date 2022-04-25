@@ -26,6 +26,10 @@ const ReservationSchema = new mongoose.Schema({
                 message: "The reservation must start 2 hours from now and up to 2 days in advance"
             }
         },
+        timezone: {
+            type: String,
+            required: [true, 'Please provide a valid IANA Time Zone']
+        },
         status: {
             type: String,
             enum: ["pending", "confirmed"],

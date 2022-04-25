@@ -9,6 +9,7 @@ import authRouter from "./routes/authRoute";
 import userRouter from "./routes/userRoute";
 import courtRouter from "./routes/courtRoutes";
 import authVerification from "./middleware/authVerification";
+import reservationRouter from "./routes/reservationRoutes";
 
 if (process.env.NODE_ENV !== "production") {
     const dotenv = require("dotenv");
@@ -28,6 +29,7 @@ app.use(express.json()); // support json encoded bodies
 app.use('/api/v1/auth', authRouter)
 app.use('/api/v1/user', userRouter)
 app.use('/api/v1/court', authVerification, courtRouter)
+app.use('/api/v1/reservation', authVerification, reservationRouter)
 
 
 if (process.env.NODE_ENV === "production") {

@@ -1,9 +1,9 @@
 import express from 'express';
-import {createCourt, deleteCourt, updateCourt} from '../controllers/courtController'
+import {createCourt, deleteCourt, getAllCourts, updateCourt} from '../controllers/courtController'
 
 const courtRouter = express.Router()
 
-courtRouter.route('/').post(createCourt);
+courtRouter.route('/').post(createCourt).get(getAllCourts);
 courtRouter.route('/:id').patch(updateCourt).delete(deleteCourt);
 
 export default courtRouter

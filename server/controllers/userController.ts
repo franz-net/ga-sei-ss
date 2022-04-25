@@ -21,6 +21,9 @@ const register = async (req, res) => {
     res.status(StatusCodes.CREATED).json({user, token})
 }
 
+const getAllUsers = async (req, res) => {
+}
+
 const update = async (req, res) => {
     const {email, name, lastName, password} = req.body
     if (!email || !name || !lastName) {
@@ -40,4 +43,4 @@ const update = async (req, res) => {
     res.status(StatusCodes.OK).json({user, token})
 }
 
-export {register, update}
+export {register, update, getAllUsers}
