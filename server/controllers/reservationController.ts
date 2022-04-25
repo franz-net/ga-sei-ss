@@ -56,6 +56,14 @@ const updateReservation = async (req, res) => {
 }
 
 const getReservations = async (req, res) => {
+    // If admin get All
+    const reservations = await Reservation.find({user: req.user.userId})
+        .populate({path: 'user', select: 'email'})
+        .populate({path: 'court', select: ['courtName', 'courtType', 'inService']})
+
+
+    res.status(StatusCodes.OK).json({reservations, totalReservations: reservations.length, numOfPages: 1})
+
 }
 
 const deleteReservation = async (req, res) => {

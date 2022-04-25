@@ -24,7 +24,12 @@ const createCourt = async (req, res) => {
 }
 
 const getAllCourts = async (req, res) => {
+    const courts = await Court.find({})
+    res.status(StatusCodes.OK).json({courts, totalCourts: courts.length, numOfPages: 1})
+
+    // if frontEnd checking for reservations, need to exclude the ones that are not inService
 }
+
 
 const updateCourt = async (req, res) => {
     const {id: courtId} = req.params

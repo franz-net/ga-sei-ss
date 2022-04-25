@@ -9,7 +9,7 @@ const ReservationSchema = new mongoose.Schema({
         },
         court: {
             type: mongoose.Types.ObjectId,
-            ref: 'Courts',
+            ref: 'Court',
             required: [true, 'Please provide a court']
         },
         date: {

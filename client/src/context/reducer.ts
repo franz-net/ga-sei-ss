@@ -5,6 +5,8 @@ import {
     CREATE_COURT_ERROR,
     CREATE_COURT_SUCCESS,
     DISPLAY_ALERT,
+    GET_COURTS_BEGIN,
+    GET_COURTS_SUCCESS,
     HANDLE_CHANGE,
     LOGOUT_USER,
     SETUP_USER_BEGIN,
@@ -116,6 +118,22 @@ export default function reducer(state: any, action: { type: string; payload: { u
             showAlert: true,
             alertType: 'success',
             alertText: 'New Court Created!',
+        }
+    }
+    if (action.type === GET_COURTS_BEGIN) {
+        return {...state, isLoading: true, showAlert: false}
+    }
+    if (action.type === GET_COURTS_SUCCESS) {
+        // @ts-ignore
+        return {
+            ...state,
+            isLoading: false,
+            // @ts-ignore
+            courts: action.payload.courts,
+            // @ts-ignore
+            totalCourts: action.payload.totalCourts,
+            // @ts-ignore
+            numOfPages: action.payload.numOfPages
         }
     }
     if (action.type === CREATE_COURT_ERROR) {

@@ -6,6 +6,8 @@ import {
     CREATE_COURT_ERROR,
     CREATE_COURT_SUCCESS,
     DISPLAY_ALERT,
+    GET_COURTS_BEGIN,
+    GET_COURTS_SUCCESS,
     HANDLE_CHANGE,
     LOGOUT_USER,
     SETUP_USER_BEGIN,
@@ -40,7 +42,17 @@ export const initialState = {
     courtType: 'tennis',
     inServiceOptions: ['true', 'false'],
     inService: true,
+    courts: [],
+    totalCourts: 0,
+    page: 1,
+    numOfPages: 1,
     //Reservations state
+    editReservationtId: '',
+    courtId: '',
+    date: '',
+    status: '',
+    reservations: [],
+    totalReservations: 0,
 }
 
 // @ts-ignore
@@ -178,6 +190,32 @@ export function AppProvider({children}) {
             dispatch({type: CREATE_COURT_ERROR, payload: {msg: error.response.data.message}})
         }
         clearAlert()
+    }
+
+    const getCourts = async () => {
+        let url = `/court`
+        // @ts-ignore
+        dispatch({type: GET_COURTS_BEGIN})
+        try {
+            const {data} = await authFetch.get(url)
+            const {courts, totalCourts, numOfPages} = data
+            // @ts-ignore
+            dispatch({type: GET_COURTS_SUCCESS, payload: {courts, totalCourts, numOfPages}})
+        } catch (error) {
+            logoutUser()
+        }
+        clearAlert()
+    }
+
+    const createReservation = async () => {
+
+    }
+
+    const updateReservation = async () => {
+    }
+
+    const getReservations = async () => {
+
     }
 
     const logoutUser = () => {
