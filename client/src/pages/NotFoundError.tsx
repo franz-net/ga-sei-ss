@@ -1,5 +1,5 @@
-//import notFound from "../assets/imgs/not-found.svg"
-import notFound from "../assets/imgs/not-found.png"
+import notFound from "../assets/imgs/not-found.svg"
+//import notFound from "../assets/imgs/not-found.png"
 import {Box, Button, Container, Grid, Paper, Typography, useTheme} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 

@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/assets/imgs/not-found.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/NotFoundError.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/NotFoundError.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +75,7 @@
       <workItem from="1650586002570" duration="7275000" />
       <workItem from="1650641773130" duration="25239000" />
       <workItem from="1650768775910" duration="33786000" />
-      <workItem from="1650927114156" duration="731000" />
+      <workItem from="1650927114156" duration="1104000" />
     </task>
     <servers />
   </component>
