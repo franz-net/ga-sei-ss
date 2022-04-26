@@ -1,6 +1,6 @@
 import {Box, Button, Container, Typography} from "@mui/material";
 import SportsTennisSharpIcon from '@mui/icons-material/SportsTennisSharp';
-import tennisBackground from '../assets/imgs/tennis-court.jpg';
+import tennisBackground from '../assets/imgs/tennis-court.png';
 import {LandingHeader} from "../components";
 
 export default function Landing() {
@@ -12,7 +12,7 @@ export default function Landing() {
                 backgroundImage: `url(${tennisBackground})`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
-                backgroundPosition: 'top left'
+                backgroundPosition: 'top'
             }}
         >
             <LandingHeader/>
