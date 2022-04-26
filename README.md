@@ -8,11 +8,11 @@ platform for instructors to create classes and manage students
 
 Main features:
 
-- Manage users
-- Manage instructors
-- Manage courts
-- Manage reservations
-- Receive feedback from users
+-   Manage users
+-   Manage instructors
+-   Manage courts
+-   Manage reservations
+-   Receive feedback from users
 
 ---
 
@@ -20,10 +20,14 @@ Main features:
 
 The site is built using the MERN stack:
 
-- Mongo DB - NoSql DB
-- Express - Backend server
-- NodeJS - JS Backend
-- React - Front end
+-   Mongo DB - NoSql DB
+-   Mongoose - ORM
+-   Express - Backend server
+-   NodeJS - JS Backend
+-   React - Front end
+-   DayJS - Backend
+-   Date-fns - Front end
+-   MUI - Front end
 
 ---
 
@@ -37,12 +41,12 @@ The site is built using the MERN stack:
 
 # Roadmap
 
-- Add server-sent events to provide push notifications
-- Add inter-user messaging
-- Add OpenID to allow using credentials from Gmail, Facebook or Twitter
-- Add multi-factor auth for enhanced security
-- Change the backend to Golang for added concurrency and speed
-- Add score tracking capabilities
-- Add utilization metrics and visualizations
-- Add multi-user reservation (add/invite other users to the reservation)
-- Court check-in
+-   Add server-sent events to provide push notifications
+-   Add inter-user messaging
+-   Add OpenID to allow using credentials from Gmail, Facebook or Twitter
+-   Add multi-factor auth for enhanced security
+-   Change the backend to Golang for added concurrency and speed
+-   Add score tracking capabilities
+-   Add utilization metrics and visualizations
+-   Add multi-user reservation (add/invite other users to the reservation)
+-   Court check-in
