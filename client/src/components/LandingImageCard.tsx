@@ -15,7 +15,7 @@ export default function LandingImageCard({court}: any) {
                 component="img"
                 alt="tennis courts"
                 height="420"
-                image={court.image}
+                image={court.img[court.title]}
                 sx={{
                     height: {xs: 320, md: 420}
                 }}

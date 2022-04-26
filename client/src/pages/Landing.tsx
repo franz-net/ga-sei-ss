@@ -9,6 +9,7 @@ export default function Landing() {
             sx={{
                 minHeight: '100vh',
                 backgroundImage: `url(${tennisBackground})`,
+                backgroundColor: '#303030',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 backgroundPosition: 'top'

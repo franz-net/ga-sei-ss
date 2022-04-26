@@ -41,6 +41,7 @@ export default function LandingHeader() {
                         }}>
                         Smash
                         <Typography
+                            component="span"
                             display="inline"
                             sx={{
                                 typography: {xs: 'h5', md: 'h3'},
