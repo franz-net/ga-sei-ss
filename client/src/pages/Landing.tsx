@@ -1,7 +1,6 @@
-import {Box, Button, Container, Typography} from "@mui/material";
-import SportsTennisSharpIcon from '@mui/icons-material/SportsTennisSharp';
+import {Box} from "@mui/material";
 import tennisBackground from '../assets/imgs/tennis-court.png';
-import {LandingHeader} from "../components";
+import {LandingCourts, LandingHeader} from "../components";
 
 export default function Landing() {
     return (
@@ -16,6 +15,8 @@ export default function Landing() {
             }}
         >
             <LandingHeader/>
+            <LandingCourts/>
+            {/*
             <Container>
                 <Typography
                     sx={{
@@ -36,6 +37,7 @@ export default function Landing() {
                 </Button>
 
             </Container>
+            */}
         </Box>
     )
 }
