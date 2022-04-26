@@ -6,6 +6,7 @@ import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
 import AddCourt from "./pages/authPages/AddCourt";
 
+// @ts-ignore
 const theme = createTheme({
     typography: {
         fontFamily: "Quicksand",
@@ -14,7 +15,18 @@ const theme = createTheme({
         fontWeightMedium: 600,
         fontWeightBold: 700
     },
-    palette: {}
+    palette: {
+        primary: {
+            main: '#009688',
+            light: '#33ab9f',
+            dark: '#00695f'
+        },
+        secondary: {
+            main: '#9c27b0',
+            light: '#af52bf',
+            dark: '#6d1b7b'
+        }
+    }
 });
 
 export default function App() {

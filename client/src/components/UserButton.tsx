@@ -35,7 +35,7 @@ export default function UserButton() {
                 disableRipple
                 sx={{
                     '& :hover': {
-                        bgcolor: deepOrange[700],
+                        bgcolor: deepOrange['A100'],
                     }
                 }}
             >
@@ -44,7 +44,7 @@ export default function UserButton() {
                     variant="square"
                     sx={{
                         mr: 2,
-                        bgcolor: deepOrange[500]
+                        bgcolor: deepOrange['A400']
                     }}
                 >
                     {user.name[0]}

@@ -21,9 +21,9 @@ export default function TopBar({drawerWidth}: TopBarProps) {
             position="fixed"
             sx={{
                 width: {sm: `calc(100% - ${drawerWidth}px)`},
-                ml: {sm: `${drawerWidth}px`}
+                ml: {sm: `${drawerWidth}px`},
             }}
-            elevation={0}
+            elevation={1}
         >
             <Toolbar>
                 <IconButton
