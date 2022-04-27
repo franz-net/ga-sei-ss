@@ -41,7 +41,7 @@ export default function LandingHeader({handleScrollClick}: any) {
                 >
                     <Toolbar
                         sx={{
-                            width: '80%',
+                            width: {xs: '90%', md: '80%'},
                             margin: '0 auto'
                         }}
                     >
