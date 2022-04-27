@@ -63,11 +63,14 @@ Joan is a padel instructor and is working @ Smash Studio:
 
 # Wireframes and screenshots
 
-Landing Page:
+- Landing Page:
+
 ![Landing Page](ReadmeAssets/LandingWire.png)
 
-App Layout:
+- App Layout:
+
 ![App Layout](ReadmeAssets/Layout.png)
+
 ---
 
 # Roadmap
