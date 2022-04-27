@@ -1,4 +1,4 @@
-import {AppBar, Box, Button, Collapse, IconButton, Toolbar, Typography} from "@mui/material";
+import {AppBar, Box, Button, Collapse, IconButton, Popover, Toolbar, Typography} from "@mui/material";
 import {ExpandMore, Sort} from "@mui/icons-material";
 import {orange} from "@mui/material/colors";
 import {useEffect, useState} from "react";
@@ -9,6 +9,14 @@ export default function LandingHeader() {
     useEffect(() => {
         setCollapsed(true)
     }, [])
+
+    const [popAnchor, setPopAnchor] = useState<HTMLButtonElement | null>(null)
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setPopAnchor(event.currentTarget)
+    }
+    const handleClose = () => {
+        setPopAnchor(null);
+    };
 
     return (
         <Box
@@ -67,10 +75,27 @@ export default function LandingHeader() {
                         sx={{
                             display: {xs: 'block', md: 'none'}
                         }}
+                        onClick={handleClick}
                     >
                         <Sort sx={{color: '#fff'}} fontSize="large"
                         />
                     </IconButton>
+                    <Popover
+                        open={Boolean(popAnchor)}
+                        anchorEl={popAnchor}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'left'
+                        }}
+                    >
+                        <Button
+                            variant="contained"
+                            href="/signup"
+                        >
+                            Login
+                        </Button>
+                    </Popover>
                 </Toolbar>
             </AppBar>
             <Collapse in={collapsed} {...(collapsed ? {timeout: 1500} : {})} collapsedSize={50}>
