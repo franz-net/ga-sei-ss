@@ -3,12 +3,14 @@ import {ExpandMore, Sort} from "@mui/icons-material";
 import {orange} from "@mui/material/colors";
 import {useEffect, useState} from "react";
 import SportsTennisSharpIcon from "@mui/icons-material/SportsTennisSharp";
+import LandingScrollHandler from "./LandingScrollHandler";
 
-export default function LandingHeader() {
+export default function LandingHeader({handleScrollClick}: any) {
     const [collapsed, setCollapsed] = useState(false)
     useEffect(() => {
         setCollapsed(true)
     }, [])
+
 
     const [popAnchor, setPopAnchor] = useState<HTMLButtonElement | null>(null)
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -28,76 +30,77 @@ export default function LandingHeader() {
                 height: '100vh',
                 width: '100%',
             }}
-            id="landingHeader"
         >
-            <AppBar
-                sx={{
-                    background: 'none',
-                    fontWeight: 'fontWeightBold'
-                }}
-                elevation={0}
-            >
-                <Toolbar
+            <LandingScrollHandler>
+                <AppBar
                     sx={{
-                        width: '80%',
-                        margin: '0 auto'
+                        background: 'none',
+                        fontWeight: 'fontWeightBold'
                     }}
+                    elevation={0}
                 >
-                    <Typography
+                    <Toolbar
                         sx={{
-                            typography: {xs: 'h5', md: 'h3'},
-                            flexGrow: '1'
-                        }}>
-                        Smash
+                            width: '80%',
+                            margin: '0 auto'
+                        }}
+                    >
                         <Typography
-                            component="span"
-                            display="inline"
                             sx={{
                                 typography: {xs: 'h5', md: 'h3'},
-                                color: orange['A700']
-                            }}
-                        >
-                            Studio.
+                                flexGrow: '1'
+                            }}>
+                            Smash
+                            <Typography
+                                component="span"
+                                display="inline"
+                                sx={{
+                                    typography: {xs: 'h5', md: 'h3'},
+                                    color: orange['A700']
+                                }}
+                            >
+                                Studio.
+                            </Typography>
                         </Typography>
-                    </Typography>
-                    <Button
-                        variant="contained"
-                        href="/signup"
-                        sx={{
-                            display: {xs: 'none', md: 'flex'},
-                            mr: 3
-                        }}
-                        endIcon={<SportsTennisSharpIcon fontSize="small"/>}
-                    >
-                        Login
-                    </Button>
-                    <IconButton
-                        sx={{
-                            display: {xs: 'block', md: 'none'}
-                        }}
-                        onClick={handleClick}
-                    >
-                        <Sort sx={{color: '#fff'}} fontSize="large"
-                        />
-                    </IconButton>
-                    <Popover
-                        open={Boolean(popAnchor)}
-                        anchorEl={popAnchor}
-                        onClose={handleClose}
-                        anchorOrigin={{
-                            vertical: 'bottom',
-                            horizontal: 'left'
-                        }}
-                    >
                         <Button
                             variant="contained"
                             href="/signup"
+                            sx={{
+                                display: {xs: 'none', md: 'flex'},
+                                mr: 3
+                            }}
+                            endIcon={<SportsTennisSharpIcon fontSize="small"/>}
                         >
                             Login
                         </Button>
-                    </Popover>
-                </Toolbar>
-            </AppBar>
+                        <IconButton
+                            sx={{
+                                display: {xs: 'block', md: 'none'}
+                            }}
+                            onClick={handleClick}
+                        >
+                            <Sort sx={{color: '#fff'}} fontSize="large"
+                            />
+                        </IconButton>
+                        <Popover
+                            open={Boolean(popAnchor)}
+                            anchorEl={popAnchor}
+                            onClose={handleClose}
+                            anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left'
+                            }}
+                        >
+                            <Button
+                                variant="contained"
+                                href="/signup"
+                            >
+                                Login
+                            </Button>
+                        </Popover>
+                    </Toolbar>
+                </AppBar>
+            </LandingScrollHandler>
             <Collapse in={collapsed} {...(collapsed ? {timeout: 1500} : {})} collapsedSize={50}>
                 <Box component="div" sx={{textAlign: 'center'}}>
                     <Typography
@@ -108,7 +111,7 @@ export default function LandingHeader() {
                     >
                         Game, set & match
                     </Typography>
-                    <IconButton size='large'>
+                    <IconButton size='large' onClick={handleScrollClick}>
                         <ExpandMore
                             sx={{
                                 color: orange['A700'],

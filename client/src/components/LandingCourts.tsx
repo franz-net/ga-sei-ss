@@ -1,7 +1,8 @@
-import {Box} from "@mui/material";
+import {Box, Typography} from "@mui/material";
 import {LandingImageCard} from "./";
 import Tennis from '../assets/imgs/landing_card_tennis.jpg';
 import Padel from '../assets/imgs/landing_card_padel.jpg';
+import {teal} from "@mui/material/colors";
 
 const courts = [
     {
@@ -17,22 +18,44 @@ const courts = [
 ]
 
 
-export default function LandingCourts() {
+export default function LandingCourts({courtsRef}: any) {
 
     return (
         <Box
-            component="div"
             sx={{
                 minHeight: '100vh',
                 display: 'flex',
                 flexWrap: 'wrap',
                 justifyContent: 'center',
-                alignItems: 'center'
+                alignItems: 'center',
+                backgroundColor: teal[50],
             }}
-            id="landing-courts"
+            ref={courtsRef}
         >
-            <LandingImageCard court={courts[0]}/>
-            <LandingImageCard court={courts[1]}/>
+            <Typography
+                variant="h4"
+                sx={{
+                    typography: {xs: 'h6', md: 'h4'},
+                    margin: 8,
+                    textAlign: 'center'
+                }}
+            >
+                We are a sports complex and academy focused on racket sports, where we attempt to develop and form
+                players of all ages.
+            </Typography>
+            <Box
+                component="div"
+                sx={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}
+            >
+
+                <LandingImageCard court={courts[0]}/>
+                <LandingImageCard court={courts[1]}/>
+            </Box>
         </Box>
     )
 }
