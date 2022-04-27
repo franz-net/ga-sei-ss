@@ -202,7 +202,8 @@ export function AppProvider({children}) {
             // @ts-ignore
             dispatch({type: GET_COURTS_SUCCESS, payload: {courts, totalCourts, numOfPages}})
         } catch (error) {
-            logoutUser()
+            console.log(error)
+            //logoutUser()
         }
         clearAlert()
     }
@@ -236,7 +237,8 @@ export function AppProvider({children}) {
                 toggleSidebar,
                 createCourt,
                 clearCourtValues,
-                handleCourtChange
+                handleCourtChange,
+                getCourts
             }}>
             {children}
         </AppContext.Provider>

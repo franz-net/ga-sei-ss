@@ -2,6 +2,7 @@ import {Box, Container, Toolbar, useTheme} from "@mui/material";
 import {Outlet} from "react-router-dom";
 import {Footer, LeftDrawer, TopBar} from "../../components";
 import {useState} from "react";
+import {lightGreen, teal} from "@mui/material/colors";
 
 const drawerWidth = 240
 export default function MasterLayout() {
@@ -28,8 +29,8 @@ export default function MasterLayout() {
                 component="main"
                 sx={{
                     backgroundColor: theme.palette.mode === 'light'
-                        ? theme.palette.grey[100]
-                        : theme.palette.grey[900],
+                        ? lightGreen[50]
+                        : teal[900],
                     flexGrow: 1,
                     height: '100vh',
                     overflow: 'auto'

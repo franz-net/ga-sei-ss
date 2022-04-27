@@ -25,6 +25,7 @@ const createCourt = async (req, res) => {
 
 const getAllCourts = async (req, res) => {
     const courts = await Court.find({})
+    console.log(courts)
     res.status(StatusCodes.OK).json({courts, totalCourts: courts.length, numOfPages: 1})
 
     // if frontEnd checking for reservations, need to exclude the ones that are not inService

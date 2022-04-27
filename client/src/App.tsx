@@ -5,6 +5,7 @@ import {Calendar, Dashboard, MasterLayout, Profile} from "./pages/authPages";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
 import AddCourt from "./pages/authPages/AddCourt";
+import Courts from "./pages/authPages/Courts";
 
 // @ts-ignore
 const theme = createTheme({
@@ -50,7 +51,7 @@ export default function App() {
                         */}
 
                         {/* Roles: [admin] */}
-                        <Route path='/admin/courts' element={<AddCourt/>}/>
+                        <Route path='/admin/courts' element={<Courts/>}/>
                         <Route path='/admin/add-court' element={<AddCourt/>}/>
                         {/*
                         <Route path='/admin/users' element={<Reservations/>}/>

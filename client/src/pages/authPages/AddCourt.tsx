@@ -30,7 +30,6 @@ export default function AddCourt() {
         handleCourtChange
     } = useAppContext()
 
-
     const handleInput = (e: any) => {
         const name = e.target.name
         let value: any

@@ -10,8 +10,7 @@ import {
     useTheme
 } from "@mui/material";
 import {AddCircleOutlineOutlined, FactCheckOutlined, HomeOutlined} from "@mui/icons-material";
-import {useState} from "react";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useAppContext} from "../context/appContext";
 import {orange} from "@mui/material/colors";
 
@@ -23,7 +22,7 @@ interface LeftDrawerProps {
 export default function LeftDrawer({drawerWidth,}: LeftDrawerProps) {
     const theme = useTheme();
     const navigate = useNavigate()
-    const [selectedIndex, setSelectedIndex] = useState(0);
+    const {pathname} = useLocation()
     // @ts-ignore
     const {showSidebar, toggleSidebar} = useAppContext()
 
@@ -32,7 +31,6 @@ export default function LeftDrawer({drawerWidth,}: LeftDrawerProps) {
         index: number,
         path: string
     ) => {
-        setSelectedIndex(index)
         navigate(path)
     }
 
@@ -51,7 +49,13 @@ export default function LeftDrawer({drawerWidth,}: LeftDrawerProps) {
             roles: ['user', 'admin', 'instructor']
         },
         {
-            text: 'Manage Courts',
+            text: 'Courts',
+            icon: <FactCheckOutlined color="secondary"/>,
+            path: '/admin/courts',
+            roles: ['admin']
+        },
+        {
+            text: 'Add Court',
             icon: <FactCheckOutlined color="secondary"/>,
             path: '/admin/add-court',
             roles: ['admin']
@@ -87,7 +91,7 @@ export default function LeftDrawer({drawerWidth,}: LeftDrawerProps) {
                 {menuItems.map((item, index) => (
                     <ListItemButton
                         key={index}
-                        selected={selectedIndex === index}
+                        selected={item.path === pathname}
                         onClick={
                             (event) => handleListItemClick(event, index, item.path)
                         }>

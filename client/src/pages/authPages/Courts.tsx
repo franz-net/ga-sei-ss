@@ -1,5 +1,10 @@
+import {CourtsContainer, SearchCourtsContainer} from "../../components";
+
 export default function Courts() {
     return (
-        <h1>Courts</h1>
+        <>
+            <SearchCourtsContainer/>
+            <CourtsContainer/>
+        </>
     )
 }

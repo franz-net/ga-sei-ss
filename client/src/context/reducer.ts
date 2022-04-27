@@ -19,7 +19,12 @@ import {
 } from "./actions";
 import {initialState} from "./appContext";
 
-export default function reducer(state: any, action: { type: string; payload: { user: any; token: any; location: any; alertText: any; msg: any; }; }) {
+export default function reducer(state: any, action: {
+    type: string; payload: {
+        courts: any;
+        user: any; token: any; location: any; alertText: any; msg: any;
+    };
+}) {
     if (action.type === DISPLAY_ALERT) {
         return {...state, showAlert: true, alertType: 'error', alertText: 'Please Provide all Values!'}
     }
