@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Court.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/CourtInfo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/CourtsContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Loader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/SearchCourtsContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/SingleCourt.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/LeftDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LeftDrawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Court.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Court.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/appContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/context/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/AddCourt.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/AddCourt.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/Courts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/Courts.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/MasterLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/MasterLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/courtController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/courtController.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +81,7 @@
       <workItem from="1650948947077" duration="5799000" />
       <workItem from="1651000261627" duration="19569000" />
       <workItem from="1651071044856" duration="30000" />
-      <workItem from="1651071088369" duration="17845000" />
+      <workItem from="1651071088369" duration="20977000" />
     </task>
     <servers />
   </component>

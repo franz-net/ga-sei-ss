@@ -208,6 +208,14 @@ export function AppProvider({children}) {
         clearAlert()
     }
 
+    const setEditCourt = (id: any) => {
+        console.log(`set edit court : ${id}`)
+    }
+
+    const deleteCourt = (id: any) => {
+        console.log(`deleting court : ${id}`)
+    }
+
     const createReservation = async () => {
 
     }
@@ -238,7 +246,9 @@ export function AppProvider({children}) {
                 createCourt,
                 clearCourtValues,
                 handleCourtChange,
-                getCourts
+                getCourts,
+                setEditCourt,
+                deleteCourt
             }}>
             {children}
         </AppContext.Provider>
