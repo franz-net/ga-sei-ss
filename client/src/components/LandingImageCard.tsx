@@ -1,16 +1,45 @@
 import * as React from 'react';
+import {useEffect} from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import {motion, useAnimation} from "framer-motion";
+import {useInView} from "react-intersection-observer";
 
-export default function LandingImageCard({court}: any) {
+
+const cardVariants = {
+    visible: {opacity: 1, transition: {duration: 1}},
+    hidden: {opacity: 0, transition: {duration: 1}}
+}
+
+export default function LandingImageCard({court, checkedAnimation}: any) {
+    const controls = useAnimation()
+    const [ref, inView] = useInView()
+
+    useEffect(() => {
+        if (inView) {
+            controls.start("visible")
+        } else {
+            controls.start("hidden")
+        }
+    }, [controls, inView])
+
     return (
-        <Card sx={{
-            maxWidth: {xs: 345, md: 645},
-            background: 'rgba(0,0,0,0.5)'
 
-        }}>
+        <Card
+            component={motion.div}
+            ref={ref}
+            variants={cardVariants}
+            animate={controls}
+            transition={{ease: "easeOut", duration: 2}}
+            initial="hidden"
+            sx={{
+                maxWidth: {xs: 345, md: 645},
+                background: 'rgba(0,0,0,0.5)',
+                m: 5
+            }}
+        >
             <CardMedia
                 component="img"
                 alt="tennis courts"

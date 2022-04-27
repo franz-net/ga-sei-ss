@@ -6,7 +6,7 @@ import Padel from '../assets/imgs/landing_card_padel.jpg';
 const courts = [
     {
         title: 'Tennis',
-        description: 'Reserve a Tennis court to play in one of our 3 state of the art courts or sign up for our Tennis clinic with one of our amazing instructors',
+        description: 'Reserve a Tennis court to play in one of our 3 state of the art courts or sign up for our Tennis clinic with one of our amazing instructors and become more competitive in your matches!',
         img: {Tennis}
     },
     {
@@ -16,14 +16,20 @@ const courts = [
     }
 ]
 
+
 export default function LandingCourts() {
 
     return (
         <Box
             component="div"
             sx={{
-                minHeight: '100vh'
+                minHeight: '100vh',
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                alignItems: 'center'
             }}
+            id="landing-courts"
         >
             <LandingImageCard court={courts[0]}/>
             <LandingImageCard court={courts[1]}/>

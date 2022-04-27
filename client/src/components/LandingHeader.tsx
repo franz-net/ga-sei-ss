@@ -20,6 +20,7 @@ export default function LandingHeader() {
                 height: '100vh',
                 width: '100%',
             }}
+            id="landingHeader"
         >
             <AppBar
                 sx={{
@@ -62,13 +63,17 @@ export default function LandingHeader() {
                     >
                         Login
                     </Button>
-                    <IconButton>
+                    <IconButton
+                        sx={{
+                            display: {xs: 'block', md: 'none'}
+                        }}
+                    >
                         <Sort sx={{color: '#fff'}} fontSize="large"
                         />
                     </IconButton>
                 </Toolbar>
             </AppBar>
-            <Collapse in={collapsed} {...(collapsed ? {timeout: 1000} : {})} collapsedSize={50}>
+            <Collapse in={collapsed} {...(collapsed ? {timeout: 1500} : {})} collapsedSize={50}>
                 <Box component="div" sx={{textAlign: 'center'}}>
                     <Typography
                         sx={{
