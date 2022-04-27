@@ -13,6 +13,7 @@ import {AddCircleOutlineOutlined, FactCheckOutlined, HomeOutlined} from "@mui/ic
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useAppContext} from "../context/appContext";
+import {orange} from "@mui/material/colors";
 
 interface LeftDrawerProps {
     drawerWidth: number
@@ -60,8 +61,25 @@ export default function LeftDrawer({drawerWidth,}: LeftDrawerProps) {
 
     const drawer = (
         <div>
-            <Typography variant="h5" sx={{padding: theme.spacing(2)}}>
-                Smash Studio
+            <Typography
+                sx={{
+                    typography: {xs: 'h5', md: 'h5'},
+                    padding: theme.spacing(2),
+                    flexGrow: '1',
+                    margin: '0 auto',
+                    textAlign: 'center'
+                }}>
+                Smash
+                <Typography
+                    component="span"
+                    display="inline"
+                    sx={{
+                        typography: {xs: 'h5', md: 'h5'},
+                        color: orange['A700']
+                    }}
+                >
+                    Studio.
+                </Typography>
             </Typography>
             <Divider/>
 

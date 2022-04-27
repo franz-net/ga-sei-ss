@@ -4,10 +4,9 @@ import {lime} from "@mui/material/colors";
 
 export default function Footer() {
     return (
-        <Box sx={{
+        <Box component="footer" sx={{
             paddingTop: '30px',
             paddingBottom: '30px',
-            bottom: 0,
             display: 'flex',
             justifyContent: 'center',
             alightItems: 'center',

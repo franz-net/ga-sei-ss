@@ -22,6 +22,7 @@ export default function TopBar({drawerWidth}: TopBarProps) {
             sx={{
                 width: {sm: `calc(100% - ${drawerWidth}px)`},
                 ml: {sm: `${drawerWidth}px`},
+                background: '#303030'
             }}
             elevation={1}
         >

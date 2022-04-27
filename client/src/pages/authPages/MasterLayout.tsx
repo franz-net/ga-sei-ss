@@ -1,6 +1,6 @@
 import {Box, Container, Toolbar, useTheme} from "@mui/material";
 import {Outlet} from "react-router-dom";
-import {LeftDrawer, TopBar} from "../../components";
+import {Footer, LeftDrawer, TopBar} from "../../components";
 import {useState} from "react";
 
 const drawerWidth = 240
@@ -40,12 +40,15 @@ export default function MasterLayout() {
                     maxWidth="lg"
                     sx={{
                         mt: 4,
-                        mb: 4
+                        mb: 4,
+                        minHeight: 'calc(80vh - 60px)',
                     }}
                 >
                     <Outlet/>
                 </Container>
+                <Footer/>
             </Box>
+
         </Box>
     )
 }

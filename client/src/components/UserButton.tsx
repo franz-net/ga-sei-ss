@@ -2,7 +2,7 @@ import {Avatar, IconButton, Menu, MenuItem, Paper, useTheme} from "@mui/material
 import {useAppContext} from "../context/appContext";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {deepOrange} from "@mui/material/colors";
+import {deepOrange, orange} from "@mui/material/colors";
 
 export default function UserButton() {
     // @ts-ignore
@@ -44,7 +44,7 @@ export default function UserButton() {
                     variant="square"
                     sx={{
                         mr: 2,
-                        bgcolor: deepOrange['A400']
+                        bgcolor: orange['A700']
                     }}
                 >
                     {user.name[0]}
