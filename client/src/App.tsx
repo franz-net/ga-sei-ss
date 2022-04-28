@@ -24,11 +24,11 @@ const theme = createTheme({
             main: '#ff6d00',
             light: '#ff8a33',
             dark: '#b24c00',
-            contrastText: 'rgba(0, 0, 0, 0.87)'
+
         }
     }
 });
-
+//contrastText: 'rgba(0, 0, 0, 0.87)'
 export default function App() {
     return (
         <ThemeProvider theme={theme}>
