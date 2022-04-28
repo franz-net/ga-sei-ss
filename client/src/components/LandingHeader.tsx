@@ -45,11 +45,11 @@ export default function LandingHeader({handleScrollClick}: any) {
                             margin: '0 auto'
                         }}
                     >
-                        <Typography
-                            sx={{
-                                typography: {xs: 'h5', md: 'h3'},
-                                flexGrow: '1'
-                            }}>
+                        <Typography color=""
+                                    sx={{
+                                        typography: {xs: 'h5', md: 'h3'},
+                                        flexGrow: '1'
+                                    }}>
                             Smash
                             <Typography
                                 component="span"
@@ -115,7 +115,7 @@ export default function LandingHeader({handleScrollClick}: any) {
                         <ExpandMore
                             sx={{
                                 color: orange['A700'],
-                                fontSize: '4rem'
+                                fontSize: '6rem'
                             }}
                         />
                     </IconButton>
