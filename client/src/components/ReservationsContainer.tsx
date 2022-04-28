@@ -1,26 +1,23 @@
 import {useAppContext} from "../context/appContext";
 import {useEffect} from "react";
-import {Loader} from "./index";
 import {Grid, Paper, Typography} from "@mui/material";
-import Court from "./Court";
+import {Loader} from "./index";
+import Reservation from "./Reservation";
 
-export default function CourtsContainer() {
+export default function ReservationsContainer() {
 
-    const {getCourts, courts, isLoading, page, totalCourts} = useAppContext()
-
+    const {getReservations, reservations, isLoading, page, totalReservations} = useAppContext()
     useEffect(() => {
-        getCourts()
+        getReservations()
     }, [])
-
     if (isLoading) {
         return <Paper><Loader/></Paper>
     }
-
-    if (courts.length === 0) {
+    if (reservations.length === 0) {
         return (
             <Paper>
                 <Typography>
-                    No Courts to display...
+                    No reservations found...
                 </Typography>
             </Paper>
         )
@@ -28,14 +25,14 @@ export default function CourtsContainer() {
     return (
         <>
             <Typography>
-                {totalCourts} court {courts.length > 1 && 's'} found
+                {totalReservations} reservation {reservations.length > 1 && 's'} found
             </Typography>
             <Grid container spacing={2}>
 
-                {courts.map((court: any) => {
+                {reservations.map((reservation: any) => {
                     return (
-                        <Grid item key={court._id} xs={12} md={6}>
-                            <Court {...court}/>
+                        <Grid item key={reservation._id} xs={12} md={6}>
+                            <Reservation {...reservation}/>
                         </Grid>
                     )
 

@@ -5,12 +5,19 @@ import {
     CREATE_COURT_BEGIN,
     CREATE_COURT_ERROR,
     CREATE_COURT_SUCCESS,
+    DELETE_COURT_BEGIN,
     DISPLAY_ALERT,
+    EDIT_COURT_BEGIN,
+    EDIT_COURT_ERROR,
+    EDIT_COURT_SUCCESS,
     GET_COURTS_BEGIN,
     GET_COURTS_SUCCESS,
+    GET_RESERVATIONS_BEGIN,
+    GET_RESERVATIONS_SUCCESS,
     HANDLE_CHANGE,
     LOGOUT_USER,
     SET_EDIT_COURT,
+    SET_EDIT_RESERVATION,
     SETUP_USER_BEGIN,
     SETUP_USER_ERROR,
     SETUP_USER_SUCCESS,
@@ -50,7 +57,7 @@ export const initialState = {
     //Reservations state
     editReservationtId: '',
     courtId: '',
-    date: '',
+    date: new Date(),
     status: '',
     reservations: [],
     totalReservations: 0,
@@ -177,7 +184,7 @@ export function AppProvider({children}) {
         dispatch({type: CREATE_COURT_BEGIN})
         try {
             const {courtName, courtType, inService} = state
-            await authFetch.post('court', {courtName, courtType, inService})
+            await authFetch.post('/court', {courtName, courtType, inService})
             // @ts-ignore
             dispatch({type: CREATE_COURT_SUCCESS})
             // @ts-ignore
@@ -186,7 +193,7 @@ export function AppProvider({children}) {
             // @ts-ignore
             console.log(error.response.data.message)
             // @ts-ignore
-            if (error.response.status === 401) return
+            if (error.response.status === 401) logoutUser()
             // @ts-ignore
             dispatch({type: CREATE_COURT_ERROR, payload: {msg: error.response.data.message}})
         }
@@ -216,23 +223,76 @@ export function AppProvider({children}) {
         })
     }
 
-    const editCourt = () => {
-        console.log('edit court')
+    const editCourt = async () => {
+        // @ts-ignore
+        dispatch({type: EDIT_COURT_BEGIN})
+        try {
+            const {courtName, courtType, inService} = state
+            await authFetch.patch(`/court/${state.editCourtId}`, {
+                courtName, courtType, inService
+            })
+            // @ts-ignore
+            dispatch({type: EDIT_COURT_SUCCESS})
+            // @ts-ignore
+            dispatch({type: CLEAR_COURT_VALUES})
+        } catch (error) {
+            // @ts-ignore
+            if (error.response.status === 401) return
+            // @ts-ignore
+            dispatch({type: EDIT_COURT_ERROR, payload: {msg: error.response.data.message}})
+            console.log(error)
+            //logoutUser()
+        }
     }
 
-    const deleteCourt = (id: any) => {
-        console.log(`deleting court : ${id}`)
+    const deleteCourt = async (id: any) => {
+        // @ts-ignore
+        dispatch({type: DELETE_COURT_BEGIN})
+        try {
+            await authFetch.delete(`/court/${id}`)
+            getCourts()
+        } catch (error) {
+            // @ts-ignore
+            console.log(error.response)
+            //logoutUser()
+        }
     }
 
     const createReservation = async () => {
 
     }
 
+    // @ts-ignore
+    const handleReservationChange = ({name, value}) => {
+        // @ts-ignore
+        dispatch({type: HANDLE_CHANGE, payload: {name, value}})
+    }
+
     const updateReservation = async () => {
     }
 
     const getReservations = async () => {
+        let url = `/reservation`
+        // @ts-ignore
+        dispatch({type: GET_RESERVATIONS_BEGIN})
+        try {
+            const {data} = await authFetch.get(url)
+            console.log(data)
+            const {reservations, totalReservations, numOfPages} = data
+            // @ts-ignore
+            dispatch({type: GET_RESERVATIONS_SUCCESS, payload: {reservations, totalReservations, numOfPages}})
+        } catch (error) {
+            console.log(error)
+            //logoutUser()
+        }
+        clearAlert()
+    }
 
+    const setEditReservation = (id: any) => {
+        dispatch({
+            // @ts-ignore
+            type: SET_EDIT_RESERVATION, payload: {id}
+        })
     }
 
     const logoutUser = () => {
@@ -257,7 +317,12 @@ export function AppProvider({children}) {
                 getCourts,
                 setEditCourt,
                 editCourt,
-                deleteCourt
+                deleteCourt,
+                handleReservationChange,
+                getReservations,
+                setEditReservation,
+                updateReservation,
+                createReservation
             }}>
             {children}
         </AppContext.Provider>

@@ -36,7 +36,7 @@ export default function TopBar({drawerWidth}: TopBarProps) {
                     <MenuOutlined/>
                 </IconButton>
 
-                <Typography sx={{flexGrow: 1}}>
+                <Typography sx={{flexGrow: 1, color: '#fff'}}>
                     Today is the {format(new Date(), 'do MMMM Y')}
                 </Typography>
 

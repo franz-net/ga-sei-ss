@@ -9,7 +9,8 @@ import {
     Typography,
     useTheme
 } from "@mui/material";
-import {AddCircleOutlineOutlined, FactCheckOutlined, HomeOutlined} from "@mui/icons-material";
+import EventIcon from '@mui/icons-material/Event';
+import {AddCircle, AddTask, Home, SportsTennis} from "@mui/icons-material";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useAppContext} from "../context/appContext";
 import {orange} from "@mui/material/colors";
@@ -38,25 +39,31 @@ export default function LeftDrawer({drawerWidth,}: LeftDrawerProps) {
     const menuItems = [
         {
             text: 'Home',
-            icon: <HomeOutlined color="secondary"/>,
+            icon: <Home color="secondary"/>,
             path: '/',
             roles: ['user', 'admin', 'instructor']
         },
         {
+            text: 'Reservations',
+            icon: <EventIcon color="secondary"/>,
+            path: '/reservations',
+            roles: ['user', 'admin', 'instructor']
+        },
+        {
             text: 'Add Reservation',
-            icon: <AddCircleOutlineOutlined color="secondary"/>,
-            path: '/calendar',
+            icon: <AddTask color="secondary"/>,
+            path: '/add-reservation',
             roles: ['user', 'admin', 'instructor']
         },
         {
             text: 'Courts',
-            icon: <FactCheckOutlined color="secondary"/>,
+            icon: <SportsTennis color="secondary"/>,
             path: '/admin/courts',
             roles: ['admin']
         },
         {
             text: 'Add Court',
-            icon: <FactCheckOutlined color="secondary"/>,
+            icon: <AddCircle color="secondary"/>,
             path: '/admin/add-court',
             roles: ['admin']
         },

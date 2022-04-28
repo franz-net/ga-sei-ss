@@ -8,6 +8,8 @@ import Footer from "./Footer"
 import CourtsContainer from "./CourtsContainer";
 import SearchCourtsContainer from "./SearchCourtsContainer";
 import Loader from "./Loader"
+import ReservationsContainer from "./ReservationsContainer";
+import SearchReservationsContainer from "./SearchReservationsContainer";
 
 export {
     ScreenMessage,
@@ -19,5 +21,7 @@ export {
     Footer,
     CourtsContainer,
     SearchCourtsContainer,
-    Loader
+    Loader,
+    ReservationsContainer,
+    SearchReservationsContainer
 }

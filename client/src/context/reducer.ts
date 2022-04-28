@@ -4,12 +4,19 @@ import {
     CREATE_COURT_BEGIN,
     CREATE_COURT_ERROR,
     CREATE_COURT_SUCCESS,
+    DELETE_COURT_BEGIN,
     DISPLAY_ALERT,
+    EDIT_COURT_BEGIN,
+    EDIT_COURT_ERROR,
+    EDIT_COURT_SUCCESS,
     GET_COURTS_BEGIN,
     GET_COURTS_SUCCESS,
+    GET_RESERVATIONS_BEGIN,
+    GET_RESERVATIONS_SUCCESS,
     HANDLE_CHANGE,
     LOGOUT_USER,
     SET_EDIT_COURT,
+    SET_EDIT_RESERVATION,
     SETUP_USER_BEGIN,
     SETUP_USER_ERROR,
     SETUP_USER_SUCCESS,
@@ -165,6 +172,58 @@ export default function reducer(state: any, action: {
             inService
         }
     }
+    if (action.type === EDIT_COURT_BEGIN) {
+        return {...state, isLoading: true}
+    }
+    if (action.type === EDIT_COURT_SUCCESS) {
+        return {
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType: 'success',
+            alertText: 'Court Updated!'
+        }
+    }
+    if (action.type === EDIT_COURT_ERROR) {
+        return {
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType: 'error',
+            alertText: action.payload.msg,
+        }
+    }
+    if (action.type === DELETE_COURT_BEGIN) {
+        return {...state, isLoading: true}
+    }
+    if (action.type === GET_RESERVATIONS_BEGIN) {
+        return {...state, isLoading: true, showAlert: false}
+    }
+    if (action.type === GET_RESERVATIONS_SUCCESS) {
+        // @ts-ignore
 
+        return {
+            ...state,
+            isLoading: false,
+            // @ts-ignore
+            reservations: action.payload.reservations,
+            // @ts-ignore
+            totalReservations: action.payload.totalReservations,
+            // @ts-ignore
+            numOfPages: action.payload.numOfPages
+        }
+    }
+    if (action.type === SET_EDIT_RESERVATION) {
+        const reservation = state.reservations.find((reservation: any) => reservation._id === action.payload.id)
+        const {_id, courtName, courtType, date} = reservation
+        return {
+            ...state,
+            isEditing: true,
+            editReservationId: _id,
+            courtName,
+            courtType,
+            date
+        }
+    }
     throw new Error(`no such action : ${action.type}`)
 }

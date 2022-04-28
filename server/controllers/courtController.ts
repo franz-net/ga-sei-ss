@@ -7,14 +7,12 @@ const createCourt = async (req, res) => {
 
     const {courtName, courtType, inService} = req.body
 
-    if (!courtName || !courtType || !inService) {
+    if (!courtName || !courtType || inService == null) {
         throw new BadRequestError("Please provide all court details")
     }
 
     const courtAlreadyExists = await Court.findOne({courtName})
-    console.log(courtAlreadyExists)
     if (courtAlreadyExists) {
-        console.log('error here!!!')
         throw new BadRequestError(`Error, ${courtName} already exists.`)
     }
 
@@ -26,7 +24,6 @@ const createCourt = async (req, res) => {
 
 const getAllCourts = async (req, res) => {
     const courts = await Court.find({})
-    console.log(courts)
     res.status(StatusCodes.OK).json({courts, totalCourts: courts.length, numOfPages: 1})
 
     // if frontEnd checking for reservations, need to exclude the ones that are not inService

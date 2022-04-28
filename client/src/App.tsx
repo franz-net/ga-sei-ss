@@ -1,11 +1,9 @@
 import React from 'react';
 import {Landing, NotFoundError, ProtectedRoute, Signup} from './pages';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Calendar, Dashboard, MasterLayout, Profile} from "./pages/authPages";
+import {AddCourt, AddReservation, Courts, Dashboard, MasterLayout, Profile, Reservations} from "./pages/authPages";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
-import AddCourt from "./pages/authPages/AddCourt";
-import Courts from "./pages/authPages/Courts";
 
 // @ts-ignore
 const theme = createTheme({
@@ -18,14 +16,15 @@ const theme = createTheme({
     },
     palette: {
         primary: {
-            main: '#009688',
-            light: '#33ab9f',
-            dark: '#00695f'
+            main: '#66bb6a',
+            light: '#a5d6a7',
+            dark: '#1b5e20'
         },
         secondary: {
-            main: '#9c27b0',
-            light: '#af52bf',
-            dark: '#6d1b7b'
+            main: '#ff6d00',
+            light: '#ff8a33',
+            dark: '#b24c00',
+            contrastText: 'rgba(0, 0, 0, 0.87)'
         }
     }
 });
@@ -43,12 +42,9 @@ export default function App() {
                     }>
                         {/* Roles: [user, admin, instructor] */}
                         <Route index element={<Dashboard/>}/>
-                        <Route path='/calendar' element={<Calendar/>}/>
-                        <Route path='/profile' element={<Profile/>}/>
-                        {/*
                         <Route path='/reservations' element={<Reservations/>}/>
                         <Route path='/add-reservation' element={<AddReservation/>}/>
-                        */}
+                        <Route path='/profile' element={<Profile/>}/>
 
                         {/* Roles: [admin] */}
                         <Route path='/admin/courts' element={<Courts/>}/>
