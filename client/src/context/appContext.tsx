@@ -1,7 +1,7 @@
 import React, {useContext, useReducer} from 'react'
 import {
     CLEAR_ALERT,
-    CLEAR_VALUES,
+    CLEAR_COURT_VALUES,
     CREATE_COURT_BEGIN,
     CREATE_COURT_ERROR,
     CREATE_COURT_SUCCESS,
@@ -10,6 +10,7 @@ import {
     GET_COURTS_SUCCESS,
     HANDLE_CHANGE,
     LOGOUT_USER,
+    SET_EDIT_COURT,
     SETUP_USER_BEGIN,
     SETUP_USER_ERROR,
     SETUP_USER_SUCCESS,
@@ -167,7 +168,7 @@ export function AppProvider({children}) {
 
     const clearCourtValues = () => {
         // @ts-ignore
-        dispatch({type: CLEAR_VALUES})
+        dispatch({type: CLEAR_COURT_VALUES})
     }
 
     // @ts-ignore
@@ -209,7 +210,14 @@ export function AppProvider({children}) {
     }
 
     const setEditCourt = (id: any) => {
-        console.log(`set edit court : ${id}`)
+        dispatch({
+            // @ts-ignore
+            type: SET_EDIT_COURT, payload: {id}
+        })
+    }
+
+    const editCourt = () => {
+        console.log('edit court')
     }
 
     const deleteCourt = (id: any) => {
@@ -248,6 +256,7 @@ export function AppProvider({children}) {
                 handleCourtChange,
                 getCourts,
                 setEditCourt,
+                editCourt,
                 deleteCourt
             }}>
             {children}

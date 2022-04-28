@@ -17,7 +17,6 @@ export default function CourtsContainer() {
     }
 
     if (courts.length === 0) {
-        console.log(courts.length)
         return (
             <Paper>
                 <Typography>

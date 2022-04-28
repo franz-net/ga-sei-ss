@@ -1,6 +1,6 @@
 import {
     CLEAR_ALERT,
-    CLEAR_VALUES,
+    CLEAR_COURT_VALUES,
     CREATE_COURT_BEGIN,
     CREATE_COURT_ERROR,
     CREATE_COURT_SUCCESS,
@@ -9,6 +9,7 @@ import {
     GET_COURTS_SUCCESS,
     HANDLE_CHANGE,
     LOGOUT_USER,
+    SET_EDIT_COURT,
     SETUP_USER_BEGIN,
     SETUP_USER_ERROR,
     SETUP_USER_SUCCESS,
@@ -21,6 +22,7 @@ import {initialState} from "./appContext";
 
 export default function reducer(state: any, action: {
     type: string; payload: {
+        id: any;
         courts: any;
         user: any; token: any; location: any; alertText: any; msg: any;
     };
@@ -104,8 +106,9 @@ export default function reducer(state: any, action: {
             [action.payload.name]: action.payload.value,
         }
     }
-    if (action.type === CLEAR_VALUES) {
+    if (action.type === CLEAR_COURT_VALUES) {
         const initialState = {
+            isEditing: false,
             editCourtId: '',
             courtName: '',
             courtType: 'tennis',
@@ -148,6 +151,18 @@ export default function reducer(state: any, action: {
             showAlert: true,
             alertType: 'error',
             alertText: action.payload.msg
+        }
+    }
+    if (action.type === SET_EDIT_COURT) {
+        const court = state.courts.find((court: any) => court._id === action.payload.id)
+        const {_id, courtName, courtType, inService} = court
+        return {
+            ...state,
+            isEditing: true,
+            editCourtId: _id,
+            courtName,
+            courtType,
+            inService
         }
     }
 

@@ -1,5 +1,5 @@
 import {AccessTimeFilled, Ballot, SaveAs, Settings} from "@mui/icons-material";
-import {Avatar, Box, Button, Card, CardContent, Grid, Typography} from "@mui/material";
+import {Avatar, Box, Button, Card, CardContent, Divider, Grid, Typography} from "@mui/material";
 import {deepPurple, green} from "@mui/material/colors";
 import {format} from "date-fns";
 import {useAppContext} from "../context/appContext";
@@ -28,7 +28,8 @@ export default function Court({_id, courtName, courtType, inService, updatedAt}:
                         <Avatar
                             variant='square'
                             sx={{
-                                bgcolor: courtType === 'tennis' ? deepPurple[800] : green[800]
+                                bgcolor: courtType === 'tennis' ? deepPurple[800] : green[800],
+                                borderRadius: '15%'
                             }}
                         >
                             {courtType[0].toUpperCase()}
@@ -39,10 +40,13 @@ export default function Court({_id, courtName, courtType, inService, updatedAt}:
                             {courtName.toUpperCase()}
                         </Typography>
                     </Grid>
-
+                </Grid>
+                <Divider variant="middle" sx={{mt: 2}}></Divider>
+                <Grid container spacing={{xs: 1, md: 3}} sx={{m: {xs: 0, md: 1}}}>
                     {/* details row */}
 
                     <Grid item xs={6} md={5}>
+
                         <Box
                             sx={{
                                 display: 'flex',

@@ -27,7 +27,9 @@ export default function AddCourt() {
         courtType,
         inService,
         isEditing,
-        handleCourtChange
+        handleCourtChange,
+        editCourt,
+        clearCourtValues
     } = useAppContext()
 
     const handleInput = (e: any) => {
@@ -46,6 +48,10 @@ export default function AddCourt() {
         e.preventDefault()
         if (!courtName || !inService || !courtType) {
             displayAlert()
+            return
+        }
+        if (isEditing) {
+            editCourt()
             return
         }
         createCourt()
@@ -117,7 +123,7 @@ export default function AddCourt() {
                                 </RadioGroup>
                             </FormControl>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={5}>
                             <Button
                                 type="submit"
                                 fullWidth
@@ -126,6 +132,20 @@ export default function AddCourt() {
                                 disabled={isLoading}
                             >
                                 Save
+                            </Button>
+                        </Grid>
+                        <Grid item xs={5}>
+                            <Button
+                                type="button"
+                                fullWidth
+                                variant="contained"
+                                sx={{mt: 3, mb: 4}}
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    clearCourtValues()
+                                }}
+                            >
+                                Clear
                             </Button>
                         </Grid>
                     </Grid>

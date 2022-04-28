@@ -1,6 +1,7 @@
 import {BadRequestError, NotFoundError} from "../errors";
 import StatusCodes from "http-status-codes";
 import Court from "../models/Court";
+import checkPermissions from "../utils/checkPermissions";
 
 const createCourt = async (req, res) => {
 
@@ -31,12 +32,12 @@ const getAllCourts = async (req, res) => {
     // if frontEnd checking for reservations, need to exclude the ones that are not inService
 }
 
-
 const updateCourt = async (req, res) => {
     const {id: courtId} = req.params
     const {courtName, courtType, inService} = req.body
 
-    if (!courtName || !courtType || !inService) {
+    if (!courtName || !courtType || inService == null) {
+        console.log(courtName)
         throw new BadRequestError('Please provide all values')
     }
 
@@ -45,6 +46,9 @@ const updateCourt = async (req, res) => {
     if (!court) {
         throw new NotFoundError(`No court with id: ${courtId}`)
     }
+    // Only edit if admin
+    checkPermissions(req.user, court.createdBy)
+
     const updatedCourt = await Court.findOneAndUpdate({_id: courtId}, req.body, {
         new: true,
         runValidators: true,
@@ -60,6 +64,7 @@ const deleteCourt = async (req, res) => {
     if (!court) {
         throw new NotFoundError(`No court with id: ${courtId}`)
     }
+    checkPermissions(req.user, court.createdBy)
     await court.remove()
 
     res.status(StatusCodes.OK).json({msg: 'Success! Court has been removed'})
