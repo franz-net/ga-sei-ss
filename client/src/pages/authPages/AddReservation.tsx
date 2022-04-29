@@ -1,4 +1,19 @@
-import {Autocomplete, Box, Grid, Paper, TextField, Typography} from "@mui/material";
+import {
+    Box,
+    Button,
+    FormControl,
+    FormControlLabel,
+    FormLabel,
+    Grid,
+    InputLabel,
+    MenuItem,
+    Paper,
+    Radio,
+    RadioGroup,
+    Select,
+    TextField,
+    Typography
+} from "@mui/material";
 import {ScreenMessage} from "../../components";
 import {useAppContext} from "../../context/appContext";
 import {useNavigate} from "react-router-dom";
@@ -14,7 +29,10 @@ export default function AddReservation() {
         isEditing,
         courtId,
         date,
+        duration,
         courts,
+        timezone,
+        reservationCourtType,
         displayAlert,
         showAlert,
         createReservation,
@@ -22,45 +40,31 @@ export default function AddReservation() {
         editReservation,
         clearReservationValues,
         getCourts,
-        reservations,
+        //reservations, - This will be used later to determine if a court is available at that time.
         courtTypeOptions
     } = useAppContext()
 
-    const [courtType, setCourtType] = useState<string>('tennis')
-    const [filteredCourts, setFilteredCourts] = useState<any>(null)
+    console.log(duration.toString())
 
     useEffect(() => {
         getCourts()
     }, [])
 
+    const [filteredCourts, setFilteredCourts] = useState<any>(courts)
+
 
     useEffect(() => {
-        //output the filtered courts
-        console.log(courtType)
-        setFilteredCourts(courts.filter((court: any) => {
-            return court.courtType === courtType
-        }))
-    }, [courtType])
 
+        setFilteredCourts(courts.filter((court: any) => {
+            return court.courtType === reservationCourtType && court.inService
+        }))
+    }, [reservationCourtType])
 
     const navigate = useNavigate()
 
-    const handleDateInput = (date: any) => {
-        handleReservationChange({name: 'date', value: date})
-    }
-
-    const handleInput = (e: any) => {
-        console.log(e)
-        const name = e.target.name
-        let value = e.target.value
-
-        handleReservationChange({name, value})
-    }
-
-
     const onSubmit = (e: any) => {
         e.preventDefault()
-        if (!date || !courtId) {
+        if (!date || !courtId || !duration) {
             displayAlert()
             return
         }
@@ -95,55 +99,110 @@ export default function AddReservation() {
                     component='form'
                     onSubmit={onSubmit} sx={{mt: 3}}>
                     <Grid container spacing={3}>
+                        {/* time-picker */}
                         <Grid item xs={9} md={8}>
-
                             <LocalizationProvider dateAdapter={AdapterDateFns}>
                                 <DateTimePicker
                                     disablePast
                                     renderInput={(params) => <TextField name='date' {...params}/>}
                                     value={date}
                                     label="Reservation Date"
-                                    onChange={handleDateInput}
+                                    onChange={(e: any, value: any) => {
+                                        handleReservationChange({
+                                            name: 'date',
+                                            value: value
+                                        })
+                                        handleReservationChange({
+                                            name: 'timezone',
+                                            value: Intl.DateTimeFormat().resolvedOptions().timeZone
+                                        })
+                                    }}
                                     maxDate={add(new Date(), {days: 2})}
                                     minTime={new Date(0, 0, 0, 6, 0)}
                                     maxTime={new Date(0, 0, 0, 22, 0)}
                                     minutesStep={30}
                                 />
                             </LocalizationProvider>
-
                         </Grid>
 
                         <Grid item xs={9} md={8}>
-                            {/* @ts-ignore*/}
-                            <Autocomplete
-                                value={courtType}
-                                fullWidth
-                                options={courtTypeOptions}
-                                renderInput={(params) => <TextField {...params} label="Court Type"/>}
-                                onChange={(e: any, value: any) => {
-                                    setCourtType(value)
-                                }}
-                            >
-                            </Autocomplete>
-                        </Grid>
-                        {/*
-                        <Grid item xs={12} sm={6}>
-                            <FormControl fullWidth>
-                                <FormLabel id="inService-group">In Service</FormLabel>
+                            <FormControl>
+                                <FormLabel id="duration">Duration</FormLabel>
                                 <RadioGroup
-                                    aria-labelledby="inService-group"
-                                    name="inService"
-                                    onChange={handleInput}
-                                    value={inService}
+                                    row
+                                    aria-labelledby="duration"
+
+                                    value={duration.toString()}
+                                    name="duration"
+                                    onChange={(e) => {
+                                        handleReservationChange({
+                                            name: 'duration',
+                                            value: +e.target.value
+                                        })
+                                    }}
+
                                 >
-                                    {inServiceOptions.map((opt: string, index: number) => {
-                                        return (
-                                            <FormControlLabel key={index} value={opt} control={<Radio/>} label={opt}/>
-                                        )
-                                    })}
+                                    <FormControlLabel control={<Radio/>} value="1" label="1 hour"/>
+                                    <FormControlLabel control={<Radio/>} value="2" label="2 hour"/>
+                                    <FormControlLabel control={<Radio/>} value="3" label="3 hour"/>
+
                                 </RadioGroup>
                             </FormControl>
                         </Grid>
+
+                        {/* Court type picker */}
+                        <Grid item xs={9} md={5}>
+                            {/* @ts-ignore*/}
+                            <FormControl fullWidth>
+                                <InputLabel id='courtTypeSelect'>Court Type</InputLabel>
+                                <Select
+                                    labelId='courtTypeSelect'
+                                    label='Court Type'
+                                    value={reservationCourtType}
+                                    onChange={(e: any) => handleReservationChange({
+                                        name: 'reservationCourtType',
+                                        value: e.target.value
+                                    })}
+
+                                >
+                                    <MenuItem value=""> <em>None</em> </MenuItem>
+                                    {
+                                        courtTypeOptions.length >= 1
+                                            ? courtTypeOptions.map((courtType: any, i: number) => {
+                                                return (
+                                                    <MenuItem key={i} value={courtType}>{courtType}</MenuItem>
+                                                )
+                                            })
+                                            : <MenuItem value=""> <em>None</em> </MenuItem>
+                                    }
+                                </Select>
+                            </FormControl>
+                        </Grid>
+
+                        {/* Court Picker */}
+                        <Grid item xs={9} md={5}>
+                            {/* @ts-ignore*/}
+                            <FormControl fullWidth>
+                                <InputLabel id='courtTypeSelect'>Court</InputLabel>
+                                <Select
+                                    value={courtId}
+                                    labelId='Court'
+                                    label="Available Courts"
+                                    onChange={(e: any) => handleReservationChange({
+                                        name: 'courtId',
+                                        value: e.target.value
+                                    })}
+                                >
+                                    <MenuItem value=""> <em>None</em> </MenuItem>
+                                    {filteredCourts.map((court: any, i: number) => {
+                                        return (
+                                            <MenuItem key={i} value={court._id}>{court.courtName}</MenuItem>
+                                        )
+                                    })}
+                                </Select>
+                            </FormControl>
+                        </Grid>
+
                         <Grid item xs={5}>
                             <Button
                                 type="submit"
@@ -169,7 +228,7 @@ export default function AddReservation() {
                                 Clear
                             </Button>
                         </Grid>
-                        */}
+
                     </Grid>
 
                 </Box>

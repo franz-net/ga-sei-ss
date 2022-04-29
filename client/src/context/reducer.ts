@@ -1,15 +1,22 @@
 import {
     CLEAR_ALERT,
     CLEAR_COURT_VALUES,
+    CLEAR_RESERVATION_VALUES,
     CREATE_COURT_BEGIN,
     CREATE_COURT_ERROR,
     CREATE_COURT_SUCCESS,
+    CREATE_RESERVATION_BEGIN,
+    CREATE_RESERVATION_ERROR,
+    CREATE_RESERVATION_SUCCESS,
     DELETE_COURT_BEGIN,
     DELETE_RESERVATION_BEGIN,
     DISPLAY_ALERT,
     EDIT_COURT_BEGIN,
     EDIT_COURT_ERROR,
     EDIT_COURT_SUCCESS,
+    EDIT_RESERVATION_BEGIN,
+    EDIT_RESERVATION_ERROR,
+    EDIT_RESERVATION_SUCCESS,
     GET_COURTS_BEGIN,
     GET_COURTS_SUCCESS,
     GET_RESERVATIONS_BEGIN,
@@ -114,6 +121,8 @@ export default function reducer(state: any, action: {
             [action.payload.name]: action.payload.value,
         }
     }
+
+    // COURT ACTIONS
     if (action.type === CLEAR_COURT_VALUES) {
         const initialState = {
             isEditing: false,
@@ -136,6 +145,15 @@ export default function reducer(state: any, action: {
             alertText: 'New Court Created!',
         }
     }
+    if (action.type === CREATE_COURT_ERROR) {
+        return {
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType: 'error',
+            alertText: action.payload.msg
+        }
+    }
     if (action.type === GET_COURTS_BEGIN) {
         return {...state, isLoading: true, showAlert: false}
     }
@@ -150,15 +168,6 @@ export default function reducer(state: any, action: {
             totalCourts: action.payload.totalCourts,
             // @ts-ignore
             numOfPages: action.payload.numOfPages
-        }
-    }
-    if (action.type === CREATE_COURT_ERROR) {
-        return {
-            ...state,
-            isLoading: false,
-            showAlert: true,
-            alertType: 'error',
-            alertText: action.payload.msg
         }
     }
     if (action.type === SET_EDIT_COURT) {
@@ -197,6 +206,41 @@ export default function reducer(state: any, action: {
     if (action.type === DELETE_COURT_BEGIN) {
         return {...state, isLoading: true}
     }
+    // RESERVATION ACTIONS
+    if (action.type === CLEAR_RESERVATION_VALUES) {
+        const initialState = {
+            isEditing: false,
+            editReservationId: '',
+            courtId: '',
+            date: new Date(),
+            duration: 1,
+            timezone: '',
+            status: 'pending',
+            reservationCourtType: ''
+        }
+        return {...state, ...initialState}
+    }
+    if (action.type === CREATE_RESERVATION_BEGIN) {
+        return {...state, isLoading: true}
+    }
+    if (action.type === CREATE_RESERVATION_SUCCESS) {
+        return {
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType: 'success',
+            alertText: 'New Reservation Created!',
+        }
+    }
+    if (action.type === CREATE_RESERVATION_ERROR) {
+        return {
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType: 'error',
+            alertText: action.payload.msg
+        }
+    }
     if (action.type === GET_RESERVATIONS_BEGIN) {
         return {...state, isLoading: true, showAlert: false}
     }
@@ -216,18 +260,43 @@ export default function reducer(state: any, action: {
     }
     if (action.type === SET_EDIT_RESERVATION) {
         const reservation = state.reservations.find((reservation: any) => reservation._id === action.payload.id)
-        const {_id, courtName, courtType, date} = reservation
+        const {_id, courtId, date, duration, timezone, reservationCourtType, status} = reservation
         return {
             ...state,
             isEditing: true,
             editReservationId: _id,
-            courtName,
-            courtType,
-            date
+            courtId,
+            date,
+            duration,
+            timezone,
+            reservationCourtType,
+            status
+        }
+    }
+    if (action.type === EDIT_RESERVATION_BEGIN) {
+        return {...state, isLoading: true}
+    }
+    if (action.type === EDIT_RESERVATION_SUCCESS) {
+        return {
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType: 'success',
+            alertText: 'Reservation Updated!'
+        }
+    }
+    if (action.type === EDIT_RESERVATION_ERROR) {
+        return {
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType: 'error',
+            alertText: action.payload.msg,
         }
     }
     if (action.type === DELETE_RESERVATION_BEGIN) {
         return {...state, isLoading: true}
     }
+
     throw new Error(`no such action : ${action.type}`)
 }

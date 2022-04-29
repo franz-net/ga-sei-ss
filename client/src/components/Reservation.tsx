@@ -5,10 +5,9 @@ import {format} from "date-fns";
 import {useAppContext} from "../context/appContext";
 import {Link} from "react-router-dom";
 
-export default function Reservation({_id, court, date, timezone, status, updatedAt}: any) {
+export default function Reservation({_id, courtId, date, timezone, status, updatedAt}: any) {
 
-    const {courtName, courtType} = court
-    console.log(courtName)
+    const {courtName, courtType} = courtId
     const {setEditReservation, deleteReservation} = useAppContext()
 
     let displayDate = format(new Date(updatedAt), 'MMM do, yyyy')
@@ -34,7 +33,7 @@ export default function Reservation({_id, court, date, timezone, status, updated
                                 borderRadius: '15%'
                             }}
                         >
-                            {court.courtType[0].toUpperCase()}
+                            {courtId.courtType[0].toUpperCase()}
                         </Avatar>
                     </Grid>
                     <Grid item xs={9} md={9}>
@@ -58,7 +57,7 @@ export default function Reservation({_id, court, date, timezone, status, updated
                         >
                             <Ballot sx={{mr: 2}}/>
                             <Typography variant="subtitle1" color="text.secondary">
-                                {court.courtType} court
+                                {courtId.courtType} court
                             </Typography>
                         </Box>
                     </Grid>

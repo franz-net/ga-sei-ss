@@ -7,7 +7,7 @@ const ReservationSchema = new mongoose.Schema({
             ref: 'User',
             required: [true, 'Please provide a user']
         },
-        court: {
+        courtId: {
             type: mongoose.Types.ObjectId,
             ref: 'Court',
             required: [true, 'Please provide a court']

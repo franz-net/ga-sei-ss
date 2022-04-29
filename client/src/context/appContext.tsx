@@ -2,15 +2,22 @@ import React, {useContext, useReducer} from 'react'
 import {
     CLEAR_ALERT,
     CLEAR_COURT_VALUES,
+    CLEAR_RESERVATION_VALUES,
     CREATE_COURT_BEGIN,
     CREATE_COURT_ERROR,
     CREATE_COURT_SUCCESS,
+    CREATE_RESERVATION_BEGIN,
+    CREATE_RESERVATION_ERROR,
+    CREATE_RESERVATION_SUCCESS,
     DELETE_COURT_BEGIN,
     DELETE_RESERVATION_BEGIN,
     DISPLAY_ALERT,
     EDIT_COURT_BEGIN,
     EDIT_COURT_ERROR,
     EDIT_COURT_SUCCESS,
+    EDIT_RESERVATION_BEGIN,
+    EDIT_RESERVATION_ERROR,
+    EDIT_RESERVATION_SUCCESS,
     GET_COURTS_BEGIN,
     GET_COURTS_SUCCESS,
     GET_RESERVATIONS_BEGIN,
@@ -56,10 +63,13 @@ export const initialState = {
     page: 1,
     numOfPages: 1,
     //Reservations state
-    editReservationtId: '',
+    editReservationId: '',
     courtId: '',
+    timezone: 'america/chicago',
+    reservationCourtType: '',
     date: new Date(),
-    status: '',
+    status: 'pending',
+    duration: 1,
     reservations: [],
     totalReservations: 0,
 }
@@ -260,8 +270,27 @@ export function AppProvider({children}) {
     }
 
     const createReservation = async () => {
-
+        // @ts-ignore
+        dispatch({type: CREATE_RESERVATION_BEGIN})
+        try {
+            const {courtId, date, duration, timezone, status} = state
+            console.log(courtId, date, duration, timezone, status)
+            await authFetch.post('/reservation', {courtId, date, duration, timezone, status})
+            // @ts-ignore
+            dispatch({type: CREATE_RESERVATION_SUCCESS})
+            // @ts-ignore
+            clearReservationValues()
+        } catch (error) {
+            // @ts-ignore
+            console.log(error.response.data.message)
+            // @ts-ignore
+            if (error.response.status === 401) logoutUser()
+            // @ts-ignore
+            dispatch({type: CREATE_RESERVATION_ERROR, payload: {msg: error.response.data.message}})
+        }
+        clearAlert()
     }
+
 
     // @ts-ignore
     const handleReservationChange = ({name, value}) => {
@@ -269,7 +298,31 @@ export function AppProvider({children}) {
         dispatch({type: HANDLE_CHANGE, payload: {name, value}})
     }
 
-    const updateReservation = async () => {
+    const clearReservationValues = () => {
+        // @ts-ignore
+        dispatch({type: CLEAR_RESERVATION_VALUES})
+    }
+
+    const editReservation = async () => {
+        // @ts-ignore
+        dispatch({type: EDIT_RESERVATION_BEGIN})
+        try {
+            const {courtId, date, duration, timezone, status} = state
+            await authFetch.patch(`/reservation/${state.editReservationId}`, {
+                courtId, date, duration, timezone, status
+            })
+            // @ts-ignore
+            dispatch({type: EDIT_RESERVATION_SUCCESS})
+            // @ts-ignore
+            dispatch({type: CLEAR_COURT_VALUES})
+        } catch (error) {
+            // @ts-ignore
+            if (error.response.status === 401) return
+            // @ts-ignore
+            dispatch({type: EDIT_RESERVATION_ERROR, payload: {msg: error.response.data.message}})
+            console.log(error)
+            //logoutUser()
+        }
     }
 
     const getReservations = async () => {
@@ -335,9 +388,10 @@ export function AppProvider({children}) {
                 handleReservationChange,
                 getReservations,
                 setEditReservation,
-                updateReservation,
+                editReservation,
                 createReservation,
-                deleteReservation
+                deleteReservation,
+                clearReservationValues
             }}>
             {children}
         </AppContext.Provider>

@@ -5,15 +5,17 @@ import {dateToUtc} from "../utils/dates";
 
 const createReservation = async (req, res) => {
 
-    const {court, timezone} = req.body
+    const {courtId, timezone} = req.body
 
-    if (!court || !req.body.date || !timezone) {
+    if (!courtId || !req.body.date || !timezone) {
+        console.log(courtId, timezone, req.body.date)
+        console.log('error here!!')
         throw new BadRequestError("Please provide all reservation details")
     }
 
     const date = dateToUtc(req.body.date, timezone)
 
-    const courtAlreadyReserved = await Reservation.findOne({date, court})
+    const courtAlreadyReserved = await Reservation.findOne({date, courtId})
     if (courtAlreadyReserved) {
         throw new BadRequestError(`Error, this time is already reserved.`)
     }
@@ -57,11 +59,9 @@ const updateReservation = async (req, res) => {
 
 const getReservations = async (req, res) => {
     // If admin get All
-    const reservations = await Reservation.find({user: req.user.userId, court: {$ne: null}})
+    const reservations = await Reservation.find({user: req.user.userId, courtId: {$ne: null}})
         .populate({path: 'user', select: 'email'})
-        .populate({path: 'court', select: ['courtName', 'courtType']})
-
-    console.log(reservations)
+        .populate({path: 'courtId', select: ['courtName', 'courtType']})
 
     res.status(StatusCodes.OK).json({reservations, totalReservations: reservations.length, numOfPages: 1})
 
