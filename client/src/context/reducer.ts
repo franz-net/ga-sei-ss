@@ -37,6 +37,7 @@ import {initialState} from "./appContext";
 
 export default function reducer(state: any, action: {
     type: string; payload: {
+        rCourtType: any;
         id: any;
         courts: any;
         user: any; token: any; location: any; alertText: any; msg: any;
@@ -260,16 +261,16 @@ export default function reducer(state: any, action: {
     }
     if (action.type === SET_EDIT_RESERVATION) {
         const reservation = state.reservations.find((reservation: any) => reservation._id === action.payload.id)
-        const {_id, courtId, date, duration, timezone, reservationCourtType, status} = reservation
+        const {_id, courtId, date, duration, timezone, status} = reservation
         return {
             ...state,
             isEditing: true,
             editReservationId: _id,
-            courtId,
+            courtId: courtId._id,
             date,
             duration,
             timezone,
-            reservationCourtType,
+            reservationCourtType: action.payload.rCourtType,
             status
         }
     }

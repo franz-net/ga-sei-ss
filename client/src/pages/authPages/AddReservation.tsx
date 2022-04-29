@@ -14,7 +14,7 @@ import {
     TextField,
     Typography
 } from "@mui/material";
-import {ScreenMessage} from "../../components";
+import {Loader, ScreenMessage} from "../../components";
 import {useAppContext} from "../../context/appContext";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
@@ -23,7 +23,7 @@ import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
 import {add} from "date-fns";
 
 export default function AddReservation() {
-
+    const navigate = useNavigate()
     const {
         isLoading,
         isEditing,
@@ -31,7 +31,6 @@ export default function AddReservation() {
         date,
         duration,
         courts,
-        timezone,
         reservationCourtType,
         displayAlert,
         showAlert,
@@ -50,16 +49,12 @@ export default function AddReservation() {
 
     const [filteredCourts, setFilteredCourts] = useState<any>(courts)
 
-
     useEffect(() => {
-
         setFilteredCourts(courts.filter((court: any) => {
             return court.courtType === reservationCourtType && court.inService
         }))
-    }, [reservationCourtType])
-
-    const navigate = useNavigate()
-
+    }, [reservationCourtType, courts])
+    
     const onSubmit = (e: any) => {
         e.preventDefault()
         if (!date || !courtId || !duration) {
@@ -69,13 +64,16 @@ export default function AddReservation() {
         if (isEditing) {
             editReservation()
 
-            navigate('/admin/reservations')
+            navigate('/reservations')
             return
 
         }
         createReservation()
     }
 
+    if (isEditing && (filteredCourts.length < 1)) {
+        return <Paper><Loader/></Paper>
+    }
 
     return (
         <Paper

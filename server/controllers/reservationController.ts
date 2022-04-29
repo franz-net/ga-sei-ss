@@ -28,9 +28,11 @@ const createReservation = async (req, res) => {
 
 const updateReservation = async (req, res) => {
     const {id: reservationId} = req.params
-    const {court, timezone,} = req.body
+    const {courtId, timezone,} = req.body
 
-    if (!court || !req.body.date || !timezone) {
+    console.log(courtId, timezone)
+
+    if (!courtId || !req.body.date || !timezone) {
         throw new BadRequestError("Please provide all reservation details")
     }
 
@@ -42,7 +44,7 @@ const updateReservation = async (req, res) => {
 
     const date = dateToUtc(req.body.date, timezone)
 
-    const courtAlreadyReserved = await Reservation.findOne({date, court})
+    const courtAlreadyReserved = await Reservation.findOne({date, courtId})
     if (courtAlreadyReserved) {
         throw new BadRequestError(`Error, this time is already reserved.`)
     }

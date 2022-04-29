@@ -5,7 +5,7 @@ import {format} from "date-fns";
 import {useAppContext} from "../context/appContext";
 import {Link} from "react-router-dom";
 
-export default function Reservation({_id, courtId, date, timezone, status, updatedAt}: any) {
+export default function Reservation({_id, courtId, date, status, updatedAt}: any) {
 
     const {courtName, courtType} = courtId
     const {setEditReservation, deleteReservation} = useAppContext()
@@ -124,7 +124,7 @@ export default function Reservation({_id, courtId, date, timezone, status, updat
                                 color="primary"
                                 sx={{mr: 2}}
                                 to="/add-reservation"
-                                onClick={() => setEditReservation(_id)}
+                                onClick={() => setEditReservation(_id, courtType)}
 
                             >
                                 Update

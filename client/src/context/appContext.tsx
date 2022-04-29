@@ -126,7 +126,6 @@ export function AppProvider({children}) {
     }
 
     const toggleSidebar = () => {
-        console.log('toggle')
         // @ts-ignore
         dispatch({type: TOGGLE_SIDEBAR})
     }
@@ -274,7 +273,6 @@ export function AppProvider({children}) {
         dispatch({type: CREATE_RESERVATION_BEGIN})
         try {
             const {courtId, date, duration, timezone, status} = state
-            console.log(courtId, date, duration, timezone, status)
             await authFetch.post('/reservation', {courtId, date, duration, timezone, status})
             // @ts-ignore
             dispatch({type: CREATE_RESERVATION_SUCCESS})
@@ -308,6 +306,7 @@ export function AppProvider({children}) {
         dispatch({type: EDIT_RESERVATION_BEGIN})
         try {
             const {courtId, date, duration, timezone, status} = state
+            console.log(courtId, date, duration, timezone, status)
             await authFetch.patch(`/reservation/${state.editReservationId}`, {
                 courtId, date, duration, timezone, status
             })
@@ -331,7 +330,6 @@ export function AppProvider({children}) {
         dispatch({type: GET_RESERVATIONS_BEGIN})
         try {
             const {data} = await authFetch.get(url)
-            console.log(data)
             const {reservations, totalReservations, numOfPages} = data
             // @ts-ignore
             dispatch({type: GET_RESERVATIONS_SUCCESS, payload: {reservations, totalReservations, numOfPages}})
@@ -342,10 +340,10 @@ export function AppProvider({children}) {
         clearAlert()
     }
 
-    const setEditReservation = (id: any) => {
+    const setEditReservation = (id: any, rCourtType: any) => {
         dispatch({
             // @ts-ignore
-            type: SET_EDIT_RESERVATION, payload: {id}
+            type: SET_EDIT_RESERVATION, payload: {id, rCourtType}
         })
     }
 
