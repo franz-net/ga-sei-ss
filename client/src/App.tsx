@@ -1,7 +1,7 @@
 import React from 'react';
 import {Landing, NotFoundError, ProtectedRoute, Signup} from './pages';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {AddCourt, AddReservation, Courts, Dashboard, MasterLayout, Profile, Reservations} from "./pages/authPages";
+import {AddCourt, AddReservation, Courts, MasterLayout, Profile, Reservations} from "./pages/authPages";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
 
@@ -39,9 +39,9 @@ export default function App() {
                             <MasterLayout/>
                         </ProtectedRoute>
                     }>
-                        {/* Roles: [user, admin, instructor] */}
-                        <Route index element={<Dashboard/>}/>
-                        <Route path='/reservations' element={<Reservations/>}/>
+                        {/* Roles: [user, admin, instructor]
+                        <Route index element={<Dashboard/>}/>*/}
+                        <Route index element={<Reservations/>}/>
                         <Route path='/add-reservation' element={<AddReservation/>}/>
                         <Route path='/profile' element={<Profile/>}/>
 

@@ -74,7 +74,7 @@ export default function AddReservation() {
         if (isEditing) {
             editReservation()
 
-            navigate('/reservations')
+            navigate('/')
             return
         }
         createReservation()

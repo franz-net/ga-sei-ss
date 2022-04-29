@@ -134,7 +134,7 @@ export default function Reservation({_id, courtId, date, status, updatedAt, dura
                                 component={Link}
                                 size='small'
                                 variant="contained"
-                                color="primary"
+                                color="secondary"
                                 sx={{mr: 2}}
                                 to="/add-reservation"
                                 onClick={() => setEditReservation(_id, courtType)}

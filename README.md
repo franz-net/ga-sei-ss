@@ -73,14 +73,23 @@ Joan is a padel instructor and is working @ Smash Studio:
 
 ---
 
+# Urgent Issues
+
+- JWT token is not stored in an http-only cookie
+- Issues with time conversion from UTC
+- Little details with styling and spacing on experimental MUI components
+- Role based routing on the Front End
+- User Administration
+- Editing a reservation has issues with the time picker
+
+---
+
 # Roadmap
 
 ## Near-Term
 
-- Store JWT token in `http-only` cookie
 - Finalize admin pages
 - Email notifications
-- Dynamic routes based on role
 
 ## Long-Term
 
