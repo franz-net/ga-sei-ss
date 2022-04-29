@@ -44,8 +44,6 @@ export default function AddReservation() {
         courtTypeOptions
     } = useAppContext()
 
-    console.log(duration.toString())
-
     useEffect(() => {
         getCourts()
     }, [])
@@ -132,7 +130,7 @@ export default function AddReservation() {
                                     row
                                     aria-labelledby="duration"
 
-                                    value={duration.toString()}
+                                    value={1}
                                     name="duration"
                                     onChange={(e) => {
                                         handleReservationChange({
@@ -142,9 +140,9 @@ export default function AddReservation() {
                                     }}
 
                                 >
-                                    <FormControlLabel control={<Radio/>} value="1" label="1 hour"/>
-                                    <FormControlLabel control={<Radio/>} value="2" label="2 hour"/>
-                                    <FormControlLabel control={<Radio/>} value="3" label="3 hour"/>
+                                    <FormControlLabel control={<Radio/>} value={1} label="1 hour"/>
+                                    <FormControlLabel control={<Radio/>} value={2} label="2 hour"/>
+                                    <FormControlLabel control={<Radio/>} value={3} label="3 hour"/>
 
                                 </RadioGroup>
                             </FormControl>
