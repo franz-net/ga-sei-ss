@@ -18,9 +18,9 @@ import {ScreenMessage} from "../../components";
 import {useAppContext} from "../../context/appContext";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {DateTimePicker, LocalizationProvider} from "@mui/x-date-pickers";
+import {DatePicker, LocalizationProvider, TimePicker} from "@mui/x-date-pickers";
 import {AdapterDateFns} from "@mui/x-date-pickers/AdapterDateFns";
-import {add} from "date-fns";
+import {add, formatISO, parseISO} from "date-fns";
 
 export default function AddReservation() {
     const navigate = useNavigate()
@@ -55,6 +55,14 @@ export default function AddReservation() {
         }))
     }, [reservationCourtType, courts])
 
+
+    const handleTimeChange = (value: any) => {
+        let newDate = `${formatISO(date, {representation: 'date'})}T${formatISO(value, {representation: 'time'})}`
+        handleReservationChange({
+            name: 'date',
+            value: parseISO(newDate)
+        })
+    }
     const onSubmit = (e: any) => {
         e.preventDefault()
         if (!date || !courtId || !duration) {
@@ -68,7 +76,6 @@ export default function AddReservation() {
 
             navigate('/reservations')
             return
-
         }
         createReservation()
     }
@@ -91,61 +98,82 @@ export default function AddReservation() {
                 {showAlert && <ScreenMessage/>}
                 <Box
                     component='form'
-                    onSubmit={onSubmit} sx={{mt: 3}}>
-                    <Grid container spacing={3}>
-                        {/* time-picker */}
-                        <Grid item xs={9} md={8}>
-                            <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                <DateTimePicker
-                                    disablePast
-                                    renderInput={(params) => <TextField name='date' {...params}/>}
-                                    value={date}
-                                    label="Reservation Date"
-                                    onChange={(e: any, value: any) => {
-                                        handleReservationChange({
-                                            name: 'date',
-                                            value: value
-                                        })
-                                        handleReservationChange({
-                                            name: 'timezone',
-                                            value: Intl.DateTimeFormat().resolvedOptions().timeZone
-                                        })
-                                    }}
-                                    maxDate={add(new Date(), {days: 2})}
-                                    minTime={new Date(0, 0, 0, 6, 0)}
-                                    maxTime={new Date(0, 0, 0, 22, 0)}
-                                    minutesStep={30}
-                                />
-                            </LocalizationProvider>
-                        </Grid>
+                    onSubmit={onSubmit}
+                    sx={{mt: 3, display: 'flex', flexWrap: 'wrap', gap: '1em', justifyItems: 'center', ml: 6}}>
 
-                        <Grid item xs={9} md={8}>
-                            <FormControl>
-                                <FormLabel id="duration">Duration</FormLabel>
-                                <RadioGroup
-                                    row
-                                    aria-labelledby="duration"
+                    {/* time-picker */}
+                    <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                        <LocalizationProvider dateAdapter={AdapterDateFns}>
+                            <DatePicker
+                                disablePast
+                                renderInput={(params) => <TextField name='date' {...params}/>}
+                                value={
+                                    new Date(
+                                        Date.UTC(
+                                            new Date(date).getFullYear(),
+                                            new Date(date).getMonth(),
+                                            new Date(date).getDate(),
+                                            new Date(date).getHours(),
+                                            new Date(date).getMinutes(),
+                                            new Date(date).getSeconds()
+                                        ))}
+                                label="Reservation Date"
+                                onChange={(value: any) => {
+                                    handleReservationChange({
+                                        name: 'date',
+                                        value: value
+                                    })
+                                }}
+                                maxDate={add(new Date(), {days: 2})}
+                            />
+                        </LocalizationProvider>
+                    </Box>
+                    <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                        <LocalizationProvider dateAdapter={AdapterDateFns} fullWidth>
+                            <TimePicker
 
-                                    value={1}
-                                    name="duration"
-                                    onChange={(e) => {
-                                        handleReservationChange({
-                                            name: 'duration',
-                                            value: +e.target.value
-                                        })
-                                    }}
+                                renderInput={(params) => <TextField name='date' {...params}/>}
+                                value={new Date(date)}
+                                label="Reservation Time"
+                                onChange={(value: any) => {
 
-                                >
-                                    <FormControlLabel control={<Radio/>} value={1} label="1 hour"/>
-                                    <FormControlLabel control={<Radio/>} value={2} label="2 hour"/>
-                                    <FormControlLabel control={<Radio/>} value={3} label="3 hour"/>
+                                    console.log(value)
+                                    handleTimeChange(value)
+                                }}
+                                minTime={new Date(0, 0, 0, 6, 0)}
+                                maxTime={new Date(0, 0, 0, 22, 0)}
+                                minutesStep={30}
+                            />
+                        </LocalizationProvider>
+                    </Box>
+                    <Box sx={{display: 'flex', justifyContent: 'center'}}>
+                        <FormControl>
+                            <FormLabel id="duration">Duration</FormLabel>
+                            <RadioGroup
+                                row
+                                aria-labelledby="duration"
+                                value={duration}
+                                name="duration"
+                                onChange={(e) => {
+                                    handleReservationChange({
+                                        name: 'duration',
+                                        value: +e.target.value
+                                    })
+                                }}
 
-                                </RadioGroup>
-                            </FormControl>
-                        </Grid>
+                            >
+                                <FormControlLabel control={<Radio/>} value={1} label="1 hour"/>
+                                <FormControlLabel control={<Radio/>} value={2} label="2 hour"/>
+                                <FormControlLabel control={<Radio/>} value={3} label="3 hour"/>
 
-                        {/* Court type picker */}
-                        <Grid item xs={9} md={5}>
+                            </RadioGroup>
+                        </FormControl>
+                    </Box>
+
+
+                    {/* Court type picker */}
+                    <Grid container spacing={3} sx={{}}>
+                        <Grid item xs={5}>
                             {/* @ts-ignore*/}
                             <FormControl fullWidth>
                                 <InputLabel id='courtTypeSelect'>Court Type</InputLabel>
@@ -180,14 +208,14 @@ export default function AddReservation() {
                         </Grid>
 
                         {/* Court Picker */}
-                        <Grid item xs={9} md={5}>
+                        <Grid item xs={5}>
                             {/* @ts-ignore*/}
                             <FormControl fullWidth>
                                 <InputLabel id='courtTypeSelect'>Court</InputLabel>
                                 <Select
                                     value={courtId}
                                     labelId='Court'
-                                    label="Available Courts"
+                                    label="Court"
                                     onChange={(e: any) => handleReservationChange({
                                         name: 'courtId',
                                         value: e.target.value
@@ -229,11 +257,8 @@ export default function AddReservation() {
                                 Clear
                             </Button>
                         </Grid>
-
                     </Grid>
-
                 </Box>
-
             </Box>
         </Paper>
     )

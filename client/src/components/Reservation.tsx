@@ -1,14 +1,27 @@
-import {AccessTimeFilled, Ballot, SaveAs, Settings} from "@mui/icons-material";
+import {AccessTimeFilled, FactCheck, SportsTennis} from "@mui/icons-material";
 import {Avatar, Box, Button, Card, CardContent, Divider, Grid, Typography} from "@mui/material";
 import {deepPurple, green} from "@mui/material/colors";
-import {format} from "date-fns";
+import {format} from "date-fns-tz";
 import {useAppContext} from "../context/appContext";
 import {Link} from "react-router-dom";
+import {add} from "date-fns";
 
-export default function Reservation({_id, courtId, date, status, updatedAt}: any) {
+export default function Reservation({_id, courtId, date, status, updatedAt, duration}: any) {
 
     const {courtName, courtType} = courtId
-    const {setEditReservation, deleteReservation} = useAppContext()
+    const {setEditReservation, deleteReservation, timezone} = useAppContext()
+    let resDate = new Date(date)
+    let zonedDate =
+        new Date(
+            Date.UTC(
+                resDate.getFullYear(),
+                resDate.getMonth(),
+                resDate.getDate(),
+                resDate.getHours(),
+                resDate.getMinutes(),
+                resDate.getSeconds()
+            ))
+    console.log('zonedDate', zonedDate)
 
     let displayDate = format(new Date(updatedAt), 'MMM do, yyyy')
     let time = format(new Date(updatedAt), 'HH:mm:ss')
@@ -38,7 +51,7 @@ export default function Reservation({_id, courtId, date, status, updatedAt}: any
                     </Grid>
                     <Grid item xs={9} md={9}>
                         <Typography variant="h5" sx={{fontWeight: 700}} gutterBottom color="text.primary">
-                            {courtName.toUpperCase()}
+                            {format(zonedDate, 'MMM do, yyyy')}
                         </Typography>
                     </Grid>
                 </Grid>
@@ -55,9 +68,9 @@ export default function Reservation({_id, courtId, date, status, updatedAt}: any
                                 alignItems: 'center'
                             }}
                         >
-                            <Ballot sx={{mr: 2}}/>
+                            <AccessTimeFilled sx={{mr: 2}}/>
                             <Typography variant="subtitle1" color="text.secondary">
-                                {courtId.courtType} court
+                                Start: {format(zonedDate, 'HH:mm')}
                             </Typography>
                         </Box>
                     </Grid>
@@ -70,9 +83,9 @@ export default function Reservation({_id, courtId, date, status, updatedAt}: any
                                 alignItems: 'center'
                             }}
                         >
-                            <Settings sx={{mr: 2}}/>
+                            <AccessTimeFilled sx={{mr: 2}}/>
                             <Typography variant="subtitle1" color="text.secondary">
-                                {status}
+                                End: {format(add(zonedDate, {hours: duration}), 'HH:mm')}
                             </Typography>
                         </Box>
                     </Grid>
@@ -87,9 +100,9 @@ export default function Reservation({_id, courtId, date, status, updatedAt}: any
                                 alignItems: 'center'
                             }}
                         >
-                            <SaveAs sx={{mr: 2}}/>
+                            <SportsTennis sx={{mr: 2}}/>
                             <Typography variant="subtitle1" color="text.secondary">
-                                {date}
+                                Court: {courtName}
                             </Typography>
                         </Box>
                     </Grid>
@@ -101,9 +114,9 @@ export default function Reservation({_id, courtId, date, status, updatedAt}: any
                                 alignItems: 'center'
                             }}
                         >
-                            <AccessTimeFilled sx={{mr: 2}}/>
+                            <FactCheck sx={{mr: 2}}/>
                             <Typography variant="subtitle1" color="text.secondary">
-                                {time}
+                                {status}
                             </Typography>
                         </Box>
                     </Grid>

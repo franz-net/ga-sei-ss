@@ -215,7 +215,7 @@ export default function reducer(state: any, action: {
             courtId: '',
             date: new Date(),
             duration: 1,
-            timezone: '',
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
             status: 'pending',
             reservationCourtType: ''
         }
@@ -269,7 +269,6 @@ export default function reducer(state: any, action: {
             courtId: courtId._id,
             date,
             duration,
-            timezone,
             reservationCourtType: action.payload.rCourtType,
             status
         }

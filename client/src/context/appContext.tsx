@@ -65,7 +65,7 @@ export const initialState = {
     //Reservations state
     editReservationId: '',
     courtId: '',
-    timezone: 'america/chicago',
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
     reservationCourtType: '',
     date: new Date(),
     status: 'pending',

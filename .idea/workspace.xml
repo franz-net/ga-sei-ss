@@ -3,11 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CourtsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CourtsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/ReservationsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ReservationsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SearchCourtsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SearchCourtsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/SearchReservationsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/SearchReservationsContainer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Reservation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Reservation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/appContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/context/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/AddCourt.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/AddCourt.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/AddReservation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/AddReservation.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +87,7 @@
       <workItem from="1650948947077" duration="5799000" />
       <workItem from="1651000261627" duration="19569000" />
       <workItem from="1651071044856" duration="30000" />
-      <workItem from="1651071088369" duration="73909000" />
+      <workItem from="1651071088369" duration="85666000" />
     </task>
     <servers />
   </component>
