@@ -5,6 +5,7 @@ import {
     CREATE_COURT_ERROR,
     CREATE_COURT_SUCCESS,
     DELETE_COURT_BEGIN,
+    DELETE_RESERVATION_BEGIN,
     DISPLAY_ALERT,
     EDIT_COURT_BEGIN,
     EDIT_COURT_ERROR,
@@ -224,6 +225,9 @@ export default function reducer(state: any, action: {
             courtType,
             date
         }
+    }
+    if (action.type === DELETE_RESERVATION_BEGIN) {
+        return {...state, isLoading: true}
     }
     throw new Error(`no such action : ${action.type}`)
 }

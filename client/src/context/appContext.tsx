@@ -6,6 +6,7 @@ import {
     CREATE_COURT_ERROR,
     CREATE_COURT_SUCCESS,
     DELETE_COURT_BEGIN,
+    DELETE_RESERVATION_BEGIN,
     DISPLAY_ALERT,
     EDIT_COURT_BEGIN,
     EDIT_COURT_ERROR,
@@ -295,6 +296,19 @@ export function AppProvider({children}) {
         })
     }
 
+    const deleteReservation = async (id: any) => {
+        // @ts-ignore
+        dispatch({type: DELETE_RESERVATION_BEGIN})
+        try {
+            await authFetch.delete(`/reservation/${id}`)
+            getReservations()
+        } catch (error) {
+            // @ts-ignore
+            console.log(error.response)
+            //logoutUser()
+        }
+    }
+
     const logoutUser = () => {
         // @ts-ignore
         dispatch({type: LOGOUT_USER})
@@ -322,7 +336,8 @@ export function AppProvider({children}) {
                 getReservations,
                 setEditReservation,
                 updateReservation,
-                createReservation
+                createReservation,
+                deleteReservation
             }}>
             {children}
         </AppContext.Provider>

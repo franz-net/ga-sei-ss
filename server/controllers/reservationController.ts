@@ -57,10 +57,11 @@ const updateReservation = async (req, res) => {
 
 const getReservations = async (req, res) => {
     // If admin get All
-    const reservations = await Reservation.find({user: req.user.userId})
+    const reservations = await Reservation.find({user: req.user.userId, court: {$ne: null}})
         .populate({path: 'user', select: 'email'})
-        .populate({path: 'court', select: ['courtName', 'courtType', 'inService']})
+        .populate({path: 'court', select: ['courtName', 'courtType']})
 
+    console.log(reservations)
 
     res.status(StatusCodes.OK).json({reservations, totalReservations: reservations.length, numOfPages: 1})
 

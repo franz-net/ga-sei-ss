@@ -26,6 +26,19 @@ const ReservationSchema = new mongoose.Schema({
                 message: "The reservation must start 2 hours from now and up to 2 days in advance"
             }
         },
+        duration: {
+            type: Number,
+            required: [true, 'Please provide a reservation duration'],
+            validate: {
+                validator: function (v) {
+                    return (
+                        v &&
+                        v <= 3 && v >= 1
+                    )
+                },
+                message: "The minimum is 1 hour, the max is 3 hours"
+            }
+        },
         timezone: {
             type: String,
             required: [true, 'Please provide a valid IANA Time Zone']

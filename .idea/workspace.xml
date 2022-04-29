@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/LandingHeader.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LandingHeader.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TopBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TopBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/appContext.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/context/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/reservationController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/reservationController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Reservation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Reservation.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +83,7 @@
       <workItem from="1650948947077" duration="5799000" />
       <workItem from="1651000261627" duration="19569000" />
       <workItem from="1651071044856" duration="30000" />
-      <workItem from="1651071088369" duration="42042000" />
+      <workItem from="1651071088369" duration="46081000" />
     </task>
     <servers />
   </component>
