@@ -14,7 +14,7 @@ import {
     TextField,
     Typography
 } from "@mui/material";
-import {Loader, ScreenMessage} from "../../components";
+import {ScreenMessage} from "../../components";
 import {useAppContext} from "../../context/appContext";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
@@ -54,10 +54,12 @@ export default function AddReservation() {
             return court.courtType === reservationCourtType && court.inService
         }))
     }, [reservationCourtType, courts])
-    
+
     const onSubmit = (e: any) => {
         e.preventDefault()
         if (!date || !courtId || !duration) {
+            console.log(date, courtId, duration)
+            console.log("error here!")
             displayAlert()
             return
         }
@@ -69,10 +71,6 @@ export default function AddReservation() {
 
         }
         createReservation()
-    }
-
-    if (isEditing && (filteredCourts.length < 1)) {
-        return <Paper><Loader/></Paper>
     }
 
     return (
@@ -155,10 +153,16 @@ export default function AddReservation() {
                                     labelId='courtTypeSelect'
                                     label='Court Type'
                                     value={reservationCourtType}
-                                    onChange={(e: any) => handleReservationChange({
-                                        name: 'reservationCourtType',
-                                        value: e.target.value
-                                    })}
+                                    onChange={(e: any) => {
+                                        handleReservationChange({
+                                            name: 'reservationCourtType',
+                                            value: e.target.value
+                                        })
+                                        handleReservationChange({
+                                            name: 'courtId',
+                                            value: ''
+                                        })
+                                    }}
 
                                 >
                                     <MenuItem value=""> <em>None</em> </MenuItem>
@@ -189,12 +193,13 @@ export default function AddReservation() {
                                         value: e.target.value
                                     })}
                                 >
-                                    <MenuItem value=""> <em>None</em> </MenuItem>
-                                    {filteredCourts.map((court: any, i: number) => {
-                                        return (
-                                            <MenuItem key={i} value={court._id}>{court.courtName}</MenuItem>
-                                        )
-                                    })}
+                                    {filteredCourts.length > 0
+                                        ? filteredCourts.map((court: any, i: number) => {
+                                            return (
+                                                <MenuItem key={i} value={court._id}>{court.courtName}</MenuItem>
+                                            )
+                                        })
+                                        : <MenuItem value=""> <em>None</em> </MenuItem>}
                                 </Select>
                             </FormControl>
                         </Grid>

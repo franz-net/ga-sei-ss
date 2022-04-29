@@ -313,7 +313,7 @@ export function AppProvider({children}) {
             // @ts-ignore
             dispatch({type: EDIT_RESERVATION_SUCCESS})
             // @ts-ignore
-            dispatch({type: CLEAR_COURT_VALUES})
+            clearReservationValues()
         } catch (error) {
             // @ts-ignore
             if (error.response.status === 401) return
@@ -365,7 +365,6 @@ export function AppProvider({children}) {
         dispatch({type: LOGOUT_USER})
         removeUserFromLocalStorage()
     }
-
 
     return (
         <AppContext.Provider

@@ -1,7 +1,7 @@
 import {useAppContext} from "../context/appContext";
 import {useEffect} from "react";
 import {Loader} from "./index";
-import {Grid, Paper, Typography} from "@mui/material";
+import {Box, Paper, Typography} from "@mui/material";
 import Court from "./Court";
 
 export default function CourtsContainer() {
@@ -27,20 +27,22 @@ export default function CourtsContainer() {
     }
     return (
         <>
-            <Typography>
+            <Typography color='secondary' sx={{ml: 1}}>
                 {totalCourts} court {courts.length > 1 && 's'} found
             </Typography>
-            <Grid container spacing={2}>
+            <Box component="div" sx={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center'
+            }}>
 
                 {courts.map((court: any) => {
                     return (
-                        <Grid item key={court._id} xs={12} md={6}>
-                            <Court {...court}/>
-                        </Grid>
+                        <Court key={court._id} {...court}/>
                     )
 
                 })}
-            </Grid>
+            </Box>
             {/* pagination goes here! */}
         </>
     )
