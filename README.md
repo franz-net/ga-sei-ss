@@ -2,8 +2,6 @@
 
 [Live site](https://smash-studio.herokuapp.com/landing)
 
-![Landing Page](ReadmeAssets/Landing.png)
-
 Racket Club Management System.
 Allows to manage your courts and give users flexibility to see and manage court reservations as well as provide a
 platform for instructors to create classes and manage students
@@ -30,6 +28,7 @@ The site is built using the MERN stack:
 - DayJS - Backend
 - Date-fns - Front end
 - MUI - Front end
+- Framer Motion
 
 ---
 
@@ -61,7 +60,7 @@ Joan is a padel instructor and is working @ Smash Studio:
 
 ---
 
-# Wireframes and screenshots
+# Wireframes
 
 - Landing Page:
 
@@ -70,6 +69,31 @@ Joan is a padel instructor and is working @ Smash Studio:
 - App Layout:
 
 ![App Layout](ReadmeAssets/Layout.png)
+
+# Screenshots
+
+- Landing Page:
+
+![Landing Page](ReadmeAssets/Landing.png)
+
+- Login/Signup:
+
+![SignUp Page](ReadmeAssets/SignUpMobile.png)
+
+- Reservations:
+
+![Reservations Page](ReadmeAssets/Reservations.png)
+
+- Courts
+
+![Courts Page](ReadmeAssets/Courts.png)
+
+- Profile
+
+![Profile Page](ReadmeAssets/ProfileEdit.png)
+
+- 404
+  ![404 Page](ReadmeAssets/404.png)
 
 ---
 

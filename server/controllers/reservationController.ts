@@ -2,6 +2,7 @@ import {BadRequestError, NotFoundError} from "../errors";
 import StatusCodes from "http-status-codes";
 import Reservation from "../models/Reservation";
 import {dateToUtc} from "../utils/dates";
+import checkPermissions from "../utils/checkPermissions";
 
 const createReservation = async (req, res) => {
 
@@ -64,7 +65,7 @@ const getReservations = async (req, res) => {
     const reservations = await Reservation.find({user: req.user.userId, courtId: {$ne: null}})
         .populate({path: 'user', select: 'email'})
         .populate({path: 'courtId', select: ['courtName', 'courtType']})
-
+    console.log(reservations)
     res.status(StatusCodes.OK).json({reservations, totalReservations: reservations.length, numOfPages: 1})
 
 }
@@ -77,6 +78,8 @@ const deleteReservation = async (req, res) => {
     if (!reservation) {
         throw new NotFoundError(`No court with id: ${reservationId}`)
     }
+    // Only edit if admin
+    checkPermissions(req.user, reservation.user)
     await reservation.remove()
 
     res.status(StatusCodes.OK).json({msg: 'Success! Reservation has been removed'})
