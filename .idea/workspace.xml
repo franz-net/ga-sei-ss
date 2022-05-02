@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/ReadmeAssets/404.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReadmeAssets/Courts.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReadmeAssets/ProfileEdit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReadmeAssets/Reservations.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReadmeAssets/SignUpMobile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ReadmeAssets/courtspng.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/reservationController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/reservationController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/Reservation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Reservation.ts" afterDir="false" />
-    </list>
+    <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,7 +77,7 @@
       <workItem from="1650948947077" duration="5799000" />
       <workItem from="1651000261627" duration="19569000" />
       <workItem from="1651071044856" duration="30000" />
-      <workItem from="1651071088369" duration="93773000" />
+      <workItem from="1651071088369" duration="93890000" />
     </task>
     <servers />
   </component>
