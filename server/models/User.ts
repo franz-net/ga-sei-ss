@@ -1,58 +1,77 @@
-import mongoose from "mongoose";
-import validator from 'validator';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+'use strict';
+const {Model} = require('sequelize');
 
-const UserSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, 'Please provide name'],
-        minlength: 3,
-        maxlength: 20,
-        trim: true
-    },
-    email: {
-        type: String,
-        required: [true, 'Please provide email'],
-        validate: {
-            validator: validator.isEmail,
-            message: 'Please provide a valid email'
-        },
-        unique: true
-    },
-    password: {
-        type: String,
-        required: [true, 'Please provide password'],
-        minlength: 6
-    },
-    lastName: {
-        type: String,
-        trim: true,
-        maxlength: 20,
-        default: 'lastName'
-    },
-    role: {
-        type: String,
-        enum: ['admin', 'user', 'instructor'],
-        default: 'user'
+const PROTECTED_ATTRIBUTES = ['password']
+
+export default (sequelize, DataTypes) => {
+    class User extends Model {
+        toJSON() {
+            const attributes = {...this.get()}
+            for (const a of PROTECTED_ATTRIBUTES) {
+                delete attributes[a];
+            }
+            return attributes
+        }
+
+        /**
+         * Helper method for defining associations.
+         * This method is not a part of Sequelize lifecycle.
+         * The `models/index` file will call this method automatically.
+         */
+        static associate(models) {
+            // define association here
+        }
     }
-})
 
-UserSchema.pre('save', async function () {
-    if (!this.isModified('password')) return
-    const salt = await bcrypt.genSalt(10)
-    this.password = await bcrypt.hash(this.password, salt)
-})
-
-UserSchema.methods.createJWT = function () {
-    return jwt.sign({
-        userId: this.id,
-        userRole: this.role
-    }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_LIFETIME})
-}
-
-UserSchema.methods.comparePassword = async function (submittedPassword) {
-    return await bcrypt.compare(submittedPassword, this.password)
-}
-
-export default mongoose.model('User', UserSchema)
+    User.init({
+        name: {
+            type: DataTypes.STRING,
+            allowNull: {
+                args: false,
+                msg: 'Please enter your name'
+            }
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: {
+                args: false,
+                msg: 'Please enter your email address'
+            },
+            unique: {
+                args: true,
+                msg: 'Email already exists'
+            },
+            validate: {
+                isEmail: {
+                    args: true,
+                    msg: 'Please enter a valid email address'
+                }
+            }
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: {
+                args: false,
+                msg: 'Please enter your password'
+            }
+        },
+        lastName: {
+            type: DataTypes.STRING,
+            defaultValue: 'Doe'
+        },
+        role: {
+            type: DataTypes.STRING,
+            defaultValue: 'user'
+        },
+        last_login_at: {
+            type: DataTypes.Date,
+        },
+        last_ip_address: {
+            type: DataTypes.STRING
+        }
+    }, {
+        sequelize,
+        modelName: 'User',
+    });
+    return User;
+};

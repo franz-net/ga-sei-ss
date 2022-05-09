@@ -1,6 +1,4 @@
-const db = require('../db/connect')
-
-const Court = {}
+import mongoose from "mongoose";
 
 const CourtSchema = new mongoose.Schema({
         courtName: {
@@ -31,4 +29,4 @@ const CourtSchema = new mongoose.Schema({
     {timestamps: true}
 )
 
-export default Court
+export default mongoose.model('Court', CourtSchema)
