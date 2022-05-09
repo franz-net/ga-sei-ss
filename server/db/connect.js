@@ -1,7 +1,12 @@
-const mongoose = require("mongoose");
+const pg = require("pg");
 
 function connectDB(url) {
-    return mongoose.connect(url)
+    return new pg.Pool({
+        connectionString: url,
+        ssl: {
+            rejectUnauthorized: false
+        }
+    })
 }
 
 module.exports = connectDB
