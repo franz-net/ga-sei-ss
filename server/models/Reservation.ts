@@ -2,7 +2,7 @@
 // @ts-ignore
 const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class Court extends Model {
+    class Reservation extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
@@ -10,12 +10,11 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            this.belongsTo(models.User, {as: 'createdBy'})
-
+            this.hasOne(models.Court)
         }
     }
 
-    Court.init({
+    Reservation.init({
         id: {
             type: DataTypes.UUID,
             primaryKey: true,
@@ -23,25 +22,32 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             autoIncrement: false
         },
-        courtName: {
-            type: DataTypes.STRING,
+        date: {
+            type: DataTypes.DATE,
             allowNull: {
                 args: false,
-                msg: 'Please enter Court Name or Identifier'
+                msg: 'Please provide a date for the reservation'
             }
         },
-        courtType: {
-            type: DataTypes.ENUM,
-            values: ['tennis', 'padel'],
-            defaultValue: 'tennis'
+        duration: {
+            type: DataTypes.INTEGER,
+            allowNull: {
+                args: false,
+                msg: 'Please provide a reservation duration'
+            }
         },
-        inService: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true
+        status: {
+            type: DataTypes.ENUM,
+            values: ['pending', 'confirmed'],
+            allowNull: {
+                args: false,
+                msg: 'Please provide a status for the reservation'
+            },
+            defaultValue: 'pending'
         }
     }, {
         sequelize,
-        modelName: 'Court',
+        modelName: 'Reservation',
     });
-    return Court;
+    return Reservation;
 };

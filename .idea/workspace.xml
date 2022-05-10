@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/server/db/connect.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/migrations/20220509223438-create-court.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/migrations/20220510014014-create-reservation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/models/Reservation.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/config/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/db/connect.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/migrations/20220509033936-create-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/migrations/20220509033936-create-user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/models/Court.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Court.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/User.ts" afterDir="false" />
     </list>
@@ -91,7 +88,7 @@
       <workItem from="1652062047489" duration="8593000" />
       <workItem from="1652097979040" duration="2512000" />
       <workItem from="1652128205082" duration="18000" />
-      <workItem from="1652128234468" duration="9397000" />
+      <workItem from="1652128234468" duration="11483000" />
     </task>
     <servers />
   </component>
