@@ -1,7 +1,8 @@
 import {BadRequestError} from "../errors/index"
-import User from "../models/User";
 import {StatusCodes} from "http-status-codes";
 import {UnauthenticatedError} from "../errors";
+
+const User = require('../models').User
 
 const login = async (req, res) => {
     const {email, password} = req.body

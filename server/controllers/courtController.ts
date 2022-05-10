@@ -1,7 +1,8 @@
 import {BadRequestError, NotFoundError} from "../errors";
 import StatusCodes from "http-status-codes";
-import Court from "../models/Court";
 import checkPermissions from "../utils/checkPermissions";
+
+const Court = require('../models').Court
 
 const createCourt = async (req, res) => {
 

@@ -15,6 +15,8 @@ if (process.env.NODE_ENV !== "production") {
     dotenv.config();
 }
 const app = express();
+const db = require('./models')
+db.sequelize.sync()
 
 // Middleware
 app.set("trust proxy", 1);

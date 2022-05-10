@@ -1,8 +1,10 @@
 import {BadRequestError, NotFoundError} from "../errors";
 import StatusCodes from "http-status-codes";
-import Reservation from "../models/Reservation";
 import {dateToUtc} from "../utils/dates";
 import checkPermissions from "../utils/checkPermissions";
+import {Op} from "sequelize";
+
+const Reservation = require('../models').Reservation
 
 const createReservation = async (req, res) => {
 
@@ -62,9 +64,16 @@ const updateReservation = async (req, res) => {
 
 const getReservations = async (req, res) => {
     // If admin get All
-    const reservations = await Reservation.find({user: req.user.userId, courtId: {$ne: null}})
-        .populate({path: 'user', select: 'email'})
-        .populate({path: 'courtId', select: ['courtName', 'courtType']})
+    const reservations = await Reservation.findAll({
+        where: {
+            reservedBy: {
+                [Op.eq]: req.user.userId
+            },
+            courtId: {
+                [Op.not]: null
+            }
+        }
+    })
     console.log(reservations)
     res.status(StatusCodes.OK).json({reservations, totalReservations: reservations.length, numOfPages: 1})
 

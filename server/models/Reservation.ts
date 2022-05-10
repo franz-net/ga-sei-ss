@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            this.hasOne(models.Court)
+            this.hasOne(models.Court, {as: 'courtId'})
         }
     }
 

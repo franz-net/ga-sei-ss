@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
-            this.hasMany(models.Reservation)
+            this.hasMany(models.Reservation, {foreignKey: 'reservedBy'})
         }
     }
 
@@ -76,7 +76,7 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: 'user'
         },
         last_login_at: {
-            type: DataTypes.Date,
+            type: DataTypes.DATE,
         },
         last_ip_address: {
             type: DataTypes.STRING

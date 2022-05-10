@@ -1,6 +1,7 @@
 import {BadRequestError} from "../errors/index"
-import User from "../models/User";
 import {StatusCodes} from "http-status-codes";
+
+const User = require('../models').User
 
 const register = async (req, res) => {
 
@@ -10,7 +11,7 @@ const register = async (req, res) => {
         throw new BadRequestError('Please fill in all details!')
     }
 
-    const userAlreadyExists = await User.findOne({email})
+    const userAlreadyExists = await User.findOne({where: {email}})
     if (userAlreadyExists) {
         throw new BadRequestError('Error, signing up, please try again!')
     }
