@@ -1,9 +1,12 @@
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt'
+
 'use strict';
 const {Model} = require('sequelize');
 
 const PROTECTED_ATTRIBUTES = ['password']
 
-export default (sequelize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     class User extends Model {
         toJSON() {
             const attributes = {...this.get()}
@@ -20,10 +23,18 @@ export default (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            
         }
     }
 
     User.init({
+        id: {
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false,
+            autoIncrement: false
+        },
         name: {
             type: DataTypes.STRING,
             allowNull: {
@@ -60,7 +71,8 @@ export default (sequelize, DataTypes) => {
             defaultValue: 'Doe'
         },
         role: {
-            type: DataTypes.STRING,
+            type: DataTypes.ENUM,
+            values: ['user', 'admin', 'instructor'],
             defaultValue: 'user'
         },
         last_login_at: {
@@ -73,5 +85,23 @@ export default (sequelize, DataTypes) => {
         sequelize,
         modelName: 'User',
     });
+
+    User.beforeSave(async (user) => {
+        if (!user.changed('password')) return
+        const salt = await bcrypt.genSalt(10)
+        user.password = await bcrypt.hash(user.password, salt)
+    })
+
+    User.prototype.createJWT = function () {
+        return jwt.sign({
+            userId: this.id,
+            userRole: this.role
+        }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_LIFETIME})
+    }
+
+    User.prototype.comparePassword = async function (submittedPassword) {
+        return await bcrypt.compare(submittedPassword, this.password)
+    }
+
     return User;
 };

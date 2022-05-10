@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/server/.sequelizerc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/config/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/db/Schema.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/migrations/20220509033936-create-user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/models/Court.old.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/models/Reservation.old.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/models/User.old.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/models/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/db/connect.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/migrations/20220509223438-create-court.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/db/connect.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/db/connect.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/config/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/db/connect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/migrations/20220509033936-create-user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/migrations/20220509033936-create-user.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/models/Court.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Court.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/User.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +47,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/ga-sei-ss/server/node_modules/typescript/lib",
+    "ts.external.directory.path": "/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/ga-sei-ss/client/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -95,7 +88,10 @@
       <workItem from="1651000261627" duration="19569000" />
       <workItem from="1651071044856" duration="30000" />
       <workItem from="1651071088369" duration="93773000" />
-      <workItem from="1652062047489" duration="8345000" />
+      <workItem from="1652062047489" duration="8593000" />
+      <workItem from="1652097979040" duration="2512000" />
+      <workItem from="1652128205082" duration="18000" />
+      <workItem from="1652128234468" duration="9397000" />
     </task>
     <servers />
   </component>

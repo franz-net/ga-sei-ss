@@ -1,34 +1,46 @@
-const db = require('../db/connect')
+'use strict';
+const {Model} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+    class Court extends Model {
+        /**
+         * Helper method for defining associations.
+         * This method is not a part of Sequelize lifecycle.
+         * The `models/index` file will call this method automatically.
+         */
+        static associate(models) {
+            // define association here
+            this.belongsTo(models.User, {as: 'createdBy'})
 
-const Court = {}
+        }
+    }
 
-const CourtSchema = new mongoose.Schema({
+    Court.init({
+        id: {
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false,
+            autoIncrement: false
+        },
         courtName: {
-            type: String,
-            required: [true, 'Please provide the court name'],
-            minlength: 2,
-            maxlength: 20,
-            trim: true,
-            unique: true
+            type: DataTypes.STRING,
+            allowNull: {
+                args: false,
+                msg: 'Please enter Court Name or Identifier'
+            }
         },
         courtType: {
-            type: String,
-            enum: ['tennis', 'padel'],
-            required: [true, 'Please provide the court type'],
-            default: 'tennis'
+            type: DataTypes.ENUM,
+            values: ['tennis', 'padel'],
+            defaultValue: 'tennis'
         },
         inService: {
-            type: Boolean,
-            required: [true, 'Please confirm if the court is in service'],
-            default: true,
-        },
-        createdBy: {
-            type: mongoose.Types.ObjectId,
-            ref: 'User',
-            required: [true, 'Please provide user']
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
         }
-    },
-    {timestamps: true}
-)
-
-export default Court
+    }, {
+        sequelize,
+        modelName: 'Court',
+    });
+    return Court;
+};

@@ -1,15 +1,16 @@
 'use strict';
-export default {
+module.exports = {
     async up(queryInterface, Sequelize) {
         await queryInterface.createTable('Users', {
             id: {
                 allowNull: false,
-                autoIncrement: true,
+                autoIncrement: false,
                 primaryKey: true,
-                type: Sequelize.INTEGER
+                type: Sequelize.UUID
             },
             name: {
-                type: Sequelize.STRING
+                type: Sequelize.STRING,
+                allowNull: false
             },
             email: {
                 type: Sequelize.STRING,
@@ -25,11 +26,13 @@ export default {
                 defaultValue: 'Doe'
             },
             role: {
-                type: Sequelize.STRING,
+                type: Sequelize.ENUM,
+                values: ['user', 'admin', 'instructor'],
+                allowNull: false,
                 defaultValue: 'user'
             },
             last_login_at: {
-                type: Sequelize.Date,
+                type: Sequelize.DATE,
             },
             last_ip_address: {
                 type: Sequelize.STRING
