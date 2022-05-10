@@ -3,17 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/config/config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/controllers/authController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/authController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/controllers/courtController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/courtController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/controllers/reservationController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/reservationController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/controllers/userController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/Court.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Court.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/models/Reservation.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Reservation.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/User.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +94,7 @@
       <workItem from="1652062047489" duration="8593000" />
       <workItem from="1652097979040" duration="2512000" />
       <workItem from="1652128205082" duration="18000" />
-      <workItem from="1652128234468" duration="22454000" />
+      <workItem from="1652128234468" duration="25938000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,7 @@
 import {BadRequestError} from "../errors/index"
 import {StatusCodes} from "http-status-codes";
 import {UnauthenticatedError} from "../errors";
+import {Op} from "sequelize";
 
 const User = require('../models').User
 
@@ -9,7 +10,13 @@ const login = async (req, res) => {
     if (!email || !password) {
         throw new BadRequestError('Please provide all values')
     }
-    const user = await User.findOne({email}).select('+password')
+    const user = await User.findOne({
+        where: {
+            email: {
+                [Op.eq]: email
+            }
+        },
+    })
     if (!user) {
         throw new UnauthenticatedError('Invalid Credentials')
     }

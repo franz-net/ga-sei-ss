@@ -74,7 +74,6 @@ const getReservations = async (req, res) => {
             }
         }
     })
-    console.log(reservations)
     res.status(StatusCodes.OK).json({reservations, totalReservations: reservations.length, numOfPages: 1})
 
 }

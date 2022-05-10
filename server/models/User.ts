@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
          */
         static associate(models) {
             // define association here
+            this.hasMany(models.Court, {foreignKey: 'createdBy'})
             this.hasMany(models.Reservation, {foreignKey: 'reservedBy'})
         }
     }

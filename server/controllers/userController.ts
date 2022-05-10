@@ -15,8 +15,10 @@ const register = async (req, res) => {
     if (userAlreadyExists) {
         throw new BadRequestError('Error, signing up, please try again!')
     }
+    const last_ip_address = req.headers['x-forwarded-for'] || req.socket.remoteAddress
+    const last_login_at = new Date()
 
-    const user = await User.create({name, email, password})
+    const user = await User.create({name, email, password, last_ip_address, last_login_at})
     const token = user.createJWT()
 
     res.status(StatusCodes.CREATED).json({user, token})
