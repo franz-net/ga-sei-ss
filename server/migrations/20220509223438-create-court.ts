@@ -17,8 +17,9 @@ module.exports = {
                 defaultValue: 'tennis'
             },
             inService: {
-                type: Sequelize.BOOLEAN,
-                defaultValue: true
+                type: Sequelize.ENUM,
+                values: ['available', 'maintenance'],
+                defaultValue: 'available'
             },
             createdAt: {
                 allowNull: false,

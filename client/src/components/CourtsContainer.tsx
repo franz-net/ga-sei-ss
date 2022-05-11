@@ -38,7 +38,7 @@ export default function CourtsContainer() {
 
                 {courts.map((court: any) => {
                     return (
-                        <Court key={court._id} {...court}/>
+                        <Court key={court.id} {...court}/>
                     )
 
                 })}

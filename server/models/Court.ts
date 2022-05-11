@@ -35,8 +35,9 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: 'tennis'
         },
         inService: {
-            type: DataTypes.BOOLEAN,
-            defaultValue: true
+            type: DataTypes.ENUM,
+            values: ['available', 'maintenance'],
+            defaultValue: 'available'
         }
     }, {
         sequelize,

@@ -172,12 +172,12 @@ export default function reducer(state: any, action: {
         }
     }
     if (action.type === SET_EDIT_COURT) {
-        const court = state.courts.find((court: any) => court._id === action.payload.id)
-        const {_id, courtName, courtType, inService} = court
+        const court = state.courts.find((court: any) => court.id === action.payload.id)
+        const {id, courtName, courtType, inService} = court
         return {
             ...state,
             isEditing: true,
-            editCourtId: _id,
+            editCourtId: id,
             courtName,
             courtType,
             inService
@@ -260,13 +260,13 @@ export default function reducer(state: any, action: {
         }
     }
     if (action.type === SET_EDIT_RESERVATION) {
-        const reservation = state.reservations.find((reservation: any) => reservation._id === action.payload.id)
-        const {_id, courtId, date, duration, timezone, status} = reservation
+        const reservation = state.reservations.find((reservation: any) => reservation.id === action.payload.id)
+        const {id, courtId, date, duration, timezone, status} = reservation
         return {
             ...state,
             isEditing: true,
-            editReservationId: _id,
-            courtId: courtId._id,
+            editReservationId: id,
+            courtId: courtId.id,
             date,
             duration,
             reservationCourtType: action.payload.rCourtType,

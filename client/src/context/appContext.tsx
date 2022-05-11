@@ -56,7 +56,7 @@ export const initialState = {
     courtName: '',
     courtTypeOptions: ['tennis', 'padel'],
     courtType: 'tennis',
-    inServiceOptions: ['true', 'false'],
+    inServiceOptions: ['available', 'maintenance'],
     inService: true,
     courts: [],
     totalCourts: 0,
@@ -241,6 +241,7 @@ export function AppProvider({children}) {
             await authFetch.patch(`/court/${state.editCourtId}`, {
                 courtName, courtType, inService
             })
+
             // @ts-ignore
             dispatch({type: EDIT_COURT_SUCCESS})
             // @ts-ignore

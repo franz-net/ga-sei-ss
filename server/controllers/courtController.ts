@@ -1,6 +1,7 @@
 import {BadRequestError, NotFoundError} from "../errors";
 import StatusCodes from "http-status-codes";
 import checkPermissions from "../utils/checkPermissions";
+import {Op} from "sequelize";
 
 const Court = require('../models').Court
 
@@ -12,11 +13,16 @@ const createCourt = async (req, res) => {
         throw new BadRequestError("Please provide all court details")
     }
 
-    const courtAlreadyExists = await Court.findOne({courtName})
+    const courtAlreadyExists = await Court.findOne({
+        where: {
+            courtName: {
+                [Op.eq]: courtName
+            }
+        }
+    })
     if (courtAlreadyExists) {
         throw new BadRequestError(`Error, ${courtName} already exists.`)
     }
-
 
     req.body.createdBy = req.user.userId
     const court = await Court.create(req.body)
@@ -35,24 +41,45 @@ const updateCourt = async (req, res) => {
     const {id: courtId} = req.params
     const {courtName, courtType, inService} = req.body
 
-    if (!courtName || !courtType || inService == null) {
-        console.log(courtName)
+
+    if (!courtName || !courtType || !inService) {
         throw new BadRequestError('Please provide all values')
     }
 
-    const court = await Court.findOne({_id: courtId})
+    const court = await Court.findOne({
+        where: {
+            id: {
+                [Op.eq]: courtId
+            }
+        }
+    })
 
     if (!court) {
         throw new NotFoundError(`No court with id: ${courtId}`)
     }
-    // Only edit if admin
-    checkPermissions(req.user, court.createdBy)
 
-    const updatedCourt = await Court.findOneAndUpdate({_id: courtId}, req.body, {
-        new: true,
-        runValidators: true,
-    })
-    res.status(StatusCodes.OK).json({updatedCourt})
+    court.courtName = courtName
+    court.courtType = courtType
+    court.inService = inService
+
+    await court.save()
+
+    // Only edit if admin
+    //checkPermissions(req.user, court.createdBy)
+    //await court.update(
+    //   {
+    //       courtName: courtName,
+    //       courtType: courtType,
+    //       inService: inService
+    //   },
+    //   {
+    //       where: {
+    //           id: {
+    //               [Op.eq]: courtId
+    //           }
+    //       }
+    //   })
+    res.status(StatusCodes.OK).json({court})
 }
 
 const deleteCourt = async (req, res) => {
