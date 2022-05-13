@@ -64,20 +64,26 @@ const updateCourt = async (req, res) => {
     court.inService = inService
 
     await court.save()
-    
+
     res.status(StatusCodes.OK).json({court})
 }
 
 const deleteCourt = async (req, res) => {
     const {id: courtId} = req.params
 
-    const court = await Court.findOne({_id: courtId})
+    const court = await Court.findOne({
+        where: {
+            id: {
+                [Op.eq]: courtId
+            }
+        }
+    })
 
     if (!court) {
         throw new NotFoundError(`No court with id: ${courtId}`)
     }
     checkPermissions(req.user, court.createdBy)
-    await court.remove()
+    await court.destroy()
 
     res.status(StatusCodes.OK).json({msg: 'Success! Court has been removed'})
 }

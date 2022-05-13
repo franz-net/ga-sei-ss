@@ -18,12 +18,23 @@ const createReservation = async (req, res) => {
 
     const date = dateToUtc(req.body.date, timezone)
 
-    const courtAlreadyReserved = await Reservation.findOne({date, courtId})
+    const courtAlreadyReserved = await Reservation.findOne(
+        {
+            where: {
+                date: {
+                    [Op.eq]: date
+                },
+                courtId: {
+                    [Op.eq]: courtId
+                }
+            }
+        }
+    )
     if (courtAlreadyReserved) {
         throw new BadRequestError(`Error, this time is already reserved.`)
     }
 
-    req.body.user = req.user.userId
+    req.body.reservedBy = req.user.userId
     req.body.date = date
     const reservation = await Reservation.create(req.body)
     res.status(StatusCodes.CREATED).json({reservation})
