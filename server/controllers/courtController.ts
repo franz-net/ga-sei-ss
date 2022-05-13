@@ -31,7 +31,6 @@ const createCourt = async (req, res) => {
 
 const getAllCourts = async (req, res) => {
     const courts = await Court.findAll()
-    console.log(courts)
     res.status(StatusCodes.OK).json({courts, totalCourts: courts.length, numOfPages: 1})
 
     // if frontEnd checking for reservations, need to exclude the ones that are not inService
@@ -40,7 +39,6 @@ const getAllCourts = async (req, res) => {
 const updateCourt = async (req, res) => {
     const {id: courtId} = req.params
     const {courtName, courtType, inService} = req.body
-
 
     if (!courtName || !courtType || !inService) {
         throw new BadRequestError('Please provide all values')
@@ -58,27 +56,15 @@ const updateCourt = async (req, res) => {
         throw new NotFoundError(`No court with id: ${courtId}`)
     }
 
+    // Only edit if admin
+    //checkPermissions(req.user, court.createdBy)
+
     court.courtName = courtName
     court.courtType = courtType
     court.inService = inService
 
     await court.save()
-
-    // Only edit if admin
-    //checkPermissions(req.user, court.createdBy)
-    //await court.update(
-    //   {
-    //       courtName: courtName,
-    //       courtType: courtType,
-    //       inService: inService
-    //   },
-    //   {
-    //       where: {
-    //           id: {
-    //               [Op.eq]: courtId
-    //           }
-    //       }
-    //   })
+    
     res.status(StatusCodes.OK).json({court})
 }
 

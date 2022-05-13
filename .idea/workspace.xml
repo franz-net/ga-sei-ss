@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Court.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Court.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CourtsContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CourtsContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/appContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/context/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/reducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/AddCourt.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/AddCourt.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/controllers/courtController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/courtController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/migrations/20220509223438-create-court.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/migrations/20220509223438-create-court.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/Court.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/Court.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +89,7 @@
       <workItem from="1652062047489" duration="8593000" />
       <workItem from="1652097979040" duration="2512000" />
       <workItem from="1652128205082" duration="18000" />
-      <workItem from="1652128234468" duration="40260000" />
+      <workItem from="1652128234468" duration="43365000" />
     </task>
     <servers />
   </component>

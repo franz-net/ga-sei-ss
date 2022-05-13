@@ -47,14 +47,14 @@ export default function AddCourt() {
     }
 
 
-    const onSubmit = (e: any) => {
+    const onSubmit = async (e: any) => {
         e.preventDefault()
         if (!courtName || inService == null || !courtType) {
             displayAlert()
             return
         }
         if (isEditing) {
-            editCourt()
+            await editCourt()
 
             navigate('/admin/courts')
             return
