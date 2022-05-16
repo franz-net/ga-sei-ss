@@ -1,4 +1,4 @@
-import {AccessTimeFilled, Ballot, SaveAs, Settings} from "@mui/icons-material";
+import {Ballot, SaveAs, Settings} from "@mui/icons-material";
 import {Avatar, Box, Button, Card, CardContent, Divider, Grid, Typography} from "@mui/material";
 import {deepPurple, green} from "@mui/material/colors";
 import {format} from "date-fns";
@@ -92,6 +92,7 @@ export default function Court({id, courtName, courtType, inService, updatedAt}: 
                             </Typography>
                         </Box>
                     </Grid>
+                    {/*
                     <Grid item xs={6} md={5}>
                         <Box
                             sx={{
@@ -106,6 +107,7 @@ export default function Court({id, courtName, courtType, inService, updatedAt}: 
                             </Typography>
                         </Box>
                     </Grid>
+                    */}
 
                     {/* buttons row */}
 

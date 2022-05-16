@@ -57,7 +57,7 @@ export const initialState = {
     courtTypeOptions: ['tennis', 'padel'],
     courtType: 'tennis',
     inServiceOptions: ['available', 'maintenance'],
-    inService: true,
+    inService: 'available',
     courts: [],
     totalCourts: 0,
     page: 1,
@@ -293,6 +293,7 @@ export function AppProvider({children}) {
 
     // @ts-ignore
     const handleReservationChange = ({name, value}) => {
+        console.log(name, value)
         // @ts-ignore
         dispatch({type: HANDLE_CHANGE, payload: {name, value}})
     }
@@ -332,6 +333,7 @@ export function AppProvider({children}) {
         try {
             const {data} = await authFetch.get(url)
             const {reservations, totalReservations, numOfPages} = data
+            console.log(reservations)
             // @ts-ignore
             dispatch({type: GET_RESERVATIONS_SUCCESS, payload: {reservations, totalReservations, numOfPages}})
         } catch (error) {

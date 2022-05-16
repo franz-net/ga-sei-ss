@@ -50,6 +50,7 @@ export default function AddReservation() {
     const [filteredCourts, setFilteredCourts] = useState<any>(courts)
 
     useEffect(() => {
+        console.log(courts)
         setFilteredCourts(courts.filter((court: any) => {
             return court.courtType === reservationCourtType && court.inService
         }))
@@ -224,7 +225,7 @@ export default function AddReservation() {
                                     {filteredCourts.length > 0
                                         ? filteredCourts.map((court: any, i: number) => {
                                             return (
-                                                <MenuItem key={i} value={court._id}>{court.courtName}</MenuItem>
+                                                <MenuItem key={i} value={court.id}>{court.courtName}</MenuItem>
                                             )
                                         })
                                         : <MenuItem value=""> <em>None</em> </MenuItem>}

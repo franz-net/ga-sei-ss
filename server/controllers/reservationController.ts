@@ -5,14 +5,13 @@ import checkPermissions from "../utils/checkPermissions";
 import {Op} from "sequelize";
 
 const Reservation = require('../models').Reservation
+const Court = require('../models').Court
 
 const createReservation = async (req, res) => {
 
     const {courtId, timezone} = req.body
 
     if (!courtId || !req.body.date || !timezone) {
-        console.log(courtId, timezone, req.body.date)
-        console.log('error here!!')
         throw new BadRequestError("Please provide all reservation details")
     }
 
@@ -83,8 +82,11 @@ const getReservations = async (req, res) => {
             courtId: {
                 [Op.not]: null
             }
-        }
+        }, include: [{
+            model: Court
+        }]
     })
+    console.log(reservations)
     res.status(StatusCodes.OK).json({reservations, totalReservations: reservations.length, numOfPages: 1})
 
 }

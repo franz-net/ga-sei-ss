@@ -35,7 +35,7 @@ export default function ReservationsContainer() {
 
                 {reservations.map((reservation: any) => {
                     return (
-                        <Reservation key={reservation._id} {...reservation}/>
+                        <Reservation key={reservation.id} {...reservation}/>
                     )
                 })}
             </Box>
