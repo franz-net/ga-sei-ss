@@ -247,8 +247,6 @@ export default function reducer(state: any, action: {
     }
     if (action.type === GET_RESERVATIONS_SUCCESS) {
         // @ts-ignore
-        console.log(action.payload.reservations)
-        // @ts-ignore
         return {
             ...state,
             isLoading: false,

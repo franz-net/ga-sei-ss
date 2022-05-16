@@ -6,7 +6,7 @@ import {useAppContext} from "../context/appContext";
 import {Link} from "react-router-dom";
 import {add} from "date-fns";
 
-export default function Reservation({id, courtId, date, status, updatedAt, duration}: any) {
+export default function Reservation({id, courtId, date, status, updatedAt, duration, Court}: any) {
 
     const {courtName, courtType} = courtId
     const {setEditReservation, deleteReservation, timezone} = useAppContext()
@@ -46,7 +46,7 @@ export default function Reservation({id, courtId, date, status, updatedAt, durat
                                 borderRadius: '15%'
                             }}
                         >
-                            {courtId.courtType[0].toUpperCase()}
+                            {Court.courtType[0].toUpperCase()}
                         </Avatar>
                     </Grid>
                     <Grid item xs={9} md={9}>
@@ -102,7 +102,7 @@ export default function Reservation({id, courtId, date, status, updatedAt, durat
                         >
                             <SportsTennis sx={{mr: 2}}/>
                             <Typography variant="subtitle1" color="text.secondary">
-                                Court: {courtName}
+                                Court: {Court.courtName}
                             </Typography>
                         </Box>
                     </Grid>

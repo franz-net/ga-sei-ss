@@ -333,7 +333,6 @@ export function AppProvider({children}) {
         try {
             const {data} = await authFetch.get(url)
             const {reservations, totalReservations, numOfPages} = data
-            console.log(reservations)
             // @ts-ignore
             dispatch({type: GET_RESERVATIONS_SUCCESS, payload: {reservations, totalReservations, numOfPages}})
         } catch (error) {

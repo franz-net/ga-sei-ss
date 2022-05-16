@@ -86,7 +86,6 @@ const getReservations = async (req, res) => {
             model: Court
         }]
     })
-    console.log(reservations)
     res.status(StatusCodes.OK).json({reservations, totalReservations: reservations.length, numOfPages: 1})
 
 }
