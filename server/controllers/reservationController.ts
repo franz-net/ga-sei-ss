@@ -1,7 +1,5 @@
 import {BadRequestError, NotFoundError} from "../errors";
 import StatusCodes from "http-status-codes";
-import {dateToUtc} from "../utils/dates";
-import checkPermissions from "../utils/checkPermissions";
 import {Op} from "sequelize";
 
 const Reservation = require('../models').Reservation
@@ -9,13 +7,12 @@ const Court = require('../models').Court
 
 const createReservation = async (req, res) => {
 
-    const {courtId, timezone} = req.body
+    const {courtId, timezone, date} = req.body
 
-    if (!courtId || !req.body.date || !timezone) {
+    if (!courtId || !date || !timezone) {
         throw new BadRequestError("Please provide all reservation details")
     }
 
-    const date = dateToUtc(req.body.date, timezone)
 
     const courtAlreadyReserved = await Reservation.findOne(
         {
@@ -41,11 +38,11 @@ const createReservation = async (req, res) => {
 
 const updateReservation = async (req, res) => {
     const {id: reservationId} = req.params
-    const {courtId, timezone,} = req.body
+    const {courtId, timezone, date} = req.body
 
-    console.log(courtId, timezone)
+    console.log(date, courtId, timezone)
 
-    if (!courtId || !req.body.date || !timezone) {
+    if (!courtId || !date || !timezone) {
         throw new BadRequestError("Please provide all reservation details")
     }
 
@@ -55,7 +52,6 @@ const updateReservation = async (req, res) => {
         throw new NotFoundError(`No court with id: ${reservationId}`)
     }
 
-    const date = dateToUtc(req.body.date, timezone)
 
     const courtAlreadyReserved = await Reservation.findOne({date, courtId})
     if (courtAlreadyReserved) {
@@ -93,14 +89,21 @@ const getReservations = async (req, res) => {
 const deleteReservation = async (req, res) => {
     const {id: reservationId} = req.params
 
-    const reservation = await Reservation.findOne({_id: reservationId})
+    const reservation = await Reservation.findOne({
+        where: {
+            id: {
+                [Op.eq]: reservationId
+            }
+        }
+    })
 
     if (!reservation) {
         throw new NotFoundError(`No court with id: ${reservationId}`)
     }
     // Only edit if admin
-    checkPermissions(req.user, reservation.user)
-    await reservation.remove()
+    //checkPermissions(req.user, reservation.user)
+    await reservation.destroy()
+
 
     res.status(StatusCodes.OK).json({msg: 'Success! Reservation has been removed'})
 }
