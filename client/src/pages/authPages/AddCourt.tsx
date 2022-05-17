@@ -37,24 +37,24 @@ export default function AddCourt() {
 
     const handleInput = (e: any) => {
         const name = e.target.name
-        let value: any
-        if (name === 'inService') {
-            value = e.target.value === 'true'
-        } else {
-            value = e.target.value
-        }
+        //let value: any
+        //if (name === 'inService') {
+        //    value = e.target.value === 'true'
+        //} else {
+        let value = e.target.value
+        //}
         handleCourtChange({name, value})
     }
 
 
-    const onSubmit = (e: any) => {
+    const onSubmit = async (e: any) => {
         e.preventDefault()
         if (!courtName || inService == null || !courtType) {
             displayAlert()
             return
         }
         if (isEditing) {
-            editCourt()
+            await editCourt()
 
             navigate('/admin/courts')
             return

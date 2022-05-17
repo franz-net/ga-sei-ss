@@ -1,57 +1,54 @@
-import mongoose from "mongoose";
-import dayjs from 'dayjs';
+'use strict';
+// @ts-ignore
+const {Model} = require('sequelize');
+module.exports = (sequelize, DataTypes) => {
+    class Reservation extends Model {
+        /**
+         * Helper method for defining associations.
+         * This method is not a part of Sequelize lifecycle.
+         * The `models/index` file will call this method automatically.
+         */
+        static associate(models) {
+            // define association here
+            this.belongsTo(models.User, {foreignKey: 'reservedBy'})
+            this.belongsTo(models.Court, {foreignKey: 'courtId'})
+        }
+    }
 
-const ReservationSchema = new mongoose.Schema({
-        user: {
-            type: mongoose.Types.ObjectId,
-            ref: 'User',
-            required: [true, 'Please provide a user']
-        },
-        courtId: {
-            type: mongoose.Types.ObjectId,
-            ref: 'Court',
-            required: [true, 'Please provide a court']
+    Reservation.init({
+        id: {
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false,
+            autoIncrement: false
         },
         date: {
-            type: Date,
-            required: [true, 'Please provide a date'],
-            validate: {
-                validator: function (v) {
-                    return (
-                        v &&
-                        v.getTime() > dayjs().add(2, 'hour') &&
-                        v.getTime() < dayjs().add(2, 'day')
-                    )
-                },
-                message: "The reservation must start 2 hours from now and up to 2 days in advance"
+            type: DataTypes.DATE,
+            allowNull: {
+                args: false,
+                msg: 'Please provide a date for the reservation'
             }
         },
         duration: {
-            type: Number,
-            required: [true, 'Please provide a reservation duration'],
-            validate: {
-                validator: function (v) {
-                    return (
-                        v &&
-                        v <= 3 && v >= 1
-                    )
-                },
-                message: "The minimum is 1 hour, the max is 3 hours"
+            type: DataTypes.INTEGER,
+            allowNull: {
+                args: false,
+                msg: 'Please provide a reservation duration'
             }
         },
-        timezone: {
-            type: String,
-            required: [true, 'Please provide a valid IANA Time Zone']
-        },
         status: {
-            type: String,
-            enum: ["pending", "confirmed"],
-            required: [true, 'Please provide reservation status'],
-            default: "pending"
+            type: DataTypes.ENUM,
+            values: ['pending', 'confirmed'],
+            allowNull: {
+                args: false,
+                msg: 'Please provide a status for the reservation'
+            },
+            defaultValue: 'pending'
         }
-    },
-    {timestamps: true}
-)
-
-
-export default mongoose.model('Reservation', ReservationSchema)
+    }, {
+        sequelize,
+        modelName: 'Reservation',
+    });
+    return Reservation;
+};

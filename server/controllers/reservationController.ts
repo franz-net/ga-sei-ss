@@ -1,27 +1,36 @@
 import {BadRequestError, NotFoundError} from "../errors";
 import StatusCodes from "http-status-codes";
-import Reservation from "../models/Reservation";
-import {dateToUtc} from "../utils/dates";
-import checkPermissions from "../utils/checkPermissions";
+import {Op} from "sequelize";
+
+const Reservation = require('../models').Reservation
+const Court = require('../models').Court
 
 const createReservation = async (req, res) => {
 
-    const {courtId, timezone} = req.body
+    const {courtId, timezone, date} = req.body
 
-    if (!courtId || !req.body.date || !timezone) {
-        console.log(courtId, timezone, req.body.date)
-        console.log('error here!!')
+    if (!courtId || !date || !timezone) {
         throw new BadRequestError("Please provide all reservation details")
     }
 
-    const date = dateToUtc(req.body.date, timezone)
 
-    const courtAlreadyReserved = await Reservation.findOne({date, courtId})
+    const courtAlreadyReserved = await Reservation.findOne(
+        {
+            where: {
+                date: {
+                    [Op.eq]: date
+                },
+                courtId: {
+                    [Op.eq]: courtId
+                }
+            }
+        }
+    )
     if (courtAlreadyReserved) {
         throw new BadRequestError(`Error, this time is already reserved.`)
     }
 
-    req.body.user = req.user.userId
+    req.body.reservedBy = req.user.userId
     req.body.date = date
     const reservation = await Reservation.create(req.body)
     res.status(StatusCodes.CREATED).json({reservation})
@@ -29,11 +38,11 @@ const createReservation = async (req, res) => {
 
 const updateReservation = async (req, res) => {
     const {id: reservationId} = req.params
-    const {courtId, timezone,} = req.body
+    const {courtId, timezone, date} = req.body
 
-    console.log(courtId, timezone)
+    console.log(date, courtId, timezone)
 
-    if (!courtId || !req.body.date || !timezone) {
+    if (!courtId || !date || !timezone) {
         throw new BadRequestError("Please provide all reservation details")
     }
 
@@ -43,7 +52,6 @@ const updateReservation = async (req, res) => {
         throw new NotFoundError(`No court with id: ${reservationId}`)
     }
 
-    const date = dateToUtc(req.body.date, timezone)
 
     const courtAlreadyReserved = await Reservation.findOne({date, courtId})
     if (courtAlreadyReserved) {
@@ -62,10 +70,18 @@ const updateReservation = async (req, res) => {
 
 const getReservations = async (req, res) => {
     // If admin get All
-    const reservations = await Reservation.find({user: req.user.userId, courtId: {$ne: null}})
-        .populate({path: 'user', select: 'email'})
-        .populate({path: 'courtId', select: ['courtName', 'courtType']})
-    console.log(reservations)
+    const reservations = await Reservation.findAll({
+        where: {
+            reservedBy: {
+                [Op.eq]: req.user.userId
+            },
+            courtId: {
+                [Op.not]: null
+            }
+        }, include: [{
+            model: Court
+        }]
+    })
     res.status(StatusCodes.OK).json({reservations, totalReservations: reservations.length, numOfPages: 1})
 
 }
@@ -73,14 +89,21 @@ const getReservations = async (req, res) => {
 const deleteReservation = async (req, res) => {
     const {id: reservationId} = req.params
 
-    const reservation = await Reservation.findOne({_id: reservationId})
+    const reservation = await Reservation.findOne({
+        where: {
+            id: {
+                [Op.eq]: reservationId
+            }
+        }
+    })
 
     if (!reservation) {
         throw new NotFoundError(`No court with id: ${reservationId}`)
     }
     // Only edit if admin
-    checkPermissions(req.user, reservation.user)
-    await reservation.remove()
+    //checkPermissions(req.user, reservation.user)
+    await reservation.destroy()
+
 
     res.status(StatusCodes.OK).json({msg: 'Success! Reservation has been removed'})
 }

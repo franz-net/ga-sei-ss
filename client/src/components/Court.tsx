@@ -1,11 +1,11 @@
-import {AccessTimeFilled, Ballot, SaveAs, Settings} from "@mui/icons-material";
+import {Ballot, SaveAs, Settings} from "@mui/icons-material";
 import {Avatar, Box, Button, Card, CardContent, Divider, Grid, Typography} from "@mui/material";
 import {deepPurple, green} from "@mui/material/colors";
 import {format} from "date-fns";
 import {useAppContext} from "../context/appContext";
 import {Link} from "react-router-dom";
 
-export default function Court({_id, courtName, courtType, inService, updatedAt}: any) {
+export default function Court({id, courtName, courtType, inService, updatedAt}: any) {
 
     const {setEditCourt, deleteCourt} = useAppContext()
 
@@ -71,7 +71,7 @@ export default function Court({_id, courtName, courtType, inService, updatedAt}:
                         >
                             <Settings sx={{mr: 2}}/>
                             <Typography variant="subtitle1" color="text.secondary">
-                                {inService ? 'Available' : 'Under Maintenance'}
+                                {inService}
                             </Typography>
                         </Box>
                     </Grid>
@@ -92,6 +92,7 @@ export default function Court({_id, courtName, courtType, inService, updatedAt}:
                             </Typography>
                         </Box>
                     </Grid>
+                    {/*
                     <Grid item xs={6} md={5}>
                         <Box
                             sx={{
@@ -106,6 +107,7 @@ export default function Court({_id, courtName, courtType, inService, updatedAt}:
                             </Typography>
                         </Box>
                     </Grid>
+                    */}
 
                     {/* buttons row */}
 
@@ -123,7 +125,7 @@ export default function Court({_id, courtName, courtType, inService, updatedAt}:
                                 color="secondary"
                                 sx={{mr: 2}}
                                 to="/admin/add-court"
-                                onClick={() => setEditCourt(_id)}
+                                onClick={() => setEditCourt(id)}
                             >
                                 Update
                             </Button>
@@ -131,7 +133,7 @@ export default function Court({_id, courtName, courtType, inService, updatedAt}:
                                 size='small'
                                 variant="contained"
                                 color="error"
-                                onClick={() => deleteCourt(_id)}
+                                onClick={() => deleteCourt(id)}
                             >
                                 Delete
                             </Button>

@@ -56,8 +56,8 @@ export const initialState = {
     courtName: '',
     courtTypeOptions: ['tennis', 'padel'],
     courtType: 'tennis',
-    inServiceOptions: ['true', 'false'],
-    inService: true,
+    inServiceOptions: ['available', 'maintenance'],
+    inService: 'available',
     courts: [],
     totalCourts: 0,
     page: 1,
@@ -241,6 +241,7 @@ export function AppProvider({children}) {
             await authFetch.patch(`/court/${state.editCourtId}`, {
                 courtName, courtType, inService
             })
+
             // @ts-ignore
             dispatch({type: EDIT_COURT_SUCCESS})
             // @ts-ignore
@@ -292,6 +293,7 @@ export function AppProvider({children}) {
 
     // @ts-ignore
     const handleReservationChange = ({name, value}) => {
+        console.log(name, value)
         // @ts-ignore
         dispatch({type: HANDLE_CHANGE, payload: {name, value}})
     }

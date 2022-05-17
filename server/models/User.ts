@@ -1,58 +1,108 @@
-import mongoose from "mongoose";
-import validator from 'validator';
-import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt'
 
-const UserSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, 'Please provide name'],
-        minlength: 3,
-        maxlength: 20,
-        trim: true
-    },
-    email: {
-        type: String,
-        required: [true, 'Please provide email'],
-        validate: {
-            validator: validator.isEmail,
-            message: 'Please provide a valid email'
-        },
-        unique: true
-    },
-    password: {
-        type: String,
-        required: [true, 'Please provide password'],
-        minlength: 6
-    },
-    lastName: {
-        type: String,
-        trim: true,
-        maxlength: 20,
-        default: 'lastName'
-    },
-    role: {
-        type: String,
-        enum: ['admin', 'user', 'instructor'],
-        default: 'user'
+'use strict';
+const {Model} = require('sequelize');
+
+const PROTECTED_ATTRIBUTES = ['password']
+
+module.exports = (sequelize, DataTypes) => {
+    class User extends Model {
+        toJSON() {
+            const attributes = {...this.get()}
+            for (const a of PROTECTED_ATTRIBUTES) {
+                delete attributes[a];
+            }
+            return attributes
+        }
+
+        /**
+         * Helper method for defining associations.
+         * This method is not a part of Sequelize lifecycle.
+         * The `models/index` file will call this method automatically.
+         */
+        static associate(models) {
+            // define association here
+            this.hasMany(models.Court, {foreignKey: 'createdBy'})
+            this.hasMany(models.Reservation, {foreignKey: 'reservedBy'})
+        }
     }
-})
 
-UserSchema.pre('save', async function () {
-    if (!this.isModified('password')) return
-    const salt = await bcrypt.genSalt(10)
-    this.password = await bcrypt.hash(this.password, salt)
-})
+    User.init({
+        id: {
+            type: DataTypes.UUID,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false,
+            autoIncrement: false
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: {
+                args: false,
+                msg: 'Please enter your name'
+            }
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: {
+                args: false,
+                msg: 'Please enter your email address'
+            },
+            unique: {
+                args: true,
+                msg: 'Email already exists'
+            },
+            validate: {
+                isEmail: {
+                    args: true,
+                    msg: 'Please enter a valid email address'
+                }
+            }
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: {
+                args: false,
+                msg: 'Please enter your password'
+            }
+        },
+        lastName: {
+            type: DataTypes.STRING,
+            defaultValue: 'Doe'
+        },
+        role: {
+            type: DataTypes.ENUM,
+            values: ['user', 'admin', 'instructor'],
+            defaultValue: 'user'
+        },
+        last_login_at: {
+            type: DataTypes.DATE,
+        },
+        last_ip_address: {
+            type: DataTypes.STRING
+        }
+    }, {
+        sequelize,
+        modelName: 'User',
+    });
 
-UserSchema.methods.createJWT = function () {
-    return jwt.sign({
-        userId: this.id,
-        userRole: this.role
-    }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_LIFETIME})
-}
+    User.beforeSave(async (user) => {
+        if (!user.changed('password')) return
+        const salt = await bcrypt.genSalt(10)
+        user.password = await bcrypt.hash(user.password, salt)
+    })
 
-UserSchema.methods.comparePassword = async function (submittedPassword) {
-    return await bcrypt.compare(submittedPassword, this.password)
-}
+    User.prototype.createJWT = function () {
+        return jwt.sign({
+            userId: this.id,
+            userRole: this.role
+        }, process.env.JWT_SECRET, {expiresIn: process.env.JWT_LIFETIME})
+    }
 
-export default mongoose.model('User', UserSchema)
+    User.prototype.comparePassword = async function (submittedPassword) {
+        return await bcrypt.compare(submittedPassword, this.password)
+    }
+
+    return User;
+};
