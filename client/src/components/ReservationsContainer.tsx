@@ -34,7 +34,6 @@ export default function ReservationsContainer() {
             }}>
 
                 {reservations.map((reservation: any) => {
-                    console.log(reservation)
                     return (
                         <Reservation key={reservation.id} {...reservation}/>
                     )

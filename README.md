@@ -18,10 +18,10 @@ Main features:
 
 # Tech Stack
 
-The site is built using the MERN stack:
+The site is built using:
 
-- Mongo DB - NoSql DB
-- Mongoose - ORM
+- Postgres
+- Sequelize - ORM
 - Express - Backend server
 - NodeJS - JS Backend
 - React - Front end

@@ -11,20 +11,6 @@ export default function Reservation({id, courtId, date, status, updatedAt, durat
     const {courtName, courtType} = courtId
     const {setEditReservation, deleteReservation, timezone} = useAppContext()
     let resDate = new Date(date)
-    let zonedDate =
-        new Date(
-            Date.UTC(
-                resDate.getFullYear(),
-                resDate.getMonth(),
-                resDate.getDate(),
-                resDate.getHours(),
-                resDate.getMinutes(),
-                resDate.getSeconds()
-            ))
-    console.log('zonedDate', format(zonedDate, 'MMM do, yyyy'))
-
-    let displayDate = format(new Date(updatedAt), 'MMM do, yyyy')
-    let time = format(new Date(updatedAt), 'HH:mm:ss')
 
     // @ts-ignore
     return (
@@ -51,7 +37,7 @@ export default function Reservation({id, courtId, date, status, updatedAt, durat
                     </Grid>
                     <Grid item xs={9} md={9}>
                         <Typography variant="h5" sx={{fontWeight: 700}} gutterBottom color="text.primary">
-                            {format(zonedDate, 'MMM do, yyyy')}
+                            {format(resDate, 'MMM do, yyyy')}
                         </Typography>
                     </Grid>
                 </Grid>
@@ -70,7 +56,7 @@ export default function Reservation({id, courtId, date, status, updatedAt, durat
                         >
                             <AccessTimeFilled sx={{mr: 2}}/>
                             <Typography variant="subtitle1" color="text.secondary">
-                                Start: {format(zonedDate, 'HH:mm')}
+                                Start: {format(resDate, 'HH:mm')}
                             </Typography>
                         </Box>
                     </Grid>
@@ -85,7 +71,7 @@ export default function Reservation({id, courtId, date, status, updatedAt, durat
                         >
                             <AccessTimeFilled sx={{mr: 2}}/>
                             <Typography variant="subtitle1" color="text.secondary">
-                                End: {format(add(zonedDate, {hours: duration}), 'HH:mm')}
+                                End: {format(add(resDate, {hours: duration}), 'HH:mm')}
                             </Typography>
                         </Box>
                     </Grid>

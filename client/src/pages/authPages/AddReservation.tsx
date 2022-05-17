@@ -50,7 +50,6 @@ export default function AddReservation() {
     const [filteredCourts, setFilteredCourts] = useState<any>(courts)
 
     useEffect(() => {
-        console.log(courts)
         setFilteredCourts(courts.filter((court: any) => {
             return court.courtType === reservationCourtType && court.inService
         }))
