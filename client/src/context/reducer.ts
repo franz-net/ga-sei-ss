@@ -37,11 +37,15 @@ import {initialState} from "./appContext";
 
 export default function reducer(state: any, action: {
     type: string; payload: {
+        value: any;
+        name: any;
+        reservations: any;
         rCourtType: any;
         id: any;
         courts: any;
         user: any; token: any; location: any; alertText: any; msg: any;
     };
+
 }) {
     if (action.type === DISPLAY_ALERT) {
         return {...state, showAlert: true, alertType: 'error', alertText: 'Please Provide all Values!'}
@@ -118,7 +122,6 @@ export default function reducer(state: any, action: {
 
         return {
             ...state,
-            // @ts-ignore
             [action.payload.name]: action.payload.value,
         }
     }
@@ -159,7 +162,6 @@ export default function reducer(state: any, action: {
         return {...state, isLoading: true, showAlert: false}
     }
     if (action.type === GET_COURTS_SUCCESS) {
-        // @ts-ignore
         return {
             ...state,
             isLoading: false,
@@ -246,11 +248,11 @@ export default function reducer(state: any, action: {
         return {...state, isLoading: true, showAlert: false}
     }
     if (action.type === GET_RESERVATIONS_SUCCESS) {
-        // @ts-ignore
+
         return {
             ...state,
             isLoading: false,
-            // @ts-ignore
+
             reservations: action.payload.reservations,
             // @ts-ignore
             totalReservations: action.payload.totalReservations,

@@ -12,7 +12,6 @@ export default function Court({id, courtName, courtType, inService, updatedAt}: 
     let date = format(new Date(updatedAt), 'MMM do, yyyy')
     let time = format(new Date(updatedAt), 'HH:mm:ss')
 
-    // @ts-ignore
     return (
         <Card
             sx={{

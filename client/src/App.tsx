@@ -5,7 +5,6 @@ import {AddCourt, AddReservation, Courts, MasterLayout, Profile, Reservations} f
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import {CssBaseline} from "@mui/material";
 
-// @ts-ignore
 const theme = createTheme({
     typography: {
         fontFamily: "Quicksand",
@@ -27,7 +26,7 @@ const theme = createTheme({
         }
     }
 });
-//contrastText: 'rgba(0, 0, 0, 0.87)'
+
 export default function App() {
     return (
         <ThemeProvider theme={theme}>

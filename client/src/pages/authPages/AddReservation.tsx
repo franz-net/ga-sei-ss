@@ -174,7 +174,6 @@ export default function AddReservation() {
                     {/* Court type picker */}
                     <Grid container spacing={3} sx={{}}>
                         <Grid item xs={5}>
-                            {/* @ts-ignore*/}
                             <FormControl fullWidth>
                                 <InputLabel id='courtTypeSelect'>Court Type</InputLabel>
                                 <Select
@@ -209,7 +208,6 @@ export default function AddReservation() {
 
                         {/* Court Picker */}
                         <Grid item xs={5}>
-                            {/* @ts-ignore*/}
                             <FormControl fullWidth>
                                 <InputLabel id='courtTypeSelect'>Court</InputLabel>
                                 <Select

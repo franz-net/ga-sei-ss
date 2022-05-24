@@ -5,11 +5,12 @@ import {useRef} from "react";
 import Footer from "../components/Footer";
 
 export default function Landing() {
-    const courtsRef = useRef()
+    const courtsRef = useRef<null | HTMLDivElement>(null)
 
     function handleScrollClick() {
-        // @ts-ignore
-        courtsRef.current.scrollIntoView({behavior: 'smooth'})
+        if (courtsRef && courtsRef.current) {
+            courtsRef.current.scrollIntoView({behavior: 'smooth'})
+        }
     }
 
     return (

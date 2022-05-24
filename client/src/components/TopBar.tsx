@@ -12,7 +12,6 @@ interface TopBarProps {
 export default function TopBar({drawerWidth}: TopBarProps) {
     const theme = useTheme();
 
-    // @ts-ignore
     const {toggleSidebar} = useAppContext()
 
 

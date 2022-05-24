@@ -5,11 +5,8 @@ import {useNavigate} from "react-router-dom";
 import {deepOrange, orange} from "@mui/material/colors";
 
 export default function UserButton() {
-    // @ts-ignore
-    const {logoutUser} = useAppContext()
+    const {logoutUser, user} = useAppContext()
     const theme = useTheme();
-    // @ts-ignore
-    const {user} = useAppContext();
     const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
     const open = Boolean(anchorEl)

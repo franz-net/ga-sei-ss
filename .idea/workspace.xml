@@ -3,7 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Court.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Court.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Reservation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Reservation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/ScreenMessage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ScreenMessage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/TopBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TopBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/UserButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/context/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Landing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Landing.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/ProtectedRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/ProtectedRoute.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Signup.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/AddReservation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/AddReservation.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,21 +43,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/ga-sei-ss/server/models",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/ga-sei-ss/server/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/ga-sei-ss/server/models&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/franz/Dropbox/IT/GA/CS-Flex/lessons/course/project4/ga-sei-ss/client/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -89,7 +99,9 @@
       <workItem from="1652097979040" duration="2512000" />
       <workItem from="1652128205082" duration="18000" />
       <workItem from="1652128234468" duration="54828000" />
-      <workItem from="1652750673025" duration="1564000" />
+      <workItem from="1652750673025" duration="2313000" />
+      <workItem from="1653263588059" duration="2438000" />
+      <workItem from="1653345908237" duration="4837000" />
     </task>
     <servers />
   </component>

@@ -17,8 +17,7 @@ export default function Signup() {
     const [values, setValues] = useState(initialState)
 
     const navigate = useNavigate()
-
-    // @ts-ignore
+    
     const {user, isLoading, showAlert, displayAlert, setupUser} = useAppContext()
 
     const handleChange = (e: any) => {

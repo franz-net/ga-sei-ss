@@ -11,8 +11,7 @@ export default function Reservation({id, courtId, date, status, updatedAt, durat
     const {courtName, courtType} = courtId
     const {setEditReservation, deleteReservation, timezone} = useAppContext()
     let resDate = new Date(date)
-
-    // @ts-ignore
+    
     return (
         <Card
             sx={{
