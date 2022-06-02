@@ -4,16 +4,8 @@
     <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Court.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Court.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Reservation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Reservation.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/ScreenMessage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/ScreenMessage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/TopBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/TopBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/UserButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/UserButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/context/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Landing.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Landing.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/ProtectedRoute.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/ProtectedRoute.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Signup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Signup.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/AddReservation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/AddReservation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/LeftDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LeftDrawer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/Dashboard.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,6 +94,7 @@
       <workItem from="1652750673025" duration="2313000" />
       <workItem from="1653263588059" duration="2438000" />
       <workItem from="1653345908237" duration="4837000" />
+      <workItem from="1654129962576" duration="6209000" />
     </task>
     <servers />
   </component>

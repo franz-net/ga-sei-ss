@@ -9,7 +9,7 @@ import {
     Typography,
     useTheme
 } from "@mui/material";
-import {AddCircle, AddTask, Home, SportsTennis} from "@mui/icons-material";
+import {AddCircle, AddTask, Home, InsertInvitation, SportsTennis} from "@mui/icons-material";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useAppContext} from "../context/appContext";
 import {orange} from "@mui/material/colors";
@@ -37,12 +37,17 @@ export default function LeftDrawer({drawerWidth,}: LeftDrawerProps) {
 
     const menuItems = [
         {
-            text: 'Reservations',
+            text: 'Home',
             icon: <Home color="secondary"/>,
             path: '/',
             roles: ['user', 'admin', 'instructor']
         },
-
+        {
+            text: 'Reservations',
+            icon: <InsertInvitation color="secondary"/>,
+            path: '/reservations',
+            roles: ['user', 'admin', 'instructor']
+        },
         {
             text: 'Add Reservation',
             icon: <AddTask color="secondary"/>,
