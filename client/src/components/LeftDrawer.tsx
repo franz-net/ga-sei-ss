@@ -9,7 +9,7 @@ import {
     Typography,
     useTheme
 } from "@mui/material";
-import {AddCircle, AddTask, Home, InsertInvitation, SportsTennis} from "@mui/icons-material";
+import {AddCircle, AddTask, Home, InsertInvitation, PeopleAlt, SportsTennis} from "@mui/icons-material";
 import {useLocation, useNavigate} from "react-router-dom";
 import {useAppContext} from "../context/appContext";
 import {orange} from "@mui/material/colors";
@@ -64,6 +64,12 @@ export default function LeftDrawer({drawerWidth,}: LeftDrawerProps) {
             text: 'Add Court',
             icon: <AddCircle color="secondary"/>,
             path: '/admin/add-court',
+            roles: ['admin']
+        },
+        {
+            text: 'Users',
+            icon: <PeopleAlt color="secondary"/>,
+            path: '/admin/users',
             roles: ['admin']
         },
 

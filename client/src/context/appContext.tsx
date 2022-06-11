@@ -22,6 +22,8 @@ import {
     GET_COURTS_SUCCESS,
     GET_RESERVATIONS_BEGIN,
     GET_RESERVATIONS_SUCCESS,
+    GET_USERS_BEGIN,
+    GET_USERS_SUCCESS,
     HANDLE_CHANGE,
     LOGOUT_USER,
     SET_EDIT_COURT,
@@ -72,6 +74,9 @@ export const initialState = {
     duration: 1,
     reservations: [],
     totalReservations: 0,
+    //Users state
+    userList: [],
+    totalUsers: 0
 }
 
 // @ts-ignore
@@ -362,6 +367,23 @@ export function AppProvider({children}) {
         }
     }
 
+    const getUserList = async () => {
+        let url = `/user`
+        // @ts-ignore
+        dispatch({type: GET_USERS_BEGIN})
+        try {
+            const {data} = await authFetch.get(url)
+            const {userList, totalUsers, numOfPages} = data
+
+            // @ts-ignore
+            dispatch({type: GET_USERS_SUCCESS, payload: {userList, totalUsers, numOfPages}})
+        } catch (error) {
+            console.log(error)
+            //logoutUser()
+        }
+        clearAlert()
+    }
+
     const logoutUser = () => {
         // @ts-ignore
         dispatch({type: LOGOUT_USER})
@@ -390,7 +412,8 @@ export function AppProvider({children}) {
                 editReservation,
                 createReservation,
                 deleteReservation,
-                clearReservationValues
+                clearReservationValues,
+                getUserList
             }}>
             {children}
         </AppContext.Provider>

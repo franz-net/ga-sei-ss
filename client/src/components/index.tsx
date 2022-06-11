@@ -10,6 +10,7 @@ import SearchCourtsContainer from "./SearchCourtsContainer";
 import Loader from "./Loader"
 import ReservationsContainer from "./ReservationsContainer";
 import SearchReservationsContainer from "./SearchReservationsContainer";
+import UserList from "./UserList";
 
 export {
     ScreenMessage,
@@ -23,5 +24,6 @@ export {
     SearchCourtsContainer,
     Loader,
     ReservationsContainer,
-    SearchReservationsContainer
+    SearchReservationsContainer,
+    UserList
 }

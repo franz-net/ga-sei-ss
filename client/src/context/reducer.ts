@@ -21,6 +21,9 @@ import {
     GET_COURTS_SUCCESS,
     GET_RESERVATIONS_BEGIN,
     GET_RESERVATIONS_SUCCESS,
+    GET_USERS_BEGIN,
+    GET_USERS_ERROR,
+    GET_USERS_SUCCESS,
     HANDLE_CHANGE,
     LOGOUT_USER,
     SET_EDIT_COURT,
@@ -37,6 +40,7 @@ import {initialState} from "./appContext";
 
 export default function reducer(state: any, action: {
     type: string; payload: {
+        userList: [];
         value: any;
         name: any;
         reservations: any;
@@ -297,6 +301,31 @@ export default function reducer(state: any, action: {
     }
     if (action.type === DELETE_RESERVATION_BEGIN) {
         return {...state, isLoading: true}
+    }
+
+    if (action.type === GET_USERS_BEGIN) {
+        return {...state, isLoading: true}
+    }
+
+    if (action.type === GET_USERS_ERROR) {
+        return {
+            ...state,
+            isLoading: false,
+            showAlert: true,
+            alertType: 'error',
+            alertText: action.payload.msg
+        }
+    }
+    if (action.type === GET_USERS_SUCCESS) {
+        return {
+            ...state,
+            isLoading: false,
+            userList: action.payload.userList,
+            // @ts-ignore
+            totalUsers: action.payload.totalUsers,
+            // @ts-ignore
+            numOfPages: action.payload.numOfPages
+        }
     }
 
     throw new Error(`no such action : ${action.type}`)

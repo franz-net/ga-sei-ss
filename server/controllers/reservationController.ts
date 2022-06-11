@@ -12,8 +12,6 @@ const createReservation = async (req, res) => {
     if (!courtId || !date || !timezone) {
         throw new BadRequestError("Please provide all reservation details")
     }
-
-
     const courtAlreadyReserved = await Reservation.findOne(
         {
             where: {
