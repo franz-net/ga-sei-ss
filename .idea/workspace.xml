@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/UserList.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/authPages/Users.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/LeftDrawer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/LeftDrawer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/context/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/context/appContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/appContext.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/context/reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/context/reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/authPages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/authPages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/reservationController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/reservationController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/userController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.ts" afterDir="false" />
-    </list>
+    <list default="true" id="9972c7dd-b856-49df-9c0a-331d94e08faf" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,7 +91,7 @@
       <workItem from="1653345908237" duration="4837000" />
       <workItem from="1654129962576" duration="6797000" />
       <workItem from="1654903712200" duration="176000" />
-      <workItem from="1654903916846" duration="5226000" />
+      <workItem from="1654903916846" duration="5311000" />
     </task>
     <servers />
   </component>

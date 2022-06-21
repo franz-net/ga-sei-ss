@@ -37,6 +37,10 @@ module.exports = {
                     }
                 }
             },
+            endDate: {
+                type: Sequelize.DATE,
+                allowNull: false
+            },
             status: {
                 type: Sequelize.ENUM,
                 values: ['pending', 'confirmed'],

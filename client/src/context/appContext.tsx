@@ -313,9 +313,9 @@ export function AppProvider({children}) {
         dispatch({type: EDIT_RESERVATION_BEGIN})
         try {
             const {courtId, date, duration, timezone, status} = state
-            console.log(courtId, date, duration, timezone, status)
+            console.log(courtId, date, duration, status)
             await authFetch.patch(`/reservation/${state.editReservationId}`, {
-                courtId, date, duration, timezone, status
+                courtId, date, duration, status, timezone
             })
             // @ts-ignore
             dispatch({type: EDIT_RESERVATION_SUCCESS})

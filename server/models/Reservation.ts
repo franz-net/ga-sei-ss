@@ -37,6 +37,13 @@ module.exports = (sequelize, DataTypes) => {
                 msg: 'Please provide a reservation duration'
             }
         },
+        endDate: {
+            type: DataTypes.DATE,
+            allowNull: {
+                args: false,
+                msg: 'Please provide an end date'
+            }
+        },
         status: {
             type: DataTypes.ENUM,
             values: ['pending', 'confirmed'],

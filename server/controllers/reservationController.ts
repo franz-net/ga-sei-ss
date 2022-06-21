@@ -1,25 +1,35 @@
 import {BadRequestError, NotFoundError} from "../errors";
 import StatusCodes from "http-status-codes";
 import {Op} from "sequelize";
+import moment from "moment-timezone";
 
 const Reservation = require('../models').Reservation
 const Court = require('../models').Court
 
 const createReservation = async (req, res) => {
 
-    const {courtId, timezone, date} = req.body
+    const {courtId, duration, date} = req.body
 
-    if (!courtId || !date || !timezone) {
+    if (!courtId || !date || !duration) {
         throw new BadRequestError("Please provide all reservation details")
     }
+    req.body.endDate = moment(date).add(duration, 'hours')
+
+    
+
     const courtAlreadyReserved = await Reservation.findOne(
         {
             where: {
-                date: {
-                    [Op.eq]: date
-                },
-                courtId: {
-                    [Op.eq]: courtId
+                [Op.and]: {
+                    date: {
+                        [Op.lte]: moment.utc(req.body.endDate).tz(req.body.timezone)
+                    },
+                    endDate: {
+                        [Op.gte]: moment.utc(date).tz(req.body.timezone)
+                    },
+                    courtId: {
+                        [Op.eq]: courtId
+                    }
                 }
             }
         }
@@ -32,6 +42,7 @@ const createReservation = async (req, res) => {
     req.body.date = date
     const reservation = await Reservation.create(req.body)
     res.status(StatusCodes.CREATED).json({reservation})
+    
 }
 
 const updateReservation = async (req, res) => {
@@ -51,7 +62,23 @@ const updateReservation = async (req, res) => {
     }
 
 
-    const courtAlreadyReserved = await Reservation.findOne({date, courtId})
+    const courtAlreadyReserved = await Reservation.findOne(
+        {
+            where: {
+                [Op.and]: {
+                    date: {
+                        [Op.lte]: moment.utc(req.body.endDate).tz(req.body.timezone)
+                    },
+                    endDate: {
+                        [Op.gte]: moment.utc(date).tz(req.body.timezone)
+                    },
+                    courtId: {
+                        [Op.eq]: courtId
+                    }
+                }
+            }
+        }
+    )
     if (courtAlreadyReserved) {
         throw new BadRequestError(`Error, this time is already reserved.`)
     }
