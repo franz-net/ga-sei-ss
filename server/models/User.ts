@@ -76,6 +76,10 @@ module.exports = (sequelize, DataTypes) => {
             values: ['user', 'admin', 'instructor'],
             defaultValue: 'user'
         },
+        disabled: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
         last_login_at: {
             type: DataTypes.DATE,
         },

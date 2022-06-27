@@ -31,6 +31,11 @@ module.exports = {
                 allowNull: false,
                 defaultValue: 'user'
             },
+            disabled: {
+                type: Sequelize.BOOLEAN,
+                allowNull: false,
+                defaultValue: false
+            },
             last_login_at: {
                 type: Sequelize.DATE,
             },
