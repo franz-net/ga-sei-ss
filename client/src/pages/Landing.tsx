@@ -1,6 +1,6 @@
 import {Box} from "@mui/material";
 import tennisBackground from '../assets/imgs/tennis-court.png';
-import {LandingCourts, LandingHeader} from "../components";
+import {LandingCourts, LandingHeader, LandingPrices} from "../components";
 import {useRef} from "react";
 import Footer from "../components/Footer";
 
@@ -31,6 +31,7 @@ export default function Landing() {
                 <LandingHeader handleScrollClick={handleScrollClick}/>
             </Box>
             <LandingCourts courtsRef={courtsRef}/>
+            <LandingPrices/>
             <Footer/>
         </Box>
     )

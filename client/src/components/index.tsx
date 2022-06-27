@@ -11,6 +11,7 @@ import Loader from "./Loader"
 import ReservationsContainer from "./ReservationsContainer";
 import SearchReservationsContainer from "./SearchReservationsContainer";
 import UserList from "./UserList";
+import LandingPrices from "./LandingPrices";
 
 export {
     ScreenMessage,
@@ -25,5 +26,6 @@ export {
     Loader,
     ReservationsContainer,
     SearchReservationsContainer,
-    UserList
+    UserList,
+    LandingPrices
 }
